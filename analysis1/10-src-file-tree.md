@@ -1,0 +1,2222 @@
+# 附录B：src 详细文件树（含文件说明）
+
+[返回总目录](../README.md)
+
+## 1. 说明
+
+- 本文按 `src/` 的真实目录结构递归展开。
+- 当前文件树共覆盖 1902 个源码文件。
+- 每个文件后都带一行用途说明；说明基于目录位置、命名约定以及已有静态分析结论生成，适合做快速索引，不替代逐文件源码阅读。
+- 目录说明优先帮助你理解该目录在整体架构中的职责，文件说明则聚焦这个文件在本目录中的角色。
+
+## 2. src 文件树
+
+- `src/`：项目主源码目录，承载入口、执行内核、UI、工具、服务层与基础设施。
+  - `assistant/`：助手侧会话历史与辅助状态。
+    - `sessionHistory.ts`：处理assistant 辅助模块中的历史记录与回放。
+  - `bootstrap/`：启动期状态准备与引导装配。
+    - `state.ts`：维护bootstrap 模块相关状态。
+  - `bridge/`：bridge / remote bridge 会话桥接与跨端通信。
+    - `bridgeApi.ts`：处理bridge 子系统中的远程连接、桥接或跨端同步逻辑。
+    - `bridgeConfig.ts`：定义bridge 子系统的配置项与默认值。
+    - `bridgeDebug.ts`：处理bridge 子系统中的远程连接、桥接或跨端同步逻辑。
+    - `bridgeEnabled.ts`：处理bridge 子系统中的远程连接、桥接或跨端同步逻辑。
+    - `bridgeMain.ts`：处理bridge 子系统中的远程连接、桥接或跨端同步逻辑。
+    - `bridgeMessaging.ts`：处理bridge 子系统中的远程连接、桥接或跨端同步逻辑。
+    - `bridgePermissionCallbacks.ts`：处理bridge 子系统中的权限决策、说明或桥接逻辑。
+    - `bridgePointer.ts`：处理bridge 子系统中的远程连接、桥接或跨端同步逻辑。
+    - `bridgeStatusUtil.ts`：计算、展示或同步bridge 子系统状态。
+    - `bridgeUI.ts`：处理bridge 子系统中的远程连接、桥接或跨端同步逻辑。
+    - `capacityWake.ts`：bridge 子系统中的 `capacityWake` 模块，负责该主题下的具体实现。
+    - `codeSessionApi.ts`：处理bridge 子系统中的会话状态、会话数据或会话同步。
+    - `createSession.ts`：负责bridge 子系统的创建与装配逻辑。
+    - `debugUtils.ts`：提供bridge 子系统的辅助函数与通用逻辑。
+    - `envLessBridgeConfig.ts`：定义bridge 子系统的配置项与默认值。
+    - `flushGate.ts`：bridge 子系统中的 `flushGate` 模块，负责该主题下的具体实现。
+    - `inboundAttachments.ts`：bridge 子系统中的 `inboundAttachments` 模块，负责该主题下的具体实现。
+    - `inboundMessages.ts`：处理bridge 子系统中的消息构造、映射或渲染。
+    - `initReplBridge.ts`：处理bridge 子系统中的远程连接、桥接或跨端同步逻辑。
+    - `jwtUtils.ts`：提供bridge 子系统的辅助函数与通用逻辑。
+    - `pollConfig.ts`：定义bridge 子系统的配置项与默认值。
+    - `pollConfigDefaults.ts`：bridge 子系统中的 `pollConfigDefaults` 模块，负责该主题下的具体实现。
+    - `remoteBridgeCore.ts`：处理bridge 子系统中的远程连接、桥接或跨端同步逻辑。
+    - `replBridge.ts`：处理bridge 子系统中的远程连接、桥接或跨端同步逻辑。
+    - `replBridgeHandle.ts`：处理bridge 子系统中的远程连接、桥接或跨端同步逻辑。
+    - `replBridgeTransport.ts`：实现bridge 子系统的传输层。
+    - `sessionIdCompat.ts`：处理bridge 子系统中的会话状态、会话数据或会话同步。
+    - `sessionRunner.ts`：处理bridge 子系统中的会话状态、会话数据或会话同步。
+    - `trustedDevice.ts`：bridge 子系统中的 `trustedDevice` 模块，负责该主题下的具体实现。
+    - `types.ts`：定义bridge 子系统使用的类型、接口或结构。
+    - `workSecret.ts`：bridge 子系统中的 `workSecret` 模块，负责该主题下的具体实现。
+  - `buddy/`：buddy 形象、提示与伴随通知能力。
+    - `companion.ts`：buddy 模块中的 `companion` 模块，负责该主题下的具体实现。
+    - `CompanionSprite.tsx`：渲染buddy 模块中的 `CompanionSprite` 组件。
+    - `prompt.ts`：定义buddy 模块的提示词、模板或引导文案。
+    - `sprites.ts`：buddy 模块中的 `sprites` 模块，负责该主题下的具体实现。
+    - `types.ts`：定义buddy 模块使用的类型、接口或结构。
+    - `useBuddyNotification.tsx`：提供buddy 模块相关的 React Hook。
+  - `cli/`：CLI 非交互输出、传输层与命令行适配。
+    - `exit.ts`：CLI 子系统中的 `exit` 模块，负责该主题下的具体实现。
+    - `handlers/`：CLI 子命令/事件处理器。
+      - `agents.ts`：`handlers` CLI 模块中的 `agents` 模块，负责该主题下的具体实现。
+      - `auth.ts`：处理`handlers` CLI 模块中的认证、授权或凭证逻辑。
+      - `autoMode.ts`：定义`handlers` CLI 模块中的模式枚举或模式切换逻辑。
+      - `mcp.tsx`：处理`handlers` CLI 模块中的 MCP 集成逻辑。
+      - `plugins.ts`：处理`handlers` CLI 模块中的插件加载、管理或校验逻辑。
+      - `util.tsx`：渲染`handlers` CLI 模块中的 `util` 组件。
+    - `ndjsonSafeStringify.ts`：CLI 子系统中的 `ndjsonSafeStringify` 模块，负责该主题下的具体实现。
+    - `print.ts`：CLI 子系统中的 `print` 模块，负责该主题下的具体实现。
+    - `remoteIO.ts`：处理CLI 子系统中的远程连接、桥接或跨端同步逻辑。
+    - `structuredIO.ts`：CLI 子系统中的 `structuredIO` 模块，负责该主题下的具体实现。
+    - `transports/`：CLI 传输层与事件上传通道。
+      - `ccrClient.ts`：实现`transports` CLI 模块对外部系统的客户端封装。
+      - `HybridTransport.ts`：实现`transports` CLI 模块的传输层。
+      - `SerialBatchEventUploader.ts`：负责`transports` CLI 模块的加载、发现或延迟初始化。
+      - `SSETransport.ts`：实现`transports` CLI 模块的传输层。
+      - `transportUtils.ts`：提供`transports` CLI 模块的辅助函数与通用逻辑。
+      - `WebSocketTransport.ts`：实现`transports` CLI 模块的传输层。
+      - `WorkerStateUploader.ts`：负责`transports` CLI 模块的加载、发现或延迟初始化。
+    - `update.ts`：负责CLI 子系统的更新流程。
+  - `commands/`：Slash/CLI 命令实现与命令入口集合。
+    - `add-dir/`：`add-dir` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `add-dir.tsx`：渲染`add-dir` 命令中的 `add-dir` 组件。
+      - `index.ts`：导出`add-dir` 命令的公共入口。
+      - `validation.ts`：负责`add-dir` 命令的校验与约束检查。
+    - `advisor.ts`：命令系统中的 `advisor` 模块，负责该主题下的具体实现。
+    - `agents/`：`agents` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `agents.tsx`：渲染`agents` 命令中的 `agents` 组件。
+      - `index.ts`：导出`agents` 命令的公共入口。
+    - `ant-trace/`：`ant-trace` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.js`：导出`ant-trace` 命令的公共入口。
+    - `autofix-pr/`：`autofix-pr` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.js`：导出`autofix-pr` 命令的公共入口。
+    - `backfill-sessions/`：`backfill-sessions` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.js`：导出`backfill-sessions` 命令的公共入口。
+    - `branch/`：`branch` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `branch.ts`：`branch` 命令中的 `branch` 模块，负责该主题下的具体实现。
+      - `index.ts`：导出`branch` 命令的公共入口。
+    - `break-cache/`：`break-cache` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.js`：导出`break-cache` 命令的公共入口。
+    - `bridge/`：`bridge` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `bridge.tsx`：处理`bridge` 命令中的远程连接、桥接或跨端同步逻辑。
+      - `index.ts`：导出`bridge` 命令的公共入口。
+    - `bridge-kick.ts`：处理命令系统中的远程连接、桥接或跨端同步逻辑。
+    - `brief.ts`：命令系统中的 `brief` 模块，负责该主题下的具体实现。
+    - `btw/`：`btw` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `btw.tsx`：渲染`btw` 命令中的 `btw` 组件。
+      - `index.ts`：导出`btw` 命令的公共入口。
+    - `bughunter/`：`bughunter` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.js`：导出`bughunter` 命令的公共入口。
+    - `chrome/`：`chrome` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `chrome.tsx`：渲染`chrome` 命令中的 `chrome` 组件。
+      - `index.ts`：导出`chrome` 命令的公共入口。
+    - `clear/`：`clear` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `caches.ts`：`clear` 命令中的 `caches` 模块，负责该主题下的具体实现。
+      - `clear.ts`：`clear` 命令中的 `clear` 模块，负责该主题下的具体实现。
+      - `conversation.ts`：`clear` 命令中的 `conversation` 模块，负责该主题下的具体实现。
+      - `index.ts`：导出`clear` 命令的公共入口。
+    - `color/`：`color` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `color.ts`：`color` 命令中的 `color` 模块，负责该主题下的具体实现。
+      - `index.ts`：导出`color` 命令的公共入口。
+    - `commit-push-pr.ts`：命令系统中的 `commit-push-pr` 模块，负责该主题下的具体实现。
+    - `commit.ts`：命令系统中的 `commit` 模块，负责该主题下的具体实现。
+    - `compact/`：`compact` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `compact.ts`：处理`compact` 命令中的 compact 压缩与清理逻辑。
+      - `index.ts`：导出`compact` 命令的公共入口。
+    - `config/`：`config` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `config.tsx`：定义`config` 命令的配置项与默认值。
+      - `index.ts`：导出`config` 命令的公共入口。
+    - `context/`：`context` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `context-noninteractive.ts`：`context` 命令中的 `context-noninteractive` 模块，负责该主题下的具体实现。
+      - `context.tsx`：渲染`context` 命令中的 `context` 组件。
+      - `index.ts`：导出`context` 命令的公共入口。
+    - `copy/`：`copy` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `copy.tsx`：渲染`copy` 命令中的 `copy` 组件。
+      - `index.ts`：导出`copy` 命令的公共入口。
+    - `cost/`：`cost` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `cost.ts`：`cost` 命令中的 `cost` 模块，负责该主题下的具体实现。
+      - `index.ts`：导出`cost` 命令的公共入口。
+    - `createMovedToPluginCommand.ts`：负责命令系统的创建与装配逻辑。
+    - `ctx_viz/`：`ctx_viz` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.js`：导出`ctx_viz` 命令的公共入口。
+    - `debug-tool-call/`：`debug-tool-call` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.js`：导出`debug-tool-call` 命令的公共入口。
+    - `desktop/`：`desktop` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `desktop.tsx`：渲染`desktop` 命令中的 `desktop` 组件。
+      - `index.ts`：导出`desktop` 命令的公共入口。
+    - `diff/`：`diff` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `diff.tsx`：处理`diff` 命令中的 diff 计算、展示或格式化。
+      - `index.ts`：导出`diff` 命令的公共入口。
+    - `doctor/`：`doctor` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `doctor.tsx`：渲染`doctor` 命令中的 `doctor` 组件。
+      - `index.ts`：导出`doctor` 命令的公共入口。
+    - `effort/`：`effort` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `effort.tsx`：渲染`effort` 命令中的 `effort` 组件。
+      - `index.ts`：导出`effort` 命令的公共入口。
+    - `env/`：`env` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.js`：导出`env` 命令的公共入口。
+    - `exit/`：`exit` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `exit.tsx`：渲染`exit` 命令中的 `exit` 组件。
+      - `index.ts`：导出`exit` 命令的公共入口。
+    - `export/`：`export` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `export.tsx`：渲染`export` 命令中的 `export` 组件。
+      - `index.ts`：导出`export` 命令的公共入口。
+    - `extra-usage/`：`extra-usage` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `extra-usage-core.ts`：`extra-usage` 命令中的 `extra-usage-core` 模块，负责该主题下的具体实现。
+      - `extra-usage-noninteractive.ts`：`extra-usage` 命令中的 `extra-usage-noninteractive` 模块，负责该主题下的具体实现。
+      - `extra-usage.tsx`：渲染`extra-usage` 命令中的 `extra-usage` 组件。
+      - `index.ts`：导出`extra-usage` 命令的公共入口。
+    - `fast/`：`fast` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `fast.tsx`：渲染`fast` 命令中的 `fast` 组件。
+      - `index.ts`：导出`fast` 命令的公共入口。
+    - `feedback/`：`feedback` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `feedback.tsx`：渲染`feedback` 命令中的 `feedback` 组件。
+      - `index.ts`：导出`feedback` 命令的公共入口。
+    - `files/`：`files` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `files.ts`：`files` 命令中的 `files` 模块，负责该主题下的具体实现。
+      - `index.ts`：导出`files` 命令的公共入口。
+    - `good-claude/`：`good-claude` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.js`：导出`good-claude` 命令的公共入口。
+    - `heapdump/`：`heapdump` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `heapdump.ts`：`heapdump` 命令中的 `heapdump` 模块，负责该主题下的具体实现。
+      - `index.ts`：导出`heapdump` 命令的公共入口。
+    - `help/`：`help` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `help.tsx`：渲染`help` 命令中的 `help` 组件。
+      - `index.ts`：导出`help` 命令的公共入口。
+    - `hooks/`：`hooks` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `hooks.tsx`：实现`hooks` 命令相关的 hook 或 hook 辅助。
+      - `index.ts`：导出`hooks` 命令的公共入口。
+    - `ide/`：`ide` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `ide.tsx`：渲染`ide` 命令中的 `ide` 组件。
+      - `index.ts`：导出`ide` 命令的公共入口。
+    - `init-verifiers.ts`：命令系统中的 `init-verifiers` 模块，负责该主题下的具体实现。
+    - `init.ts`：命令系统中的 `init` 模块，负责该主题下的具体实现。
+    - `insights.ts`：命令系统中的 `insights` 模块，负责该主题下的具体实现。
+    - `install-github-app/`：`install-github-app` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `ApiKeyStep.tsx`：实现`install-github-app` 命令中的单个步骤。
+      - `CheckExistingSecretStep.tsx`：实现`install-github-app` 命令中的单个步骤。
+      - `CheckGitHubStep.tsx`：实现`install-github-app` 命令中的单个步骤。
+      - `ChooseRepoStep.tsx`：实现`install-github-app` 命令中的单个步骤。
+      - `CreatingStep.tsx`：实现`install-github-app` 命令中的单个步骤。
+      - `ErrorStep.tsx`：实现`install-github-app` 命令中的单个步骤。
+      - `ExistingWorkflowStep.tsx`：实现`install-github-app` 命令中的单个步骤。
+      - `index.ts`：导出`install-github-app` 命令的公共入口。
+      - `install-github-app.tsx`：处理`install-github-app` 命令中的 Git 集成逻辑。
+      - `InstallAppStep.tsx`：实现`install-github-app` 命令中的单个步骤。
+      - `OAuthFlowStep.tsx`：实现`install-github-app` 命令中的单个步骤。
+      - `setupGitHubActions.ts`：处理`install-github-app` 命令中的 Git 集成逻辑。
+      - `SuccessStep.tsx`：实现`install-github-app` 命令中的单个步骤。
+      - `WarningsStep.tsx`：实现`install-github-app` 命令中的单个步骤。
+    - `install-slack-app/`：`install-slack-app` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`install-slack-app` 命令的公共入口。
+      - `install-slack-app.ts`：`install-slack-app` 命令中的 `install-slack-app` 模块，负责该主题下的具体实现。
+    - `install.tsx`：渲染命令系统中的 `install` 组件。
+    - `issue/`：`issue` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.js`：导出`issue` 命令的公共入口。
+    - `keybindings/`：`keybindings` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`keybindings` 命令的公共入口。
+      - `keybindings.ts`：`keybindings` 命令中的 `keybindings` 模块，负责该主题下的具体实现。
+    - `login/`：`login` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`login` 命令的公共入口。
+      - `login.tsx`：渲染`login` 命令中的 `login` 组件。
+    - `logout/`：`logout` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`logout` 命令的公共入口。
+      - `logout.tsx`：渲染`logout` 命令中的 `logout` 组件。
+    - `mcp/`：`mcp` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `addCommand.ts`：`mcp` 命令中的 `addCommand` 模块，负责该主题下的具体实现。
+      - `index.ts`：导出`mcp` 命令的公共入口。
+      - `mcp.tsx`：处理`mcp` 命令中的 MCP 集成逻辑。
+      - `xaaIdpCommand.ts`：`mcp` 命令中的 `xaaIdpCommand` 模块，负责该主题下的具体实现。
+    - `memory/`：`memory` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`memory` 命令的公共入口。
+      - `memory.tsx`：处理`memory` 命令中的 memory 读取、写入或同步逻辑。
+    - `mobile/`：`mobile` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`mobile` 命令的公共入口。
+      - `mobile.tsx`：渲染`mobile` 命令中的 `mobile` 组件。
+    - `mock-limits/`：`mock-limits` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.js`：导出`mock-limits` 命令的公共入口。
+    - `model/`：`model` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`model` 命令的公共入口。
+      - `model.tsx`：处理`model` 命令中的模型选择、模型能力或模型映射。
+    - `oauth-refresh/`：`oauth-refresh` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.js`：导出`oauth-refresh` 命令的公共入口。
+    - `onboarding/`：`onboarding` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.js`：导出`onboarding` 命令的公共入口。
+    - `output-style/`：`output-style` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`output-style` 命令的公共入口。
+      - `output-style.tsx`：处理`output-style` 命令中的输出格式化或输出落盘逻辑。
+    - `passes/`：`passes` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`passes` 命令的公共入口。
+      - `passes.tsx`：渲染`passes` 命令中的 `passes` 组件。
+    - `perf-issue/`：`perf-issue` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.js`：导出`perf-issue` 命令的公共入口。
+    - `permissions/`：`permissions` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`permissions` 命令的公共入口。
+      - `permissions.tsx`：处理`permissions` 命令中的权限决策、说明或桥接逻辑。
+    - `plan/`：`plan` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`plan` 命令的公共入口。
+      - `plan.tsx`：渲染`plan` 命令中的 `plan` 组件。
+    - `plugin/`：`plugin` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `AddMarketplace.tsx`：渲染`plugin` 命令中的 `AddMarketplace` 组件。
+      - `BrowseMarketplace.tsx`：渲染`plugin` 命令中的 `BrowseMarketplace` 组件。
+      - `DiscoverPlugins.tsx`：处理`plugin` 命令中的插件加载、管理或校验逻辑。
+      - `index.tsx`：导出`plugin` 命令的公共入口。
+      - `ManageMarketplaces.tsx`：渲染`plugin` 命令中的 `ManageMarketplaces` 组件。
+      - `ManagePlugins.tsx`：处理`plugin` 命令中的插件加载、管理或校验逻辑。
+      - `parseArgs.ts`：负责`plugin` 命令的解析逻辑。
+      - `plugin.tsx`：处理`plugin` 命令中的插件加载、管理或校验逻辑。
+      - `pluginDetailsHelpers.tsx`：提供`plugin` 命令的辅助函数与通用逻辑。
+      - `PluginErrors.tsx`：处理`plugin` 命令中的插件加载、管理或校验逻辑。
+      - `PluginOptionsDialog.tsx`：实现`plugin` 命令中的 `PluginOptionsDialog` 对话框。
+      - `PluginOptionsFlow.tsx`：编排`plugin` 命令中的流程控制。
+      - `PluginSettings.tsx`：处理`plugin` 命令中的插件加载、管理或校验逻辑。
+      - `PluginTrustWarning.tsx`：给出`plugin` 命令中的告警或风险提示。
+      - `UnifiedInstalledCell.tsx`：渲染`plugin` 命令中的行级或条目级 UI。
+      - `usePagination.ts`：提供`plugin` 命令相关的 React Hook。
+      - `ValidatePlugin.tsx`：负责`plugin` 命令的校验与约束检查。
+    - `pr_comments/`：`pr_comments` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`pr_comments` 命令的公共入口。
+    - `privacy-settings/`：`privacy-settings` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`privacy-settings` 命令的公共入口。
+      - `privacy-settings.tsx`：渲染`privacy-settings` 命令中的 `privacy-settings` 组件。
+    - `rate-limit-options/`：`rate-limit-options` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`rate-limit-options` 命令的公共入口。
+      - `rate-limit-options.tsx`：渲染`rate-limit-options` 命令中的 `rate-limit-options` 组件。
+    - `release-notes/`：`release-notes` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`release-notes` 命令的公共入口。
+      - `release-notes.ts`：`release-notes` 命令中的 `release-notes` 模块，负责该主题下的具体实现。
+    - `reload-plugins/`：`reload-plugins` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`reload-plugins` 命令的公共入口。
+      - `reload-plugins.ts`：处理`reload-plugins` 命令中的插件加载、管理或校验逻辑。
+    - `remote-env/`：`remote-env` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`remote-env` 命令的公共入口。
+      - `remote-env.tsx`：处理`remote-env` 命令中的远程连接、桥接或跨端同步逻辑。
+    - `remote-setup/`：`remote-setup` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `api.ts`：`remote-setup` 命令中的 `api` 模块，负责该主题下的具体实现。
+      - `index.ts`：导出`remote-setup` 命令的公共入口。
+      - `remote-setup.tsx`：处理`remote-setup` 命令中的远程连接、桥接或跨端同步逻辑。
+    - `rename/`：`rename` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `generateSessionName.ts`：处理`rename` 命令中的会话状态、会话数据或会话同步。
+      - `index.ts`：导出`rename` 命令的公共入口。
+      - `rename.ts`：`rename` 命令中的 `rename` 模块，负责该主题下的具体实现。
+    - `reset-limits/`：`reset-limits` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.js`：导出`reset-limits` 命令的公共入口。
+    - `resume/`：`resume` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`resume` 命令的公共入口。
+      - `resume.tsx`：渲染`resume` 命令中的 `resume` 组件。
+    - `review/`：`review` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `reviewRemote.ts`：处理`review` 命令中的远程连接、桥接或跨端同步逻辑。
+      - `ultrareviewCommand.tsx`：渲染`review` 命令中的 `ultrareviewCommand` 组件。
+      - `ultrareviewEnabled.ts`：`review` 命令中的 `ultrareviewEnabled` 模块，负责该主题下的具体实现。
+      - `UltrareviewOverageDialog.tsx`：实现`review` 命令中的 `UltrareviewOverageDialog` 对话框。
+    - `review.ts`：命令系统中的 `review` 模块，负责该主题下的具体实现。
+    - `rewind/`：`rewind` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`rewind` 命令的公共入口。
+      - `rewind.ts`：`rewind` 命令中的 `rewind` 模块，负责该主题下的具体实现。
+    - `sandbox-toggle/`：`sandbox-toggle` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`sandbox-toggle` 命令的公共入口。
+      - `sandbox-toggle.tsx`：渲染`sandbox-toggle` 命令中的 `sandbox-toggle` 组件。
+    - `security-review.ts`：命令系统中的 `security-review` 模块，负责该主题下的具体实现。
+    - `session/`：`session` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`session` 命令的公共入口。
+      - `session.tsx`：处理`session` 命令中的会话状态、会话数据或会话同步。
+    - `share/`：`share` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.js`：导出`share` 命令的公共入口。
+    - `skills/`：`skills` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`skills` 命令的公共入口。
+      - `skills.tsx`：渲染`skills` 命令中的 `skills` 组件。
+    - `stats/`：`stats` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`stats` 命令的公共入口。
+      - `stats.tsx`：渲染`stats` 命令中的 `stats` 组件。
+    - `status/`：`status` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`status` 命令的公共入口。
+      - `status.tsx`：计算、展示或同步`status` 命令状态。
+    - `statusline.tsx`：计算、展示或同步命令系统状态。
+    - `stickers/`：`stickers` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`stickers` 命令的公共入口。
+      - `stickers.ts`：`stickers` 命令中的 `stickers` 模块，负责该主题下的具体实现。
+    - `summary/`：`summary` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.js`：导出`summary` 命令的公共入口。
+    - `tag/`：`tag` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`tag` 命令的公共入口。
+      - `tag.tsx`：渲染`tag` 命令中的 `tag` 组件。
+    - `tasks/`：`tasks` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`tasks` 命令的公共入口。
+      - `tasks.tsx`：处理`tasks` 命令中的任务装配、状态或输出逻辑。
+    - `teleport/`：`teleport` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.js`：导出`teleport` 命令的公共入口。
+    - `terminalSetup/`：`terminalSetup` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`terminalSetup` 命令的公共入口。
+      - `terminalSetup.tsx`：渲染`terminalSetup` 命令中的 `terminalSetup` 组件。
+    - `theme/`：`theme` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`theme` 命令的公共入口。
+      - `theme.tsx`：处理`theme` 命令中的主题、配色或外观设置。
+    - `thinkback/`：`thinkback` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`thinkback` 命令的公共入口。
+      - `thinkback.tsx`：渲染`thinkback` 命令中的 `thinkback` 组件。
+    - `thinkback-play/`：`thinkback-play` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`thinkback-play` 命令的公共入口。
+      - `thinkback-play.ts`：`thinkback-play` 命令中的 `thinkback-play` 模块，负责该主题下的具体实现。
+    - `ultraplan.tsx`：渲染命令系统中的 `ultraplan` 组件。
+    - `upgrade/`：`upgrade` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`upgrade` 命令的公共入口。
+      - `upgrade.tsx`：渲染`upgrade` 命令中的 `upgrade` 组件。
+    - `usage/`：`usage` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`usage` 命令的公共入口。
+      - `usage.tsx`：渲染`usage` 命令中的 `usage` 组件。
+    - `version.ts`：命令系统中的 `version` 模块，负责该主题下的具体实现。
+    - `vim/`：`vim` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`vim` 命令的公共入口。
+      - `vim.ts`：`vim` 命令中的 `vim` 模块，负责该主题下的具体实现。
+    - `voice/`：`voice` 命令目录，包含命令入口、交互界面和辅助逻辑。
+      - `index.ts`：导出`voice` 命令的公共入口。
+      - `voice.ts`：`voice` 命令中的 `voice` 模块，负责该主题下的具体实现。
+  - `commands.ts`：命令注册总表，汇总 slash/CLI 命令及其元数据。
+  - `components/`：Ink/React 终端 UI 组件体系。
+    - `AgentProgressLine.tsx`：渲染工作台 UI中的 `AgentProgressLine` 组件。
+    - `agents/`：agent 列表、详情、编辑与创建组件。
+      - `AgentDetail.tsx`：渲染agent 管理组件中的 `AgentDetail` 组件。
+      - `AgentEditor.tsx`：渲染agent 管理组件中的 `AgentEditor` 组件。
+      - `agentFileUtils.ts`：提供agent 管理组件的辅助函数与通用逻辑。
+      - `AgentNavigationFooter.tsx`：渲染agent 管理组件中的 `AgentNavigationFooter` 组件。
+      - `AgentsList.tsx`：渲染agent 管理组件中的 `AgentsList` 列表。
+      - `AgentsMenu.tsx`：实现agent 管理组件中的 `AgentsMenu` 菜单或面板。
+      - `ColorPicker.tsx`：实现agent 管理组件中的选择器组件。
+      - `generateAgent.ts`：agent 管理组件中的 `generateAgent` 模块，负责该主题下的具体实现。
+      - `ModelSelector.tsx`：实现agent 管理组件中的选择器组件。
+      - `new-agent-creation/`：`new-agent-creation` 子目录。
+        - `CreateAgentWizard.tsx`：负责agent 管理组件的创建与装配逻辑。
+        - `wizard-steps/`：`wizard-steps` 子目录。
+          - `ColorStep.tsx`：实现agent 管理组件中的单个步骤。
+          - `ConfirmStep.tsx`：实现agent 管理组件中的单个步骤。
+          - `ConfirmStepWrapper.tsx`：封装agent 管理组件的外层边界或包装逻辑。
+          - `DescriptionStep.tsx`：实现agent 管理组件中的单个步骤。
+          - `GenerateStep.tsx`：实现agent 管理组件中的单个步骤。
+          - `LocationStep.tsx`：实现agent 管理组件中的单个步骤。
+          - `MemoryStep.tsx`：实现agent 管理组件中的单个步骤。
+          - `MethodStep.tsx`：实现agent 管理组件中的单个步骤。
+          - `ModelStep.tsx`：实现agent 管理组件中的单个步骤。
+          - `PromptStep.tsx`：定义agent 管理组件的提示词、模板或引导文案。
+          - `ToolsStep.tsx`：实现agent 管理组件中的单个步骤。
+          - `TypeStep.tsx`：实现agent 管理组件中的单个步骤。
+      - `ToolSelector.tsx`：实现agent 管理组件中的选择器组件。
+      - `types.ts`：定义agent 管理组件使用的类型、接口或结构。
+      - `utils.ts`：提供agent 管理组件的辅助函数与通用逻辑。
+      - `validateAgent.ts`：负责agent 管理组件的校验与约束检查。
+    - `App.tsx`：渲染工作台 UI中的 `App` 组件。
+    - `ApproveApiKey.tsx`：渲染工作台 UI中的 `ApproveApiKey` 组件。
+    - `AutoModeOptInDialog.tsx`：实现工作台 UI中的 `AutoModeOptInDialog` 对话框。
+    - `AutoUpdater.tsx`：负责工作台 UI的更新流程。
+    - `AutoUpdaterWrapper.tsx`：封装工作台 UI的外层边界或包装逻辑。
+    - `AwsAuthStatusBox.tsx`：计算、展示或同步工作台 UI状态。
+    - `BaseTextInput.tsx`：渲染工作台 UI中的 `BaseTextInput` 组件。
+    - `BashModeProgress.tsx`：处理工作台 UI中的 shell 执行、解析或安全约束。
+    - `BridgeDialog.tsx`：实现工作台 UI中的 `BridgeDialog` 对话框。
+    - `BypassPermissionsModeDialog.tsx`：实现工作台 UI中的 `BypassPermissionsModeDialog` 对话框。
+    - `ChannelDowngradeDialog.tsx`：实现工作台 UI中的 `ChannelDowngradeDialog` 对话框。
+    - `ClaudeCodeHint/`：Claude Code 提示与提示菜单组件。
+      - `PluginHintMenu.tsx`：实现`ClaudeCodeHint` 组件中的 `PluginHintMenu` 菜单或面板。
+    - `ClaudeInChromeOnboarding.tsx`：渲染工作台 UI中的 `ClaudeInChromeOnboarding` 组件。
+    - `ClaudeMdExternalIncludesDialog.tsx`：实现工作台 UI中的 `ClaudeMdExternalIncludesDialog` 对话框。
+    - `ClickableImageRef.tsx`：渲染工作台 UI中的 `ClickableImageRef` 组件。
+    - `CompactSummary.tsx`：处理工作台 UI中的 compact 压缩与清理逻辑。
+    - `ConfigurableShortcutHint.tsx`：渲染工作台 UI中的 `ConfigurableShortcutHint` 组件。
+    - `ConsoleOAuthFlow.tsx`：编排工作台 UI中的流程控制。
+    - `ContextSuggestions.tsx`：渲染工作台 UI中的 `ContextSuggestions` 组件。
+    - `ContextVisualization.tsx`：渲染工作台 UI中的 `ContextVisualization` 组件。
+    - `CoordinatorAgentStatus.tsx`：计算、展示或同步工作台 UI状态。
+    - `CostThresholdDialog.tsx`：实现工作台 UI中的 `CostThresholdDialog` 对话框。
+    - `CtrlOToExpand.tsx`：渲染工作台 UI中的 `CtrlOToExpand` 组件。
+    - `CustomSelect/`：自定义选择器基础组件。
+      - `index.ts`：导出`CustomSelect` 组件的公共入口。
+      - `option-map.ts`：`CustomSelect` 组件中的 `option-map` 模块，负责该主题下的具体实现。
+      - `select-input-option.tsx`：渲染`CustomSelect` 组件中的 `select-input-option` 组件。
+      - `select-option.tsx`：渲染`CustomSelect` 组件中的 `select-option` 组件。
+      - `select.tsx`：渲染`CustomSelect` 组件中的 `select` 组件。
+      - `SelectMulti.tsx`：渲染`CustomSelect` 组件中的 `SelectMulti` 组件。
+      - `use-multi-select-state.ts`：维护`CustomSelect` 组件相关状态。
+      - `use-select-input.ts`：`CustomSelect` 组件中的 `use-select-input` 模块，负责该主题下的具体实现。
+      - `use-select-navigation.ts`：`CustomSelect` 组件中的 `use-select-navigation` 模块，负责该主题下的具体实现。
+      - `use-select-state.ts`：维护`CustomSelect` 组件相关状态。
+    - `design-system/`：终端设计系统基础组件。
+      - `Byline.tsx`：渲染设计系统组件中的 `Byline` 组件。
+      - `color.ts`：设计系统组件中的 `color` 模块，负责该主题下的具体实现。
+      - `Dialog.tsx`：实现设计系统组件中的 `Dialog` 对话框。
+      - `Divider.tsx`：渲染设计系统组件中的 `Divider` 组件。
+      - `FuzzyPicker.tsx`：实现设计系统组件中的选择器组件。
+      - `KeyboardShortcutHint.tsx`：渲染设计系统组件中的 `KeyboardShortcutHint` 组件。
+      - `ListItem.tsx`：渲染设计系统组件中的行级或条目级 UI。
+      - `LoadingState.tsx`：维护设计系统组件相关状态。
+      - `Pane.tsx`：渲染设计系统组件中的 `Pane` 组件。
+      - `ProgressBar.tsx`：渲染设计系统组件中的 `ProgressBar` 组件。
+      - `Ratchet.tsx`：渲染设计系统组件中的 `Ratchet` 组件。
+      - `StatusIcon.tsx`：计算、展示或同步设计系统组件状态。
+      - `Tabs.tsx`：渲染设计系统组件中的 `Tabs` 组件。
+      - `ThemedBox.tsx`：处理设计系统组件中的主题、配色或外观设置。
+      - `ThemedText.tsx`：处理设计系统组件中的主题、配色或外观设置。
+      - `ThemeProvider.tsx`：提供设计系统组件的 provider 实现。
+    - `DesktopHandoff.tsx`：渲染工作台 UI中的 `DesktopHandoff` 组件。
+    - `DesktopUpsell/`：桌面端导流/升级提示组件。
+      - `DesktopUpsellStartup.tsx`：渲染`DesktopUpsell` 组件中的 `DesktopUpsellStartup` 组件。
+    - `DevBar.tsx`：渲染工作台 UI中的 `DevBar` 组件。
+    - `DevChannelsDialog.tsx`：实现工作台 UI中的 `DevChannelsDialog` 对话框。
+    - `DiagnosticsDisplay.tsx`：渲染工作台 UI中的 `DiagnosticsDisplay` 组件。
+    - `diff/`：diff 明细和文件列表组件。
+      - `DiffDetailView.tsx`：渲染`diff` 组件中的 `DiffDetailView` 视图。
+      - `DiffDialog.tsx`：实现`diff` 组件中的 `DiffDialog` 对话框。
+      - `DiffFileList.tsx`：渲染`diff` 组件中的 `DiffFileList` 列表。
+    - `EffortCallout.tsx`：渲染工作台 UI中的 `EffortCallout` 组件。
+    - `EffortIndicator.ts`：展示工作台 UI中的状态指示信息。
+    - `ExitFlow.tsx`：编排工作台 UI中的流程控制。
+    - `ExportDialog.tsx`：实现工作台 UI中的 `ExportDialog` 对话框。
+    - `FallbackToolUseErrorMessage.tsx`：渲染工作台 UI中的消息节点。
+    - `FallbackToolUseRejectedMessage.tsx`：渲染工作台 UI中的消息节点。
+    - `FastIcon.tsx`：渲染工作台 UI中的 `FastIcon` 组件。
+    - `Feedback.tsx`：渲染工作台 UI中的 `Feedback` 组件。
+    - `FeedbackSurvey/`：反馈问卷与分享调查组件。
+      - `FeedbackSurvey.tsx`：渲染`FeedbackSurvey` 组件中的 `FeedbackSurvey` 组件。
+      - `FeedbackSurveyView.tsx`：渲染`FeedbackSurvey` 组件中的 `FeedbackSurveyView` 视图。
+      - `submitTranscriptShare.ts`：`FeedbackSurvey` 组件中的 `submitTranscriptShare` 模块，负责该主题下的具体实现。
+      - `TranscriptSharePrompt.tsx`：定义`FeedbackSurvey` 组件的提示词、模板或引导文案。
+      - `useDebouncedDigitInput.ts`：提供`FeedbackSurvey` 组件相关的 React Hook。
+      - `useFeedbackSurvey.tsx`：提供`FeedbackSurvey` 组件相关的 React Hook。
+      - `useMemorySurvey.tsx`：提供`FeedbackSurvey` 组件相关的 React Hook。
+      - `usePostCompactSurvey.tsx`：提供`FeedbackSurvey` 组件相关的 React Hook。
+      - `useSurveyState.tsx`：维护`FeedbackSurvey` 组件相关状态。
+    - `FileEditToolDiff.tsx`：处理工作台 UI中的 diff 计算、展示或格式化。
+    - `FileEditToolUpdatedMessage.tsx`：渲染工作台 UI中的消息节点。
+    - `FileEditToolUseRejectedMessage.tsx`：渲染工作台 UI中的消息节点。
+    - `FilePathLink.tsx`：渲染工作台 UI中的 `FilePathLink` 组件。
+    - `FullscreenLayout.tsx`：渲染工作台 UI中的 `FullscreenLayout` 组件。
+    - `GlobalSearchDialog.tsx`：实现工作台 UI中的 `GlobalSearchDialog` 对话框。
+    - `grove/`：合规/隐私/政策相关 notice 组件。
+      - `Grove.tsx`：渲染`grove` 组件中的 `Grove` 组件。
+    - `HelpV2/`：帮助页与帮助内容展示组件。
+      - `Commands.tsx`：渲染`HelpV2` 组件中的 `Commands` 组件。
+      - `General.tsx`：渲染`HelpV2` 组件中的 `General` 组件。
+      - `HelpV2.tsx`：渲染`HelpV2` 组件中的 `HelpV2` 组件。
+    - `HighlightedCode/`：代码高亮渲染组件。
+      - `Fallback.tsx`：渲染`HighlightedCode` 组件中的 `Fallback` 组件。
+    - `HighlightedCode.tsx`：渲染工作台 UI中的 `HighlightedCode` 组件。
+    - `HistorySearchDialog.tsx`：实现工作台 UI中的 `HistorySearchDialog` 对话框。
+    - `hooks/`：hooks 配置查看与选择组件。
+      - `HooksConfigMenu.tsx`：实现hooks 组件中的 `HooksConfigMenu` 菜单或面板。
+      - `PromptDialog.tsx`：实现hooks 组件中的 `PromptDialog` 对话框。
+      - `SelectEventMode.tsx`：定义hooks 组件中的模式枚举或模式切换逻辑。
+      - `SelectHookMode.tsx`：定义hooks 组件中的模式枚举或模式切换逻辑。
+      - `SelectMatcherMode.tsx`：定义hooks 组件中的模式枚举或模式切换逻辑。
+      - `ViewHookMode.tsx`：定义hooks 组件中的模式枚举或模式切换逻辑。
+    - `IdeAutoConnectDialog.tsx`：实现工作台 UI中的 `IdeAutoConnectDialog` 对话框。
+    - `IdeOnboardingDialog.tsx`：实现工作台 UI中的 `IdeOnboardingDialog` 对话框。
+    - `IdeStatusIndicator.tsx`：展示工作台 UI中的状态指示信息。
+    - `IdleReturnDialog.tsx`：实现工作台 UI中的 `IdleReturnDialog` 对话框。
+    - `InterruptedByUser.tsx`：渲染工作台 UI中的 `InterruptedByUser` 组件。
+    - `InvalidConfigDialog.tsx`：实现工作台 UI中的 `InvalidConfigDialog` 对话框。
+    - `InvalidSettingsDialog.tsx`：实现工作台 UI中的 `InvalidSettingsDialog` 对话框。
+    - `KeybindingWarnings.tsx`：渲染工作台 UI中的 `KeybindingWarnings` 组件。
+    - `LanguagePicker.tsx`：实现工作台 UI中的选择器组件。
+    - `LogoV2/`：欢迎头图、品牌信息与 notice 组件。
+      - `AnimatedAsterisk.tsx`：渲染`LogoV2` 组件中的 `AnimatedAsterisk` 组件。
+      - `AnimatedClawd.tsx`：渲染`LogoV2` 组件中的 `AnimatedClawd` 组件。
+      - `ChannelsNotice.tsx`：渲染`LogoV2` 组件中的 `ChannelsNotice` 组件。
+      - `Clawd.tsx`：渲染`LogoV2` 组件中的 `Clawd` 组件。
+      - `CondensedLogo.tsx`：渲染`LogoV2` 组件中的 `CondensedLogo` 组件。
+      - `EmergencyTip.tsx`：渲染`LogoV2` 组件中的 `EmergencyTip` 组件。
+      - `Feed.tsx`：渲染`LogoV2` 组件中的 `Feed` 组件。
+      - `FeedColumn.tsx`：渲染`LogoV2` 组件中的 `FeedColumn` 组件。
+      - `feedConfigs.tsx`：渲染`LogoV2` 组件中的 `feedConfigs` 组件。
+      - `GuestPassesUpsell.tsx`：渲染`LogoV2` 组件中的 `GuestPassesUpsell` 组件。
+      - `LogoV2.tsx`：渲染`LogoV2` 组件中的 `LogoV2` 组件。
+      - `Opus1mMergeNotice.tsx`：渲染`LogoV2` 组件中的 `Opus1mMergeNotice` 组件。
+      - `OverageCreditUpsell.tsx`：渲染`LogoV2` 组件中的 `OverageCreditUpsell` 组件。
+      - `VoiceModeNotice.tsx`：渲染`LogoV2` 组件中的 `VoiceModeNotice` 组件。
+      - `WelcomeV2.tsx`：渲染`LogoV2` 组件中的 `WelcomeV2` 组件。
+    - `LogSelector.tsx`：实现工作台 UI中的选择器组件。
+    - `LspRecommendation/`：LSP 推荐与提示组件。
+      - `LspRecommendationMenu.tsx`：实现`LspRecommendation` 组件中的 `LspRecommendationMenu` 菜单或面板。
+    - `ManagedSettingsSecurityDialog/`：托管设置安全确认组件。
+      - `ManagedSettingsSecurityDialog.tsx`：实现`ManagedSettingsSecurityDialog` 组件中的 `ManagedSettingsSecurityDialog` 对话框。
+      - `utils.ts`：提供`ManagedSettingsSecurityDialog` 组件的辅助函数与通用逻辑。
+    - `Markdown.tsx`：渲染工作台 UI中的 `Markdown` 组件。
+    - `MarkdownTable.tsx`：渲染工作台 UI中的 `MarkdownTable` 组件。
+    - `mcp/`：MCP 服务、工具与连接管理组件。
+      - `CapabilitiesSection.tsx`：渲染MCP 组件中的 `CapabilitiesSection` 组件。
+      - `ElicitationDialog.tsx`：实现MCP 组件中的 `ElicitationDialog` 对话框。
+      - `index.ts`：导出MCP 组件的公共入口。
+      - `MCPAgentServerMenu.tsx`：实现MCP 组件中的 `MCPAgentServerMenu` 菜单或面板。
+      - `MCPListPanel.tsx`：处理MCP 组件中的 MCP 集成逻辑。
+      - `McpParsingWarnings.tsx`：处理MCP 组件中的 MCP 集成逻辑。
+      - `MCPReconnect.tsx`：处理MCP 组件中的 MCP 集成逻辑。
+      - `MCPRemoteServerMenu.tsx`：实现MCP 组件中的 `MCPRemoteServerMenu` 菜单或面板。
+      - `MCPSettings.tsx`：处理MCP 组件中的 MCP 集成逻辑。
+      - `MCPStdioServerMenu.tsx`：实现MCP 组件中的 `MCPStdioServerMenu` 菜单或面板。
+      - `MCPToolDetailView.tsx`：渲染MCP 组件中的 `MCPToolDetailView` 视图。
+      - `MCPToolListView.tsx`：渲染MCP 组件中的 `MCPToolListView` 视图。
+      - `utils/`：`utils` 子目录。
+        - `reconnectHelpers.tsx`：提供MCP 组件的辅助函数与通用逻辑。
+    - `MCPServerApprovalDialog.tsx`：实现工作台 UI中的 `MCPServerApprovalDialog` 对话框。
+    - `MCPServerDesktopImportDialog.tsx`：实现工作台 UI中的 `MCPServerDesktopImportDialog` 对话框。
+    - `MCPServerDialogCopy.tsx`：处理工作台 UI中的 MCP 集成逻辑。
+    - `MCPServerMultiselectDialog.tsx`：实现工作台 UI中的 `MCPServerMultiselectDialog` 对话框。
+    - `memory/`：memory 文件选择和 memory 通知组件。
+      - `MemoryFileSelector.tsx`：实现memory 组件中的选择器组件。
+      - `MemoryUpdateNotification.tsx`：处理memory 组件中的通知或提示。
+    - `MemoryUsageIndicator.tsx`：展示工作台 UI中的状态指示信息。
+    - `Message.tsx`：渲染工作台 UI中的消息节点。
+    - `messageActions.tsx`：处理工作台 UI中的消息构造、映射或渲染。
+    - `MessageModel.tsx`：处理工作台 UI中的消息构造、映射或渲染。
+    - `MessageResponse.tsx`：处理工作台 UI中的消息构造、映射或渲染。
+    - `MessageRow.tsx`：渲染工作台 UI中的行级或条目级 UI。
+    - `messages/`：消息渲染叶子组件。
+      - `AdvisorMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `AssistantRedactedThinkingMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `AssistantTextMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `AssistantThinkingMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `AssistantToolUseMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `AttachmentMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `CollapsedReadSearchContent.tsx`：处理消息渲染组件中的搜索、过滤或召回逻辑。
+      - `CompactBoundaryMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `GroupedToolUseContent.tsx`：渲染消息渲染组件中的 `GroupedToolUseContent` 组件。
+      - `HighlightedThinkingText.tsx`：渲染消息渲染组件中的 `HighlightedThinkingText` 组件。
+      - `HookProgressMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `nullRenderingAttachments.ts`：消息渲染组件中的 `nullRenderingAttachments` 模块，负责该主题下的具体实现。
+      - `PlanApprovalMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `RateLimitMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `ShutdownMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `SystemAPIErrorMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `SystemTextMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `TaskAssignmentMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `teamMemCollapsed.tsx`：处理消息渲染组件中的团队协作或多 agent 协作逻辑。
+      - `teamMemSaved.ts`：处理消息渲染组件中的团队协作或多 agent 协作逻辑。
+      - `UserAgentNotificationMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `UserBashInputMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `UserBashOutputMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `UserChannelMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `UserCommandMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `UserImageMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `UserLocalCommandOutputMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `UserMemoryInputMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `UserPlanMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `UserPromptMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `UserResourceUpdateMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `UserTeammateMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `UserTextMessage.tsx`：渲染消息渲染组件中的消息节点。
+      - `UserToolResultMessage/`：`UserToolResultMessage` 子目录。
+        - `RejectedPlanMessage.tsx`：渲染消息渲染组件中的消息节点。
+        - `RejectedToolUseMessage.tsx`：渲染消息渲染组件中的消息节点。
+        - `UserToolCanceledMessage.tsx`：渲染消息渲染组件中的消息节点。
+        - `UserToolErrorMessage.tsx`：渲染消息渲染组件中的消息节点。
+        - `UserToolRejectMessage.tsx`：渲染消息渲染组件中的消息节点。
+        - `UserToolResultMessage.tsx`：渲染消息渲染组件中的消息节点。
+        - `UserToolSuccessMessage.tsx`：渲染消息渲染组件中的消息节点。
+        - `utils.tsx`：提供消息渲染组件的辅助函数与通用逻辑。
+    - `Messages.tsx`：处理工作台 UI中的消息构造、映射或渲染。
+    - `MessageSelector.tsx`：实现工作台 UI中的选择器组件。
+    - `MessageTimestamp.tsx`：处理工作台 UI中的消息构造、映射或渲染。
+    - `ModelPicker.tsx`：实现工作台 UI中的选择器组件。
+    - `NativeAutoUpdater.tsx`：负责工作台 UI的更新流程。
+    - `NotebookEditToolUseRejectedMessage.tsx`：渲染工作台 UI中的消息节点。
+    - `OffscreenFreeze.tsx`：渲染工作台 UI中的 `OffscreenFreeze` 组件。
+    - `Onboarding.tsx`：渲染工作台 UI中的 `Onboarding` 组件。
+    - `OutputStylePicker.tsx`：实现工作台 UI中的选择器组件。
+    - `PackageManagerAutoUpdater.tsx`：负责工作台 UI的更新流程。
+    - `Passes/`：权益或通行证展示组件。
+      - `Passes.tsx`：渲染`Passes` 组件中的 `Passes` 组件。
+    - `permissions/`：权限审批与权限解释组件。
+      - `AskUserQuestionPermissionRequest/`：`AskUserQuestionPermissionRequest` 子目录。
+        - `AskUserQuestionPermissionRequest.tsx`：实现权限审批组件中的请求处理界面或对象。
+        - `PreviewBox.tsx`：渲染权限审批组件中的 `PreviewBox` 组件。
+        - `PreviewQuestionView.tsx`：渲染权限审批组件中的 `PreviewQuestionView` 视图。
+        - `QuestionNavigationBar.tsx`：渲染权限审批组件中的 `QuestionNavigationBar` 组件。
+        - `QuestionView.tsx`：渲染权限审批组件中的 `QuestionView` 视图。
+        - `SubmitQuestionsView.tsx`：渲染权限审批组件中的 `SubmitQuestionsView` 视图。
+        - `use-multiple-choice-state.ts`：维护权限审批组件相关状态。
+      - `BashPermissionRequest/`：`BashPermissionRequest` 子目录。
+        - `BashPermissionRequest.tsx`：实现权限审批组件中的请求处理界面或对象。
+        - `bashToolUseOptions.tsx`：处理权限审批组件中的 shell 执行、解析或安全约束。
+      - `ComputerUseApproval/`：`ComputerUseApproval` 子目录。
+        - `ComputerUseApproval.tsx`：渲染权限审批组件中的 `ComputerUseApproval` 组件。
+      - `EnterPlanModePermissionRequest/`：`EnterPlanModePermissionRequest` 子目录。
+        - `EnterPlanModePermissionRequest.tsx`：实现权限审批组件中的请求处理界面或对象。
+      - `ExitPlanModePermissionRequest/`：`ExitPlanModePermissionRequest` 子目录。
+        - `ExitPlanModePermissionRequest.tsx`：实现权限审批组件中的请求处理界面或对象。
+      - `FallbackPermissionRequest.tsx`：实现权限审批组件中的请求处理界面或对象。
+      - `FileEditPermissionRequest/`：`FileEditPermissionRequest` 子目录。
+        - `FileEditPermissionRequest.tsx`：实现权限审批组件中的请求处理界面或对象。
+      - `FilePermissionDialog/`：`FilePermissionDialog` 子目录。
+        - `FilePermissionDialog.tsx`：实现权限审批组件中的 `FilePermissionDialog` 对话框。
+        - `ideDiffConfig.ts`：定义权限审批组件的配置项与默认值。
+        - `permissionOptions.tsx`：处理权限审批组件中的权限决策、说明或桥接逻辑。
+        - `useFilePermissionDialog.ts`：提供权限审批组件相关的 React Hook。
+        - `usePermissionHandler.ts`：提供权限审批组件相关的 React Hook。
+      - `FilesystemPermissionRequest/`：`FilesystemPermissionRequest` 子目录。
+        - `FilesystemPermissionRequest.tsx`：实现权限审批组件中的请求处理界面或对象。
+      - `FileWritePermissionRequest/`：`FileWritePermissionRequest` 子目录。
+        - `FileWritePermissionRequest.tsx`：实现权限审批组件中的请求处理界面或对象。
+        - `FileWriteToolDiff.tsx`：处理权限审批组件中的 diff 计算、展示或格式化。
+      - `hooks.ts`：实现权限审批组件相关的 hook 或 hook 辅助。
+      - `NotebookEditPermissionRequest/`：`NotebookEditPermissionRequest` 子目录。
+        - `NotebookEditPermissionRequest.tsx`：实现权限审批组件中的请求处理界面或对象。
+        - `NotebookEditToolDiff.tsx`：处理权限审批组件中的 diff 计算、展示或格式化。
+      - `PermissionDecisionDebugInfo.tsx`：处理权限审批组件中的权限决策、说明或桥接逻辑。
+      - `PermissionDialog.tsx`：实现权限审批组件中的 `PermissionDialog` 对话框。
+      - `PermissionExplanation.tsx`：处理权限审批组件中的权限决策、说明或桥接逻辑。
+      - `PermissionPrompt.tsx`：定义权限审批组件的提示词、模板或引导文案。
+      - `PermissionRequest.tsx`：实现权限审批组件中的请求处理界面或对象。
+      - `PermissionRequestTitle.tsx`：处理权限审批组件中的权限决策、说明或桥接逻辑。
+      - `PermissionRuleExplanation.tsx`：处理权限审批组件中的权限决策、说明或桥接逻辑。
+      - `PowerShellPermissionRequest/`：`PowerShellPermissionRequest` 子目录。
+        - `PowerShellPermissionRequest.tsx`：实现权限审批组件中的请求处理界面或对象。
+        - `powershellToolUseOptions.tsx`：处理权限审批组件中的 shell 执行、解析或安全约束。
+      - `rules/`：`rules` 子目录。
+        - `AddPermissionRules.tsx`：处理权限审批组件中的权限决策、说明或桥接逻辑。
+        - `AddWorkspaceDirectory.tsx`：渲染权限审批组件中的 `AddWorkspaceDirectory` 组件。
+        - `PermissionRuleDescription.tsx`：处理权限审批组件中的权限决策、说明或桥接逻辑。
+        - `PermissionRuleInput.tsx`：处理权限审批组件中的权限决策、说明或桥接逻辑。
+        - `PermissionRuleList.tsx`：渲染权限审批组件中的 `PermissionRuleList` 列表。
+        - `RecentDenialsTab.tsx`：渲染权限审批组件中的 `RecentDenialsTab` 组件。
+        - `RemoveWorkspaceDirectory.tsx`：渲染权限审批组件中的 `RemoveWorkspaceDirectory` 组件。
+        - `WorkspaceTab.tsx`：渲染权限审批组件中的 `WorkspaceTab` 组件。
+      - `SandboxPermissionRequest.tsx`：实现权限审批组件中的请求处理界面或对象。
+      - `SedEditPermissionRequest/`：`SedEditPermissionRequest` 子目录。
+        - `SedEditPermissionRequest.tsx`：实现权限审批组件中的请求处理界面或对象。
+      - `shellPermissionHelpers.tsx`：提供权限审批组件的辅助函数与通用逻辑。
+      - `SkillPermissionRequest/`：`SkillPermissionRequest` 子目录。
+        - `SkillPermissionRequest.tsx`：实现权限审批组件中的请求处理界面或对象。
+      - `useShellPermissionFeedback.ts`：提供权限审批组件相关的 React Hook。
+      - `utils.ts`：提供权限审批组件的辅助函数与通用逻辑。
+      - `WebFetchPermissionRequest/`：`WebFetchPermissionRequest` 子目录。
+        - `WebFetchPermissionRequest.tsx`：实现权限审批组件中的请求处理界面或对象。
+      - `WorkerBadge.tsx`：渲染权限审批组件中的 `WorkerBadge` 组件。
+      - `WorkerPendingPermission.tsx`：处理权限审批组件中的权限决策、说明或桥接逻辑。
+    - `PrBadge.tsx`：渲染工作台 UI中的 `PrBadge` 组件。
+    - `PressEnterToContinue.tsx`：渲染工作台 UI中的 `PressEnterToContinue` 组件。
+    - `PromptInput/`：输入区主链路与输入辅助组件。
+      - `HistorySearchInput.tsx`：处理输入区组件中的历史记录与回放。
+      - `inputModes.ts`：输入区组件中的 `inputModes` 模块，负责该主题下的具体实现。
+      - `inputPaste.ts`：输入区组件中的 `inputPaste` 模块，负责该主题下的具体实现。
+      - `IssueFlagBanner.tsx`：渲染输入区组件中的 `IssueFlagBanner` 组件。
+      - `Notifications.tsx`：渲染输入区组件中的 `Notifications` 组件。
+      - `PromptInput.tsx`：渲染输入区组件中的 `PromptInput` 组件。
+      - `PromptInputFooter.tsx`：渲染输入区组件中的 `PromptInputFooter` 组件。
+      - `PromptInputFooterLeftSide.tsx`：渲染输入区组件中的 `PromptInputFooterLeftSide` 组件。
+      - `PromptInputFooterSuggestions.tsx`：渲染输入区组件中的 `PromptInputFooterSuggestions` 组件。
+      - `PromptInputHelpMenu.tsx`：实现输入区组件中的 `PromptInputHelpMenu` 菜单或面板。
+      - `PromptInputModeIndicator.tsx`：展示输入区组件中的状态指示信息。
+      - `PromptInputQueuedCommands.tsx`：渲染输入区组件中的 `PromptInputQueuedCommands` 组件。
+      - `PromptInputStashNotice.tsx`：渲染输入区组件中的 `PromptInputStashNotice` 组件。
+      - `SandboxPromptFooterHint.tsx`：渲染输入区组件中的 `SandboxPromptFooterHint` 组件。
+      - `ShimmeredInput.tsx`：渲染输入区组件中的 `ShimmeredInput` 组件。
+      - `useMaybeTruncateInput.ts`：提供输入区组件相关的 React Hook。
+      - `usePromptInputPlaceholder.ts`：提供输入区组件相关的 React Hook。
+      - `useShowFastIconHint.ts`：提供输入区组件相关的 React Hook。
+      - `useSwarmBanner.ts`：提供输入区组件相关的 React Hook。
+      - `utils.ts`：提供输入区组件的辅助函数与通用逻辑。
+      - `VoiceIndicator.tsx`：展示输入区组件中的状态指示信息。
+    - `QuickOpenDialog.tsx`：实现工作台 UI中的 `QuickOpenDialog` 对话框。
+    - `RemoteCallout.tsx`：处理工作台 UI中的远程连接、桥接或跨端同步逻辑。
+    - `RemoteEnvironmentDialog.tsx`：实现工作台 UI中的 `RemoteEnvironmentDialog` 对话框。
+    - `ResumeTask.tsx`：实现工作台 UI的任务逻辑。
+    - `sandbox/`：sandbox 设置与诊断组件。
+      - `SandboxConfigTab.tsx`：渲染sandbox 组件中的 `SandboxConfigTab` 组件。
+      - `SandboxDependenciesTab.tsx`：渲染sandbox 组件中的 `SandboxDependenciesTab` 组件。
+      - `SandboxDoctorSection.tsx`：渲染sandbox 组件中的 `SandboxDoctorSection` 组件。
+      - `SandboxOverridesTab.tsx`：渲染sandbox 组件中的 `SandboxOverridesTab` 组件。
+      - `SandboxSettings.tsx`：渲染sandbox 组件中的 `SandboxSettings` 组件。
+    - `SandboxViolationExpandedView.tsx`：渲染工作台 UI中的 `SandboxViolationExpandedView` 视图。
+    - `ScrollKeybindingHandler.tsx`：渲染工作台 UI中的 `ScrollKeybindingHandler` 组件。
+    - `SearchBox.tsx`：处理工作台 UI中的搜索、过滤或召回逻辑。
+    - `SentryErrorBoundary.ts`：工作台 UI中的 `SentryErrorBoundary` 模块，负责该主题下的具体实现。
+    - `SessionBackgroundHint.tsx`：处理工作台 UI中的会话状态、会话数据或会话同步。
+    - `SessionPreview.tsx`：处理工作台 UI中的会话状态、会话数据或会话同步。
+    - `Settings/`：设置页与状态/用量组件。
+      - `Config.tsx`：定义设置组件的配置项与默认值。
+      - `Settings.tsx`：渲染设置组件中的 `Settings` 组件。
+      - `Status.tsx`：计算、展示或同步设置组件状态。
+      - `Usage.tsx`：渲染设置组件中的 `Usage` 组件。
+    - `shell/`：shell 输出渲染辅助组件。
+      - `ExpandShellOutputContext.tsx`：定义shell 组件的上下文对象或上下文组件。
+      - `OutputLine.tsx`：处理shell 组件中的输出格式化或输出落盘逻辑。
+      - `ShellProgressMessage.tsx`：渲染shell 组件中的消息节点。
+      - `ShellTimeDisplay.tsx`：处理shell 组件中的 shell 执行、解析或安全约束。
+    - `ShowInIDEPrompt.tsx`：定义工作台 UI的提示词、模板或引导文案。
+    - `SkillImprovementSurvey.tsx`：渲染工作台 UI中的 `SkillImprovementSurvey` 组件。
+    - `skills/`：skills 浏览与说明组件。
+      - `SkillsMenu.tsx`：实现skills 组件中的 `SkillsMenu` 菜单或面板。
+    - `Spinner/`：等待态与流式反馈组件。
+      - `FlashingChar.tsx`：渲染spinner 组件中的 `FlashingChar` 组件。
+      - `GlimmerMessage.tsx`：渲染spinner 组件中的消息节点。
+      - `index.ts`：导出spinner 组件的公共入口。
+      - `ShimmerChar.tsx`：渲染spinner 组件中的 `ShimmerChar` 组件。
+      - `SpinnerAnimationRow.tsx`：渲染spinner 组件中的行级或条目级 UI。
+      - `SpinnerGlyph.tsx`：渲染spinner 组件中的 `SpinnerGlyph` 组件。
+      - `teammateSelectHint.ts`：处理spinner 组件中的团队协作或多 agent 协作逻辑。
+      - `TeammateSpinnerLine.tsx`：处理spinner 组件中的团队协作或多 agent 协作逻辑。
+      - `TeammateSpinnerTree.tsx`：处理spinner 组件中的团队协作或多 agent 协作逻辑。
+      - `useShimmerAnimation.ts`：提供spinner 组件相关的 React Hook。
+      - `useStalledAnimation.ts`：提供spinner 组件相关的 React Hook。
+      - `utils.ts`：提供spinner 组件的辅助函数与通用逻辑。
+    - `Spinner.tsx`：渲染工作台 UI中的 `Spinner` 组件。
+    - `Stats.tsx`：渲染工作台 UI中的 `Stats` 组件。
+    - `StatusLine.tsx`：计算、展示或同步工作台 UI状态。
+    - `StatusNotices.tsx`：计算、展示或同步工作台 UI状态。
+    - `StructuredDiff/`：结构化 diff 渲染组件。
+      - `colorDiff.ts`：处理`StructuredDiff` 组件中的 diff 计算、展示或格式化。
+      - `Fallback.tsx`：渲染`StructuredDiff` 组件中的 `Fallback` 组件。
+    - `StructuredDiff.tsx`：处理工作台 UI中的 diff 计算、展示或格式化。
+    - `StructuredDiffList.tsx`：渲染工作台 UI中的 `StructuredDiffList` 列表。
+    - `TagTabs.tsx`：渲染工作台 UI中的 `TagTabs` 组件。
+    - `TaskListV2.tsx`：处理工作台 UI中的任务装配、状态或输出逻辑。
+    - `tasks/`：后台任务面板组件。
+      - `AsyncAgentDetailDialog.tsx`：实现任务面板组件中的 `AsyncAgentDetailDialog` 对话框。
+      - `BackgroundTask.tsx`：实现任务面板组件的任务逻辑。
+      - `BackgroundTasksDialog.tsx`：实现任务面板组件中的 `BackgroundTasksDialog` 对话框。
+      - `BackgroundTaskStatus.tsx`：计算、展示或同步任务面板组件状态。
+      - `DreamDetailDialog.tsx`：实现任务面板组件中的 `DreamDetailDialog` 对话框。
+      - `InProcessTeammateDetailDialog.tsx`：实现任务面板组件中的 `InProcessTeammateDetailDialog` 对话框。
+      - `RemoteSessionDetailDialog.tsx`：实现任务面板组件中的 `RemoteSessionDetailDialog` 对话框。
+      - `RemoteSessionProgress.tsx`：处理任务面板组件中的会话状态、会话数据或会话同步。
+      - `renderToolActivity.tsx`：渲染任务面板组件中的 `renderToolActivity` 组件。
+      - `ShellDetailDialog.tsx`：实现任务面板组件中的 `ShellDetailDialog` 对话框。
+      - `ShellProgress.tsx`：处理任务面板组件中的 shell 执行、解析或安全约束。
+      - `taskStatusUtils.tsx`：提供任务面板组件的辅助函数与通用逻辑。
+    - `TeammateViewHeader.tsx`：处理工作台 UI中的团队协作或多 agent 协作逻辑。
+    - `teams/`：团队/teammate/swarm 控制面组件。
+      - `TeamsDialog.tsx`：实现团队协作组件中的 `TeamsDialog` 对话框。
+      - `TeamStatus.tsx`：计算、展示或同步团队协作组件状态。
+    - `TeleportError.tsx`：渲染工作台 UI中的 `TeleportError` 组件。
+    - `TeleportProgress.tsx`：渲染工作台 UI中的 `TeleportProgress` 组件。
+    - `TeleportRepoMismatchDialog.tsx`：实现工作台 UI中的 `TeleportRepoMismatchDialog` 对话框。
+    - `TeleportResumeWrapper.tsx`：封装工作台 UI的外层边界或包装逻辑。
+    - `TeleportStash.tsx`：渲染工作台 UI中的 `TeleportStash` 组件。
+    - `TextInput.tsx`：渲染工作台 UI中的 `TextInput` 组件。
+    - `ThemePicker.tsx`：实现工作台 UI中的选择器组件。
+    - `ThinkingToggle.tsx`：渲染工作台 UI中的 `ThinkingToggle` 组件。
+    - `TokenWarning.tsx`：给出工作台 UI中的告警或风险提示。
+    - `ToolUseLoader.tsx`：负责工作台 UI的加载、发现或延迟初始化。
+    - `TrustDialog/`：信任与安全确认组件。
+      - `TrustDialog.tsx`：实现`TrustDialog` 组件中的 `TrustDialog` 对话框。
+      - `utils.ts`：提供`TrustDialog` 组件的辅助函数与通用逻辑。
+    - `ui/`：通用 UI 拼装组件。
+      - `OrderedList.tsx`：渲染通用 UI 组件中的 `OrderedList` 列表。
+      - `OrderedListItem.tsx`：渲染通用 UI 组件中的行级或条目级 UI。
+      - `TreeSelect.tsx`：渲染通用 UI 组件中的 `TreeSelect` 组件。
+    - `ValidationErrorsList.tsx`：渲染工作台 UI中的 `ValidationErrorsList` 列表。
+    - `VimTextInput.tsx`：渲染工作台 UI中的 `VimTextInput` 组件。
+    - `VirtualMessageList.tsx`：渲染工作台 UI中的 `VirtualMessageList` 列表。
+    - `wizard/`：向导容器与步骤导航组件。
+      - `index.ts`：导出`wizard` 组件的公共入口。
+      - `useWizard.ts`：提供`wizard` 组件相关的 React Hook。
+      - `WizardDialogLayout.tsx`：渲染`wizard` 组件中的 `WizardDialogLayout` 组件。
+      - `WizardNavigationFooter.tsx`：渲染`wizard` 组件中的 `WizardNavigationFooter` 组件。
+      - `WizardProvider.tsx`：提供`wizard` 组件的 provider 实现。
+    - `WorkflowMultiselectDialog.tsx`：实现工作台 UI中的 `WorkflowMultiselectDialog` 对话框。
+    - `WorktreeExitDialog.tsx`：实现工作台 UI中的 `WorktreeExitDialog` 对话框。
+  - `constants/`：全局常量、枚举与静态配置。
+    - `apiLimits.ts`：`constants` 模块中的 `apiLimits` 模块，负责该主题下的具体实现。
+    - `betas.ts`：`constants` 模块中的 `betas` 模块，负责该主题下的具体实现。
+    - `common.ts`：`constants` 模块中的 `common` 模块，负责该主题下的具体实现。
+    - `cyberRiskInstruction.ts`：`constants` 模块中的 `cyberRiskInstruction` 模块，负责该主题下的具体实现。
+    - `errorIds.ts`：`constants` 模块中的 `errorIds` 模块，负责该主题下的具体实现。
+    - `figures.ts`：`constants` 模块中的 `figures` 模块，负责该主题下的具体实现。
+    - `files.ts`：`constants` 模块中的 `files` 模块，负责该主题下的具体实现。
+    - `github-app.ts`：处理`constants` 模块中的 Git 集成逻辑。
+    - `keys.ts`：`constants` 模块中的 `keys` 模块，负责该主题下的具体实现。
+    - `messages.ts`：处理`constants` 模块中的消息构造、映射或渲染。
+    - `oauth.ts`：处理`constants` 模块中的认证、授权或凭证逻辑。
+    - `outputStyles.ts`：处理`constants` 模块中的输出格式化或输出落盘逻辑。
+    - `product.ts`：`constants` 模块中的 `product` 模块，负责该主题下的具体实现。
+    - `prompts.ts`：定义`constants` 模块的提示词、模板或引导文案。
+    - `spinnerVerbs.ts`：`constants` 模块中的 `spinnerVerbs` 模块，负责该主题下的具体实现。
+    - `system.ts`：`constants` 模块中的 `system` 模块，负责该主题下的具体实现。
+    - `systemPromptSections.ts`：定义`constants` 模块的提示词、模板或引导文案。
+    - `toolLimits.ts`：`constants` 模块中的 `toolLimits` 模块，负责该主题下的具体实现。
+    - `tools.ts`：`constants` 模块中的 `tools` 模块，负责该主题下的具体实现。
+    - `turnCompletionVerbs.ts`：`constants` 模块中的 `turnCompletionVerbs` 模块，负责该主题下的具体实现。
+    - `xml.ts`：`constants` 模块中的 `xml` 模块，负责该主题下的具体实现。
+  - `context/`：React Context 与共享状态注入层。
+    - `fpsMetrics.tsx`：渲染共享上下文中的 `fpsMetrics` 组件。
+    - `mailbox.tsx`：渲染共享上下文中的 `mailbox` 组件。
+    - `modalContext.tsx`：定义共享上下文的上下文对象或上下文组件。
+    - `notifications.tsx`：渲染共享上下文中的 `notifications` 组件。
+    - `overlayContext.tsx`：定义共享上下文的上下文对象或上下文组件。
+    - `promptOverlayContext.tsx`：定义共享上下文的上下文对象或上下文组件。
+    - `QueuedMessageContext.tsx`：定义共享上下文的上下文对象或上下文组件。
+    - `stats.tsx`：渲染共享上下文中的 `stats` 组件。
+    - `voice.tsx`：渲染共享上下文中的 `voice` 组件。
+  - `context.ts`：全局上下文入口，用来拼装共享上下文和运行时依赖。
+  - `coordinator/`：协调者模式与多 agent 协作控制。
+    - `coordinatorMode.ts`：定义`coordinator` 模块中的模式枚举或模式切换逻辑。
+  - `cost-tracker.ts`：成本跟踪入口，负责使用量/成本统计相关逻辑。
+  - `costHook.ts`：成本钩子模块，把成本统计接入执行流程。
+  - `dialogLaunchers.tsx`：全局对话框启动器，统一拉起各类弹层或流程。
+  - `entrypoints/`：程序入口、SDK 入口与启动参数边界。
+    - `agentSdkTypes.ts`：定义程序入口使用的类型、接口或结构。
+    - `cli.tsx`：渲染程序入口中的 `cli` 组件。
+    - `init.ts`：程序入口中的 `init` 模块，负责该主题下的具体实现。
+    - `mcp.ts`：处理程序入口中的 MCP 集成逻辑。
+    - `sandboxTypes.ts`：定义程序入口使用的类型、接口或结构。
+    - `sdk/`：SDK schema 与类型入口。
+      - `controlSchemas.ts`：定义`sdk` 入口的数据 schema 或结构化约束。
+      - `coreSchemas.ts`：定义`sdk` 入口的数据 schema 或结构化约束。
+      - `coreTypes.ts`：定义`sdk` 入口使用的类型、接口或结构。
+  - `history.ts`：历史记录入口，处理会话或交互历史相关逻辑。
+  - `hooks/`：跨组件复用的 React Hook。
+    - `fileSuggestions.ts`：跨组件 Hook中的 `fileSuggestions` 模块，负责该主题下的具体实现。
+    - `notifs/`：`notifs` hook 子目录。
+      - `useAutoModeUnavailableNotification.ts`：提供`notifs` Hook相关的 React Hook。
+      - `useCanSwitchToExistingSubscription.tsx`：提供`notifs` Hook相关的 React Hook。
+      - `useDeprecationWarningNotification.tsx`：提供`notifs` Hook相关的 React Hook。
+      - `useFastModeNotification.tsx`：提供`notifs` Hook相关的 React Hook。
+      - `useIDEStatusIndicator.tsx`：提供`notifs` Hook相关的 React Hook。
+      - `useInstallMessages.tsx`：提供`notifs` Hook相关的 React Hook。
+      - `useLspInitializationNotification.tsx`：提供`notifs` Hook相关的 React Hook。
+      - `useMcpConnectivityStatus.tsx`：提供`notifs` Hook相关的 React Hook。
+      - `useModelMigrationNotifications.tsx`：提供`notifs` Hook相关的 React Hook。
+      - `useNpmDeprecationNotification.tsx`：提供`notifs` Hook相关的 React Hook。
+      - `usePluginAutoupdateNotification.tsx`：提供`notifs` Hook相关的 React Hook。
+      - `usePluginInstallationStatus.tsx`：提供`notifs` Hook相关的 React Hook。
+      - `useRateLimitWarningNotification.tsx`：提供`notifs` Hook相关的 React Hook。
+      - `useSettingsErrors.tsx`：提供`notifs` Hook相关的 React Hook。
+      - `useStartupNotification.ts`：提供`notifs` Hook相关的 React Hook。
+      - `useTeammateShutdownNotification.ts`：提供`notifs` Hook相关的 React Hook。
+    - `renderPlaceholder.ts`：跨组件 Hook中的 `renderPlaceholder` 模块，负责该主题下的具体实现。
+    - `toolPermission/`：`toolPermission` hook 子目录。
+      - `handlers/`：`handlers` 子目录。
+        - `coordinatorHandler.ts`：`toolPermission` Hook中的 `coordinatorHandler` 模块，负责该主题下的具体实现。
+        - `interactiveHandler.ts`：`toolPermission` Hook中的 `interactiveHandler` 模块，负责该主题下的具体实现。
+        - `swarmWorkerHandler.ts`：处理`toolPermission` Hook中的团队协作或多 agent 协作逻辑。
+      - `PermissionContext.ts`：定义`toolPermission` Hook的上下文对象或上下文组件。
+      - `permissionLogging.ts`：处理`toolPermission` Hook中的权限决策、说明或桥接逻辑。
+    - `unifiedSuggestions.ts`：跨组件 Hook中的 `unifiedSuggestions` 模块，负责该主题下的具体实现。
+    - `useAfterFirstRender.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useApiKeyVerification.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useArrowKeyHistory.tsx`：提供跨组件 Hook相关的 React Hook。
+    - `useAssistantHistory.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useAwaySummary.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useBackgroundTaskNavigation.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useBlink.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useCancelRequest.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useCanUseTool.tsx`：提供跨组件 Hook相关的 React Hook。
+    - `useChromeExtensionNotification.tsx`：提供跨组件 Hook相关的 React Hook。
+    - `useClaudeCodeHintRecommendation.tsx`：提供跨组件 Hook相关的 React Hook。
+    - `useClipboardImageHint.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useCommandKeybindings.tsx`：提供跨组件 Hook相关的 React Hook。
+    - `useCommandQueue.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useCopyOnSelect.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useDeferredHookMessages.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useDiffData.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useDiffInIDE.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useDirectConnect.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useDoublePress.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useDynamicConfig.ts`：定义跨组件 Hook的配置项与默认值。
+    - `useElapsedTime.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useExitOnCtrlCD.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useExitOnCtrlCDWithKeybindings.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useFileHistorySnapshotInit.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useGlobalKeybindings.tsx`：提供跨组件 Hook相关的 React Hook。
+    - `useHistorySearch.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useIdeAtMentioned.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useIdeConnectionStatus.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useIDEIntegration.tsx`：提供跨组件 Hook相关的 React Hook。
+    - `useIdeLogging.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useIdeSelection.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useInboxPoller.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useInputBuffer.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useIssueFlagBanner.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useLogMessages.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useLspPluginRecommendation.tsx`：提供跨组件 Hook相关的 React Hook。
+    - `useMailboxBridge.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useMainLoopModel.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useManagePlugins.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useMemoryUsage.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useMergedClients.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useMergedCommands.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useMergedTools.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useMinDisplayTime.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useNotifyAfterTimeout.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useOfficialMarketplaceNotification.tsx`：提供跨组件 Hook相关的 React Hook。
+    - `usePasteHandler.ts`：提供跨组件 Hook相关的 React Hook。
+    - `usePluginRecommendationBase.tsx`：提供跨组件 Hook相关的 React Hook。
+    - `usePromptsFromClaudeInChrome.tsx`：定义跨组件 Hook的提示词、模板或引导文案。
+    - `usePromptSuggestion.ts`：定义跨组件 Hook的提示词、模板或引导文案。
+    - `usePrStatus.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useQueueProcessor.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useRemoteSession.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useReplBridge.tsx`：提供跨组件 Hook相关的 React Hook。
+    - `useScheduledTasks.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useSearchInput.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useSessionBackgrounding.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useSettings.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useSettingsChange.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useSkillImprovementSurvey.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useSkillsChange.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useSSHSession.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useSwarmInitialization.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useSwarmPermissionPoller.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useTaskListWatcher.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useTasksV2.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useTeammateViewAutoExit.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useTeleportResume.tsx`：提供跨组件 Hook相关的 React Hook。
+    - `useTerminalSize.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useTextInput.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useTimeout.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useTurnDiffs.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useTypeahead.tsx`：提供跨组件 Hook相关的 React Hook。
+    - `useUpdateNotification.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useVimInput.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useVirtualScroll.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useVoice.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useVoiceEnabled.ts`：提供跨组件 Hook相关的 React Hook。
+    - `useVoiceIntegration.tsx`：提供跨组件 Hook相关的 React Hook。
+  - `ink/`：终端渲染基础设施与 Ink 相关实现。
+    - `Ansi.tsx`：渲染Ink 模块中的 `Ansi` 组件。
+    - `bidi.ts`：Ink 模块中的 `bidi` 模块，负责该主题下的具体实现。
+    - `clearTerminal.ts`：Ink 模块中的 `clearTerminal` 模块，负责该主题下的具体实现。
+    - `colorize.ts`：Ink 模块中的 `colorize` 模块，负责该主题下的具体实现。
+    - `components/`：`components` Ink 子目录，承载终端渲染底层能力。
+      - `AlternateScreen.tsx`：渲染`components` Ink 模块中的 `AlternateScreen` 组件。
+      - `App.tsx`：渲染`components` Ink 模块中的 `App` 组件。
+      - `AppContext.ts`：定义`components` Ink 模块的上下文对象或上下文组件。
+      - `Box.tsx`：渲染`components` Ink 模块中的 `Box` 组件。
+      - `Button.tsx`：渲染`components` Ink 模块中的 `Button` 组件。
+      - `ClockContext.tsx`：定义`components` Ink 模块的上下文对象或上下文组件。
+      - `CursorDeclarationContext.ts`：定义`components` Ink 模块的上下文对象或上下文组件。
+      - `ErrorOverview.tsx`：渲染`components` Ink 模块中的 `ErrorOverview` 组件。
+      - `Link.tsx`：渲染`components` Ink 模块中的 `Link` 组件。
+      - `Newline.tsx`：渲染`components` Ink 模块中的 `Newline` 组件。
+      - `NoSelect.tsx`：渲染`components` Ink 模块中的 `NoSelect` 组件。
+      - `RawAnsi.tsx`：渲染`components` Ink 模块中的 `RawAnsi` 组件。
+      - `ScrollBox.tsx`：渲染`components` Ink 模块中的 `ScrollBox` 组件。
+      - `Spacer.tsx`：渲染`components` Ink 模块中的 `Spacer` 组件。
+      - `StdinContext.ts`：定义`components` Ink 模块的上下文对象或上下文组件。
+      - `TerminalFocusContext.tsx`：定义`components` Ink 模块的上下文对象或上下文组件。
+      - `TerminalSizeContext.tsx`：定义`components` Ink 模块的上下文对象或上下文组件。
+      - `Text.tsx`：渲染`components` Ink 模块中的 `Text` 组件。
+    - `constants.ts`：集中定义Ink 模块相关常量。
+    - `dom.ts`：Ink 模块中的 `dom` 模块，负责该主题下的具体实现。
+    - `events/`：`events` Ink 子目录，承载终端渲染底层能力。
+      - `click-event.ts`：`events` Ink 模块中的 `click-event` 模块，负责该主题下的具体实现。
+      - `dispatcher.ts`：`events` Ink 模块中的 `dispatcher` 模块，负责该主题下的具体实现。
+      - `emitter.ts`：`events` Ink 模块中的 `emitter` 模块，负责该主题下的具体实现。
+      - `event-handlers.ts`：`events` Ink 模块中的 `event-handlers` 模块，负责该主题下的具体实现。
+      - `event.ts`：`events` Ink 模块中的 `event` 模块，负责该主题下的具体实现。
+      - `focus-event.ts`：`events` Ink 模块中的 `focus-event` 模块，负责该主题下的具体实现。
+      - `input-event.ts`：`events` Ink 模块中的 `input-event` 模块，负责该主题下的具体实现。
+      - `keyboard-event.ts`：`events` Ink 模块中的 `keyboard-event` 模块，负责该主题下的具体实现。
+      - `terminal-event.ts`：`events` Ink 模块中的 `terminal-event` 模块，负责该主题下的具体实现。
+      - `terminal-focus-event.ts`：`events` Ink 模块中的 `terminal-focus-event` 模块，负责该主题下的具体实现。
+    - `focus.ts`：Ink 模块中的 `focus` 模块，负责该主题下的具体实现。
+    - `frame.ts`：Ink 模块中的 `frame` 模块，负责该主题下的具体实现。
+    - `get-max-width.ts`：Ink 模块中的 `get-max-width` 模块，负责该主题下的具体实现。
+    - `hit-test.ts`：Ink 模块中的 `hit-test` 模块，负责该主题下的具体实现。
+    - `hooks/`：`hooks` Ink 子目录，承载终端渲染底层能力。
+      - `use-animation-frame.ts`：`hooks` Ink 模块中的 `use-animation-frame` 模块，负责该主题下的具体实现。
+      - `use-app.ts`：`hooks` Ink 模块中的 `use-app` 模块，负责该主题下的具体实现。
+      - `use-declared-cursor.ts`：`hooks` Ink 模块中的 `use-declared-cursor` 模块，负责该主题下的具体实现。
+      - `use-input.ts`：`hooks` Ink 模块中的 `use-input` 模块，负责该主题下的具体实现。
+      - `use-interval.ts`：`hooks` Ink 模块中的 `use-interval` 模块，负责该主题下的具体实现。
+      - `use-search-highlight.ts`：处理`hooks` Ink 模块中的搜索、过滤或召回逻辑。
+      - `use-selection.ts`：`hooks` Ink 模块中的 `use-selection` 模块，负责该主题下的具体实现。
+      - `use-stdin.ts`：`hooks` Ink 模块中的 `use-stdin` 模块，负责该主题下的具体实现。
+      - `use-tab-status.ts`：计算、展示或同步`hooks` Ink 模块状态。
+      - `use-terminal-focus.ts`：`hooks` Ink 模块中的 `use-terminal-focus` 模块，负责该主题下的具体实现。
+      - `use-terminal-title.ts`：`hooks` Ink 模块中的 `use-terminal-title` 模块，负责该主题下的具体实现。
+      - `use-terminal-viewport.ts`：`hooks` Ink 模块中的 `use-terminal-viewport` 模块，负责该主题下的具体实现。
+    - `ink.tsx`：渲染Ink 模块中的 `ink` 组件。
+    - `instances.ts`：Ink 模块中的 `instances` 模块，负责该主题下的具体实现。
+    - `layout/`：`layout` Ink 子目录，承载终端渲染底层能力。
+      - `engine.ts`：`layout` Ink 模块中的 `engine` 模块，负责该主题下的具体实现。
+      - `geometry.ts`：`layout` Ink 模块中的 `geometry` 模块，负责该主题下的具体实现。
+      - `node.ts`：`layout` Ink 模块中的 `node` 模块，负责该主题下的具体实现。
+      - `yoga.ts`：`layout` Ink 模块中的 `yoga` 模块，负责该主题下的具体实现。
+    - `line-width-cache.ts`：Ink 模块中的 `line-width-cache` 模块，负责该主题下的具体实现。
+    - `log-update.ts`：Ink 模块中的 `log-update` 模块，负责该主题下的具体实现。
+    - `measure-element.ts`：Ink 模块中的 `measure-element` 模块，负责该主题下的具体实现。
+    - `measure-text.ts`：Ink 模块中的 `measure-text` 模块，负责该主题下的具体实现。
+    - `node-cache.ts`：Ink 模块中的 `node-cache` 模块，负责该主题下的具体实现。
+    - `optimizer.ts`：Ink 模块中的 `optimizer` 模块，负责该主题下的具体实现。
+    - `output.ts`：处理Ink 模块中的输出格式化或输出落盘逻辑。
+    - `parse-keypress.ts`：负责Ink 模块的解析逻辑。
+    - `reconciler.ts`：Ink 模块中的 `reconciler` 模块，负责该主题下的具体实现。
+    - `render-border.ts`：Ink 模块中的 `render-border` 模块，负责该主题下的具体实现。
+    - `render-node-to-output.ts`：处理Ink 模块中的输出格式化或输出落盘逻辑。
+    - `render-to-screen.ts`：Ink 模块中的 `render-to-screen` 模块，负责该主题下的具体实现。
+    - `renderer.ts`：Ink 模块中的 `renderer` 模块，负责该主题下的具体实现。
+    - `root.ts`：Ink 模块中的 `root` 模块，负责该主题下的具体实现。
+    - `screen.ts`：Ink 模块中的 `screen` 模块，负责该主题下的具体实现。
+    - `searchHighlight.ts`：处理Ink 模块中的搜索、过滤或召回逻辑。
+    - `selection.ts`：Ink 模块中的 `selection` 模块，负责该主题下的具体实现。
+    - `squash-text-nodes.ts`：Ink 模块中的 `squash-text-nodes` 模块，负责该主题下的具体实现。
+    - `stringWidth.ts`：Ink 模块中的 `stringWidth` 模块，负责该主题下的具体实现。
+    - `styles.ts`：Ink 模块中的 `styles` 模块，负责该主题下的具体实现。
+    - `supports-hyperlinks.ts`：Ink 模块中的 `supports-hyperlinks` 模块，负责该主题下的具体实现。
+    - `tabstops.ts`：Ink 模块中的 `tabstops` 模块，负责该主题下的具体实现。
+    - `terminal-focus-state.ts`：维护Ink 模块相关状态。
+    - `terminal-querier.ts`：Ink 模块中的 `terminal-querier` 模块，负责该主题下的具体实现。
+    - `terminal.ts`：Ink 模块中的 `terminal` 模块，负责该主题下的具体实现。
+    - `termio/`：`termio` Ink 子目录，承载终端渲染底层能力。
+      - `ansi.ts`：`termio` Ink 模块中的 `ansi` 模块，负责该主题下的具体实现。
+      - `csi.ts`：`termio` Ink 模块中的 `csi` 模块，负责该主题下的具体实现。
+      - `dec.ts`：`termio` Ink 模块中的 `dec` 模块，负责该主题下的具体实现。
+      - `esc.ts`：`termio` Ink 模块中的 `esc` 模块，负责该主题下的具体实现。
+      - `osc.ts`：`termio` Ink 模块中的 `osc` 模块，负责该主题下的具体实现。
+      - `parser.ts`：负责`termio` Ink 模块的解析逻辑。
+      - `sgr.ts`：`termio` Ink 模块中的 `sgr` 模块，负责该主题下的具体实现。
+      - `tokenize.ts`：`termio` Ink 模块中的 `tokenize` 模块，负责该主题下的具体实现。
+      - `types.ts`：定义`termio` Ink 模块使用的类型、接口或结构。
+    - `termio.ts`：Ink 模块中的 `termio` 模块，负责该主题下的具体实现。
+    - `useTerminalNotification.ts`：提供Ink 模块相关的 React Hook。
+    - `warn.ts`：Ink 模块中的 `warn` 模块，负责该主题下的具体实现。
+    - `widest-line.ts`：Ink 模块中的 `widest-line` 模块，负责该主题下的具体实现。
+    - `wrap-text.ts`：Ink 模块中的 `wrap-text` 模块，负责该主题下的具体实现。
+    - `wrapAnsi.ts`：Ink 模块中的 `wrapAnsi` 模块，负责该主题下的具体实现。
+  - `ink.ts`：Ink 集成入口，连接终端渲染框架与应用层。
+  - `interactiveHelpers.tsx`：交互模式辅助模块，服务 REPL/TUI 中的交互细节。
+  - `keybindings/`：快捷键映射与键位策略。
+    - `defaultBindings.ts`：`keybindings` 模块中的 `defaultBindings` 模块，负责该主题下的具体实现。
+    - `KeybindingContext.tsx`：定义`keybindings` 模块的上下文对象或上下文组件。
+    - `KeybindingProviderSetup.tsx`：渲染`keybindings` 模块中的 `KeybindingProviderSetup` 组件。
+    - `loadUserBindings.ts`：负责`keybindings` 模块的加载、发现或延迟初始化。
+    - `match.ts`：`keybindings` 模块中的 `match` 模块，负责该主题下的具体实现。
+    - `parser.ts`：负责`keybindings` 模块的解析逻辑。
+    - `reservedShortcuts.ts`：`keybindings` 模块中的 `reservedShortcuts` 模块，负责该主题下的具体实现。
+    - `resolver.ts`：`keybindings` 模块中的 `resolver` 模块，负责该主题下的具体实现。
+    - `schema.ts`：定义`keybindings` 模块的数据 schema 或结构化约束。
+    - `shortcutFormat.ts`：`keybindings` 模块中的 `shortcutFormat` 模块，负责该主题下的具体实现。
+    - `template.ts`：`keybindings` 模块中的 `template` 模块，负责该主题下的具体实现。
+    - `useKeybinding.ts`：提供`keybindings` 模块相关的 React Hook。
+    - `useShortcutDisplay.ts`：提供`keybindings` 模块相关的 React Hook。
+    - `validate.ts`：负责`keybindings` 模块的校验与约束检查。
+  - `main.tsx`：主应用入口，负责启动 TUI 工作台。
+  - `memdir/`：memory 目录检索、召回与持久化。
+    - `findRelevantMemories.ts`：memdir 模块中的 `findRelevantMemories` 模块，负责该主题下的具体实现。
+    - `memdir.ts`：memdir 模块中的 `memdir` 模块，负责该主题下的具体实现。
+    - `memoryAge.ts`：处理memdir 模块中的 memory 读取、写入或同步逻辑。
+    - `memoryScan.ts`：处理memdir 模块中的 memory 读取、写入或同步逻辑。
+    - `memoryTypes.ts`：定义memdir 模块使用的类型、接口或结构。
+    - `paths.ts`：memdir 模块中的 `paths` 模块，负责该主题下的具体实现。
+    - `teamMemPaths.ts`：处理memdir 模块中的团队协作或多 agent 协作逻辑。
+    - `teamMemPrompts.ts`：定义memdir 模块的提示词、模板或引导文案。
+  - `migrations/`：版本迁移与历史状态修正。
+    - `migrateAutoUpdatesToSettings.ts`：`migrations` 模块中的 `migrateAutoUpdatesToSettings` 模块，负责该主题下的具体实现。
+    - `migrateBypassPermissionsAcceptedToSettings.ts`：处理`migrations` 模块中的权限决策、说明或桥接逻辑。
+    - `migrateEnableAllProjectMcpServersToSettings.ts`：处理`migrations` 模块中的 MCP 集成逻辑。
+    - `migrateFennecToOpus.ts`：`migrations` 模块中的 `migrateFennecToOpus` 模块，负责该主题下的具体实现。
+    - `migrateLegacyOpusToCurrent.ts`：`migrations` 模块中的 `migrateLegacyOpusToCurrent` 模块，负责该主题下的具体实现。
+    - `migrateOpusToOpus1m.ts`：`migrations` 模块中的 `migrateOpusToOpus1m` 模块，负责该主题下的具体实现。
+    - `migrateReplBridgeEnabledToRemoteControlAtStartup.ts`：处理`migrations` 模块中的远程连接、桥接或跨端同步逻辑。
+    - `migrateSonnet1mToSonnet45.ts`：`migrations` 模块中的 `migrateSonnet1mToSonnet45` 模块，负责该主题下的具体实现。
+    - `migrateSonnet45ToSonnet46.ts`：`migrations` 模块中的 `migrateSonnet45ToSonnet46` 模块，负责该主题下的具体实现。
+    - `resetAutoModeOptInForDefaultOffer.ts`：`migrations` 模块中的 `resetAutoModeOptInForDefaultOffer` 模块，负责该主题下的具体实现。
+    - `resetProToOpusDefault.ts`：`migrations` 模块中的 `resetProToOpusDefault` 模块，负责该主题下的具体实现。
+  - `moreright/`：额外右侧面板/布局扩展能力。
+    - `useMoreRight.tsx`：提供`moreright` 模块相关的 React Hook。
+  - `native-ts/`：原生能力绑定与 TypeScript 侧封装。
+    - `color-diff/`：`color-diff` 子目录。
+      - `index.ts`：导出`native-ts` 模块的公共入口。
+    - `file-index/`：`file-index` 子目录。
+      - `index.ts`：导出`native-ts` 模块的公共入口。
+    - `yoga-layout/`：`yoga-layout` 子目录。
+      - `enums.ts`：`native-ts` 模块中的 `enums` 模块，负责该主题下的具体实现。
+      - `index.ts`：导出`native-ts` 模块的公共入口。
+  - `outputStyles/`：输出风格加载与样式注册。
+    - `loadOutputStylesDir.ts`：负责输出风格模块的加载、发现或延迟初始化。
+  - `plugins/`：内置插件与 bundled 插件入口。
+    - `builtinPlugins.ts`：处理插件模块中的插件加载、管理或校验逻辑。
+    - `bundled/`：`bundled` 子目录。
+      - `index.ts`：导出插件模块的公共入口。
+  - `projectOnboardingState.ts`：项目引导状态持久化与读取逻辑。
+  - `query/`：query 执行循环的辅助配置与依赖。
+    - `config.ts`：定义query 辅助模块的配置项与默认值。
+    - `deps.ts`：query 辅助模块中的 `deps` 模块，负责该主题下的具体实现。
+    - `stopHooks.ts`：实现query 辅助模块相关的 hook 或 hook 辅助。
+    - `tokenBudget.ts`：query 辅助模块中的 `tokenBudget` 模块，负责该主题下的具体实现。
+  - `query.ts`：query 主循环编排，驱动一次会话请求的执行路径。
+  - `QueryEngine.ts`：Query / Agent 执行引擎主实现，负责把输入、工具调用和响应生成串成一次完整查询。
+  - `remote/`：远程会话、权限桥接与远端适配。
+    - `remotePermissionBridge.ts`：处理远程会话模块中的权限决策、说明或桥接逻辑。
+    - `RemoteSessionManager.ts`：管理远程会话模块的生命周期、状态或协调流程。
+    - `sdkMessageAdapter.ts`：作为远程会话模块与外部能力之间的适配层。
+    - `SessionsWebSocket.ts`：处理远程会话模块中的会话状态、会话数据或会话同步。
+  - `replLauncher.tsx`：REPL 启动器，负责拉起交互式工作台。
+  - `schemas/`：schema 定义与结构化约束。
+    - `hooks.ts`：实现schema 模块相关的 hook 或 hook 辅助。
+  - `screens/`：整页级工作台屏幕组件。
+    - `Doctor.tsx`：渲染`screens` 模块中的 `Doctor` 组件。
+    - `REPL.tsx`：渲染`screens` 模块中的 `REPL` 组件。
+    - `ResumeConversation.tsx`：渲染`screens` 模块中的 `ResumeConversation` 组件。
+  - `server/`：本地服务端点与直连会话管理。
+    - `createDirectConnectSession.ts`：负责本地服务模块的创建与装配逻辑。
+    - `directConnectManager.ts`：管理本地服务模块的生命周期、状态或协调流程。
+    - `types.ts`：定义本地服务模块使用的类型、接口或结构。
+  - `services/`：按主题划分的业务服务层。
+    - `AgentSummary/`：agent 摘要生成服务。
+      - `agentSummary.ts`：`AgentSummary` 服务中的 `agentSummary` 模块，负责该主题下的具体实现。
+    - `analytics/`：分析埋点和事件元数据服务。
+      - `config.ts`：定义`analytics` 服务的配置项与默认值。
+      - `datadog.ts`：`analytics` 服务中的 `datadog` 模块，负责该主题下的具体实现。
+      - `firstPartyEventLogger.ts`：`analytics` 服务中的 `firstPartyEventLogger` 模块，负责该主题下的具体实现。
+      - `firstPartyEventLoggingExporter.ts`：`analytics` 服务中的 `firstPartyEventLoggingExporter` 模块，负责该主题下的具体实现。
+      - `growthbook.ts`：`analytics` 服务中的 `growthbook` 模块，负责该主题下的具体实现。
+      - `index.ts`：导出`analytics` 服务的公共入口。
+      - `metadata.ts`：`analytics` 服务中的 `metadata` 模块，负责该主题下的具体实现。
+      - `sink.ts`：`analytics` 服务中的 `sink` 模块，负责该主题下的具体实现。
+      - `sinkKillswitch.ts`：`analytics` 服务中的 `sinkKillswitch` 模块，负责该主题下的具体实现。
+    - `api/`：API 调用与重试封装。
+      - `adminRequests.ts`：`api` 服务中的 `adminRequests` 模块，负责该主题下的具体实现。
+      - `bootstrap.ts`：`api` 服务中的 `bootstrap` 模块，负责该主题下的具体实现。
+      - `claude.ts`：`api` 服务中的 `claude` 模块，负责该主题下的具体实现。
+      - `client.ts`：实现`api` 服务对外部系统的客户端封装。
+      - `dumpPrompts.ts`：定义`api` 服务的提示词、模板或引导文案。
+      - `emptyUsage.ts`：`api` 服务中的 `emptyUsage` 模块，负责该主题下的具体实现。
+      - `errors.ts`：`api` 服务中的 `errors` 模块，负责该主题下的具体实现。
+      - `errorUtils.ts`：提供`api` 服务的辅助函数与通用逻辑。
+      - `filesApi.ts`：`api` 服务中的 `filesApi` 模块，负责该主题下的具体实现。
+      - `firstTokenDate.ts`：`api` 服务中的 `firstTokenDate` 模块，负责该主题下的具体实现。
+      - `grove.ts`：`api` 服务中的 `grove` 模块，负责该主题下的具体实现。
+      - `logging.ts`：`api` 服务中的 `logging` 模块，负责该主题下的具体实现。
+      - `metricsOptOut.ts`：`api` 服务中的 `metricsOptOut` 模块，负责该主题下的具体实现。
+      - `overageCreditGrant.ts`：`api` 服务中的 `overageCreditGrant` 模块，负责该主题下的具体实现。
+      - `promptCacheBreakDetection.ts`：`api` 服务中的 `promptCacheBreakDetection` 模块，负责该主题下的具体实现。
+      - `referral.ts`：`api` 服务中的 `referral` 模块，负责该主题下的具体实现。
+      - `sessionIngress.ts`：处理`api` 服务中的会话状态、会话数据或会话同步。
+      - `ultrareviewQuota.ts`：`api` 服务中的 `ultrareviewQuota` 模块，负责该主题下的具体实现。
+      - `usage.ts`：`api` 服务中的 `usage` 模块，负责该主题下的具体实现。
+      - `withRetry.ts`：`api` 服务中的 `withRetry` 模块，负责该主题下的具体实现。
+    - `autoDream/`：自动 dream/后台探索服务。
+      - `autoDream.ts`：`autoDream` 服务中的 `autoDream` 模块，负责该主题下的具体实现。
+      - `config.ts`：定义`autoDream` 服务的配置项与默认值。
+      - `consolidationLock.ts`：`autoDream` 服务中的 `consolidationLock` 模块，负责该主题下的具体实现。
+      - `consolidationPrompt.ts`：定义`autoDream` 服务的提示词、模板或引导文案。
+    - `awaySummary.ts`：服务层中的 `awaySummary` 模块，负责该主题下的具体实现。
+    - `claudeAiLimits.ts`：服务层中的 `claudeAiLimits` 模块，负责该主题下的具体实现。
+    - `claudeAiLimitsHook.ts`：实现服务层相关的 hook 或 hook 辅助。
+    - `compact/`：compact 压缩与清理服务。
+      - `apiMicrocompact.ts`：处理`compact` 服务中的 compact 压缩与清理逻辑。
+      - `autoCompact.ts`：处理`compact` 服务中的 compact 压缩与清理逻辑。
+      - `compact.ts`：处理`compact` 服务中的 compact 压缩与清理逻辑。
+      - `compactWarningHook.ts`：实现`compact` 服务相关的 hook 或 hook 辅助。
+      - `compactWarningState.ts`：维护`compact` 服务相关状态。
+      - `grouping.ts`：`compact` 服务中的 `grouping` 模块，负责该主题下的具体实现。
+      - `microCompact.ts`：处理`compact` 服务中的 compact 压缩与清理逻辑。
+      - `postCompactCleanup.ts`：处理`compact` 服务中的 compact 压缩与清理逻辑。
+      - `prompt.ts`：定义`compact` 服务的提示词、模板或引导文案。
+      - `sessionMemoryCompact.ts`：处理`compact` 服务中的会话状态、会话数据或会话同步。
+      - `timeBasedMCConfig.ts`：定义`compact` 服务的配置项与默认值。
+    - `diagnosticTracking.ts`：服务层中的 `diagnosticTracking` 模块，负责该主题下的具体实现。
+    - `extractMemories/`：memory 提取服务。
+      - `extractMemories.ts`：`extractMemories` 服务中的 `extractMemories` 模块，负责该主题下的具体实现。
+      - `prompts.ts`：定义`extractMemories` 服务的提示词、模板或引导文案。
+    - `internalLogging.ts`：服务层中的 `internalLogging` 模块，负责该主题下的具体实现。
+    - `lsp/`：LSP 查询与代码理解服务。
+      - `config.ts`：定义`lsp` 服务的配置项与默认值。
+      - `LSPClient.ts`：实现`lsp` 服务对外部系统的客户端封装。
+      - `LSPDiagnosticRegistry.ts`：负责`lsp` 服务的注册表或注册流程。
+      - `LSPServerInstance.ts`：`lsp` 服务中的 `LSPServerInstance` 模块，负责该主题下的具体实现。
+      - `LSPServerManager.ts`：管理`lsp` 服务的生命周期、状态或协调流程。
+      - `manager.ts`：管理`lsp` 服务的生命周期、状态或协调流程。
+      - `passiveFeedback.ts`：`lsp` 服务中的 `passiveFeedback` 模块，负责该主题下的具体实现。
+    - `MagicDocs/`：文档理解与文档辅助服务。
+      - `magicDocs.ts`：`MagicDocs` 服务中的 `magicDocs` 模块，负责该主题下的具体实现。
+      - `prompts.ts`：定义`MagicDocs` 服务的提示词、模板或引导文案。
+    - `mcp/`：MCP 连接、配置与客户端服务。
+      - `auth.ts`：处理`mcp` 服务中的认证、授权或凭证逻辑。
+      - `channelAllowlist.ts`：`mcp` 服务中的 `channelAllowlist` 模块，负责该主题下的具体实现。
+      - `channelNotification.ts`：处理`mcp` 服务中的通知或提示。
+      - `channelPermissions.ts`：处理`mcp` 服务中的权限决策、说明或桥接逻辑。
+      - `claudeai.ts`：`mcp` 服务中的 `claudeai` 模块，负责该主题下的具体实现。
+      - `client.ts`：实现`mcp` 服务对外部系统的客户端封装。
+      - `config.ts`：定义`mcp` 服务的配置项与默认值。
+      - `elicitationHandler.ts`：`mcp` 服务中的 `elicitationHandler` 模块，负责该主题下的具体实现。
+      - `envExpansion.ts`：`mcp` 服务中的 `envExpansion` 模块，负责该主题下的具体实现。
+      - `headersHelper.ts`：提供`mcp` 服务的辅助函数与通用逻辑。
+      - `InProcessTransport.ts`：实现`mcp` 服务的传输层。
+      - `MCPConnectionManager.tsx`：管理`mcp` 服务的生命周期、状态或协调流程。
+      - `mcpStringUtils.ts`：提供`mcp` 服务的辅助函数与通用逻辑。
+      - `normalization.ts`：`mcp` 服务中的 `normalization` 模块，负责该主题下的具体实现。
+      - `oauthPort.ts`：处理`mcp` 服务中的认证、授权或凭证逻辑。
+      - `officialRegistry.ts`：负责`mcp` 服务的注册表或注册流程。
+      - `SdkControlTransport.ts`：实现`mcp` 服务的传输层。
+      - `types.ts`：定义`mcp` 服务使用的类型、接口或结构。
+      - `useManageMCPConnections.ts`：提供`mcp` 服务相关的 React Hook。
+      - `utils.ts`：提供`mcp` 服务的辅助函数与通用逻辑。
+      - `vscodeSdkMcp.ts`：处理`mcp` 服务中的 MCP 集成逻辑。
+      - `xaa.ts`：`mcp` 服务中的 `xaa` 模块，负责该主题下的具体实现。
+      - `xaaIdpLogin.ts`：`mcp` 服务中的 `xaaIdpLogin` 模块，负责该主题下的具体实现。
+    - `mcpServerApproval.tsx`：处理服务层中的 MCP 集成逻辑。
+    - `mockRateLimits.ts`：服务层中的 `mockRateLimits` 模块，负责该主题下的具体实现。
+    - `notifier.ts`：服务层中的 `notifier` 模块，负责该主题下的具体实现。
+    - `oauth/`：OAuth 登录与 token 相关服务。
+      - `auth-code-listener.ts`：处理`oauth` 服务中的认证、授权或凭证逻辑。
+      - `client.ts`：实现`oauth` 服务对外部系统的客户端封装。
+      - `crypto.ts`：`oauth` 服务中的 `crypto` 模块，负责该主题下的具体实现。
+      - `getOauthProfile.ts`：处理`oauth` 服务中的认证、授权或凭证逻辑。
+      - `index.ts`：导出`oauth` 服务的公共入口。
+    - `plugins/`：插件服务层。
+      - `pluginCliCommands.ts`：处理`plugins` 服务中的插件加载、管理或校验逻辑。
+      - `PluginInstallationManager.ts`：管理`plugins` 服务的生命周期、状态或协调流程。
+      - `pluginOperations.ts`：处理`plugins` 服务中的插件加载、管理或校验逻辑。
+    - `policyLimits/`：策略限额与能力边界服务。
+      - `index.ts`：导出`policyLimits` 服务的公共入口。
+      - `types.ts`：定义`policyLimits` 服务使用的类型、接口或结构。
+    - `preventSleep.ts`：服务层中的 `preventSleep` 模块，负责该主题下的具体实现。
+    - `PromptSuggestion/`：Prompt 建议与提示生成服务。
+      - `promptSuggestion.ts`：定义`PromptSuggestion` 服务的提示词、模板或引导文案。
+      - `speculation.ts`：`PromptSuggestion` 服务中的 `speculation` 模块，负责该主题下的具体实现。
+    - `rateLimitMessages.ts`：处理服务层中的消息构造、映射或渲染。
+    - `rateLimitMocking.ts`：服务层中的 `rateLimitMocking` 模块，负责该主题下的具体实现。
+    - `remoteManagedSettings/`：远程托管设置同步服务。
+      - `index.ts`：导出`remoteManagedSettings` 服务的公共入口。
+      - `securityCheck.tsx`：渲染`remoteManagedSettings` 服务中的 `securityCheck` 组件。
+      - `syncCache.ts`：`remoteManagedSettings` 服务中的 `syncCache` 模块，负责该主题下的具体实现。
+      - `syncCacheState.ts`：维护`remoteManagedSettings` 服务相关状态。
+      - `types.ts`：定义`remoteManagedSettings` 服务使用的类型、接口或结构。
+    - `SessionMemory/`：会话 memory 服务。
+      - `prompts.ts`：定义`SessionMemory` 服务的提示词、模板或引导文案。
+      - `sessionMemory.ts`：处理`SessionMemory` 服务中的会话状态、会话数据或会话同步。
+      - `sessionMemoryUtils.ts`：提供`SessionMemory` 服务的辅助函数与通用逻辑。
+    - `settingsSync/`：设置同步服务。
+      - `index.ts`：导出`settingsSync` 服务的公共入口。
+      - `types.ts`：定义`settingsSync` 服务使用的类型、接口或结构。
+    - `teamMemorySync/`：team memory 同步服务。
+      - `index.ts`：导出`teamMemorySync` 服务的公共入口。
+      - `secretScanner.ts`：`teamMemorySync` 服务中的 `secretScanner` 模块，负责该主题下的具体实现。
+      - `teamMemSecretGuard.ts`：处理`teamMemorySync` 服务中的团队协作或多 agent 协作逻辑。
+      - `types.ts`：定义`teamMemorySync` 服务使用的类型、接口或结构。
+      - `watcher.ts`：`teamMemorySync` 服务中的 `watcher` 模块，负责该主题下的具体实现。
+    - `tips/`：提示词/使用提示服务。
+      - `tipHistory.ts`：处理`tips` 服务中的历史记录与回放。
+      - `tipRegistry.ts`：负责`tips` 服务的注册表或注册流程。
+      - `tipScheduler.ts`：`tips` 服务中的 `tipScheduler` 模块，负责该主题下的具体实现。
+    - `tokenEstimation.ts`：服务层中的 `tokenEstimation` 模块，负责该主题下的具体实现。
+    - `tools/`：工具执行编排服务。
+      - `StreamingToolExecutor.ts`：`tools` 服务中的 `StreamingToolExecutor` 模块，负责该主题下的具体实现。
+      - `toolExecution.ts`：`tools` 服务中的 `toolExecution` 模块，负责该主题下的具体实现。
+      - `toolHooks.ts`：实现`tools` 服务相关的 hook 或 hook 辅助。
+      - `toolOrchestration.ts`：`tools` 服务中的 `toolOrchestration` 模块，负责该主题下的具体实现。
+    - `toolUseSummary/`：工具调用摘要服务。
+      - `toolUseSummaryGenerator.ts`：`toolUseSummary` 服务中的 `toolUseSummaryGenerator` 模块，负责该主题下的具体实现。
+    - `vcr.ts`：服务层中的 `vcr` 模块，负责该主题下的具体实现。
+    - `voice.ts`：服务层中的 `voice` 模块，负责该主题下的具体实现。
+    - `voiceKeyterms.ts`：服务层中的 `voiceKeyterms` 模块，负责该主题下的具体实现。
+    - `voiceStreamSTT.ts`：服务层中的 `voiceStreamSTT` 模块，负责该主题下的具体实现。
+  - `setup.ts`：全局初始化逻辑，负责启动前环境准备与检查。
+  - `skills/`：skills 能力与 bundled 技能入口。
+    - `bundled/`：`bundled` 子目录。
+      - `batch.ts`：`skills` 模块中的 `batch` 模块，负责该主题下的具体实现。
+      - `claudeApi.ts`：`skills` 模块中的 `claudeApi` 模块，负责该主题下的具体实现。
+      - `claudeApiContent.ts`：`skills` 模块中的 `claudeApiContent` 模块，负责该主题下的具体实现。
+      - `claudeInChrome.ts`：`skills` 模块中的 `claudeInChrome` 模块，负责该主题下的具体实现。
+      - `debug.ts`：`skills` 模块中的 `debug` 模块，负责该主题下的具体实现。
+      - `index.ts`：导出`skills` 模块的公共入口。
+      - `keybindings.ts`：`skills` 模块中的 `keybindings` 模块，负责该主题下的具体实现。
+      - `loop.ts`：`skills` 模块中的 `loop` 模块，负责该主题下的具体实现。
+      - `loremIpsum.ts`：`skills` 模块中的 `loremIpsum` 模块，负责该主题下的具体实现。
+      - `remember.ts`：`skills` 模块中的 `remember` 模块，负责该主题下的具体实现。
+      - `scheduleRemoteAgents.ts`：处理`skills` 模块中的远程连接、桥接或跨端同步逻辑。
+      - `simplify.ts`：`skills` 模块中的 `simplify` 模块，负责该主题下的具体实现。
+      - `skillify.ts`：`skills` 模块中的 `skillify` 模块，负责该主题下的具体实现。
+      - `stuck.ts`：`skills` 模块中的 `stuck` 模块，负责该主题下的具体实现。
+      - `updateConfig.ts`：定义`skills` 模块的配置项与默认值。
+      - `verify.ts`：`skills` 模块中的 `verify` 模块，负责该主题下的具体实现。
+      - `verifyContent.ts`：`skills` 模块中的 `verifyContent` 模块，负责该主题下的具体实现。
+    - `bundledSkills.ts`：`skills` 模块中的 `bundledSkills` 模块，负责该主题下的具体实现。
+    - `loadSkillsDir.ts`：负责`skills` 模块的加载、发现或延迟初始化。
+    - `mcpSkillBuilders.ts`：处理`skills` 模块中的 MCP 集成逻辑。
+  - `state/`：全局状态仓库与选择器。
+    - `AppState.tsx`：维护全局状态相关状态。
+    - `AppStateStore.ts`：维护全局状态的数据存储或状态仓库。
+    - `onChangeAppState.ts`：维护全局状态相关状态。
+    - `selectors.ts`：全局状态中的 `selectors` 模块，负责该主题下的具体实现。
+    - `store.ts`：维护全局状态的数据存储或状态仓库。
+    - `teammateViewHelpers.ts`：提供全局状态的辅助函数与通用逻辑。
+  - `Task.ts`：任务抽象定义，提供任务系统通用接口或基类。
+  - `tasks/`：后台任务类型与任务运行器。
+    - `DreamTask/`：`DreamTask` 任务目录，封装该任务类型的运行逻辑。
+      - `DreamTask.ts`：实现`DreamTask` 任务的任务逻辑。
+    - `InProcessTeammateTask/`：`InProcessTeammateTask` 任务目录，封装该任务类型的运行逻辑。
+      - `InProcessTeammateTask.tsx`：实现`InProcessTeammateTask` 任务的任务逻辑。
+      - `types.ts`：定义`InProcessTeammateTask` 任务使用的类型、接口或结构。
+    - `LocalAgentTask/`：`LocalAgentTask` 任务目录，封装该任务类型的运行逻辑。
+      - `LocalAgentTask.tsx`：实现`LocalAgentTask` 任务的任务逻辑。
+    - `LocalMainSessionTask.ts`：实现任务系统的任务逻辑。
+    - `LocalShellTask/`：`LocalShellTask` 任务目录，封装该任务类型的运行逻辑。
+      - `guards.ts`：`LocalShellTask` 任务中的 `guards` 模块，负责该主题下的具体实现。
+      - `killShellTasks.ts`：处理`LocalShellTask` 任务中的 shell 执行、解析或安全约束。
+      - `LocalShellTask.tsx`：实现`LocalShellTask` 任务的任务逻辑。
+    - `pillLabel.ts`：任务系统中的 `pillLabel` 模块，负责该主题下的具体实现。
+    - `RemoteAgentTask/`：`RemoteAgentTask` 任务目录，封装该任务类型的运行逻辑。
+      - `RemoteAgentTask.tsx`：实现`RemoteAgentTask` 任务的任务逻辑。
+    - `stopTask.ts`：实现任务系统的任务逻辑。
+    - `types.ts`：定义任务系统使用的类型、接口或结构。
+  - `tasks.ts`：任务系统公共入口，汇总任务类型与任务能力。
+  - `Tool.ts`：工具抽象定义，承载工具注册、元数据和调用约定。
+  - `tools/`：模型可调用工具与工具 UI。
+    - `AgentTool/`：`AgentTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `agentColorManager.ts`：管理`AgentTool` 工具的生命周期、状态或协调流程。
+      - `agentDisplay.ts`：`AgentTool` 工具中的 `agentDisplay` 模块，负责该主题下的具体实现。
+      - `agentMemory.ts`：处理`AgentTool` 工具中的 memory 读取、写入或同步逻辑。
+      - `agentMemorySnapshot.ts`：处理`AgentTool` 工具中的 memory 读取、写入或同步逻辑。
+      - `AgentTool.tsx`：实现`AgentTool` 工具的核心工具逻辑。
+      - `agentToolUtils.ts`：提供`AgentTool` 工具的辅助函数与通用逻辑。
+      - `built-in/`：`built-in` 子目录。
+        - `claudeCodeGuideAgent.ts`：`AgentTool` 工具中的 `claudeCodeGuideAgent` 模块，负责该主题下的具体实现。
+        - `exploreAgent.ts`：`AgentTool` 工具中的 `exploreAgent` 模块，负责该主题下的具体实现。
+        - `generalPurposeAgent.ts`：`AgentTool` 工具中的 `generalPurposeAgent` 模块，负责该主题下的具体实现。
+        - `planAgent.ts`：`AgentTool` 工具中的 `planAgent` 模块，负责该主题下的具体实现。
+        - `statuslineSetup.ts`：计算、展示或同步`AgentTool` 工具状态。
+        - `verificationAgent.ts`：`AgentTool` 工具中的 `verificationAgent` 模块，负责该主题下的具体实现。
+      - `builtInAgents.ts`：`AgentTool` 工具中的 `builtInAgents` 模块，负责该主题下的具体实现。
+      - `constants.ts`：集中定义`AgentTool` 工具相关常量。
+      - `forkSubagent.ts`：`AgentTool` 工具中的 `forkSubagent` 模块，负责该主题下的具体实现。
+      - `loadAgentsDir.ts`：负责`AgentTool` 工具的加载、发现或延迟初始化。
+      - `prompt.ts`：定义`AgentTool` 工具的提示词、模板或引导文案。
+      - `resumeAgent.ts`：`AgentTool` 工具中的 `resumeAgent` 模块，负责该主题下的具体实现。
+      - `runAgent.ts`：`AgentTool` 工具中的 `runAgent` 模块，负责该主题下的具体实现。
+      - `UI.tsx`：渲染`AgentTool` 工具的终端界面。
+    - `AskUserQuestionTool/`：`AskUserQuestionTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `AskUserQuestionTool.tsx`：实现`AskUserQuestionTool` 工具的核心工具逻辑。
+      - `prompt.ts`：定义`AskUserQuestionTool` 工具的提示词、模板或引导文案。
+    - `BashTool/`：`BashTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `bashCommandHelpers.ts`：提供`BashTool` 工具的辅助函数与通用逻辑。
+      - `bashPermissions.ts`：处理`BashTool` 工具中的权限决策、说明或桥接逻辑。
+      - `bashSecurity.ts`：处理`BashTool` 工具中的 shell 执行、解析或安全约束。
+      - `BashTool.tsx`：实现`BashTool` 工具的核心工具逻辑。
+      - `BashToolResultMessage.tsx`：渲染`BashTool` 工具中的消息节点。
+      - `commandSemantics.ts`：`BashTool` 工具中的 `commandSemantics` 模块，负责该主题下的具体实现。
+      - `commentLabel.ts`：`BashTool` 工具中的 `commentLabel` 模块，负责该主题下的具体实现。
+      - `destructiveCommandWarning.ts`：给出`BashTool` 工具中的告警或风险提示。
+      - `modeValidation.ts`：负责`BashTool` 工具的校验与约束检查。
+      - `pathValidation.ts`：负责`BashTool` 工具的校验与约束检查。
+      - `prompt.ts`：定义`BashTool` 工具的提示词、模板或引导文案。
+      - `readOnlyValidation.ts`：负责`BashTool` 工具的校验与约束检查。
+      - `sedEditParser.ts`：负责`BashTool` 工具的解析逻辑。
+      - `sedValidation.ts`：负责`BashTool` 工具的校验与约束检查。
+      - `shouldUseSandbox.ts`：`BashTool` 工具中的 `shouldUseSandbox` 模块，负责该主题下的具体实现。
+      - `toolName.ts`：`BashTool` 工具中的 `toolName` 模块，负责该主题下的具体实现。
+      - `UI.tsx`：渲染`BashTool` 工具的终端界面。
+      - `utils.ts`：提供`BashTool` 工具的辅助函数与通用逻辑。
+    - `BriefTool/`：`BriefTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `attachments.ts`：`BriefTool` 工具中的 `attachments` 模块，负责该主题下的具体实现。
+      - `BriefTool.ts`：实现`BriefTool` 工具的核心工具逻辑。
+      - `prompt.ts`：定义`BriefTool` 工具的提示词、模板或引导文案。
+      - `UI.tsx`：渲染`BriefTool` 工具的终端界面。
+      - `upload.ts`：`BriefTool` 工具中的 `upload` 模块，负责该主题下的具体实现。
+    - `ConfigTool/`：`ConfigTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `ConfigTool.ts`：实现`ConfigTool` 工具的核心工具逻辑。
+      - `constants.ts`：集中定义`ConfigTool` 工具相关常量。
+      - `prompt.ts`：定义`ConfigTool` 工具的提示词、模板或引导文案。
+      - `supportedSettings.ts`：`ConfigTool` 工具中的 `supportedSettings` 模块，负责该主题下的具体实现。
+      - `UI.tsx`：渲染`ConfigTool` 工具的终端界面。
+    - `EnterPlanModeTool/`：`EnterPlanModeTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `constants.ts`：集中定义`EnterPlanModeTool` 工具相关常量。
+      - `EnterPlanModeTool.ts`：实现`EnterPlanModeTool` 工具的核心工具逻辑。
+      - `prompt.ts`：定义`EnterPlanModeTool` 工具的提示词、模板或引导文案。
+      - `UI.tsx`：渲染`EnterPlanModeTool` 工具的终端界面。
+    - `EnterWorktreeTool/`：`EnterWorktreeTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `constants.ts`：集中定义`EnterWorktreeTool` 工具相关常量。
+      - `EnterWorktreeTool.ts`：实现`EnterWorktreeTool` 工具的核心工具逻辑。
+      - `prompt.ts`：定义`EnterWorktreeTool` 工具的提示词、模板或引导文案。
+      - `UI.tsx`：渲染`EnterWorktreeTool` 工具的终端界面。
+    - `ExitPlanModeTool/`：`ExitPlanModeTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `constants.ts`：集中定义`ExitPlanModeTool` 工具相关常量。
+      - `ExitPlanModeV2Tool.ts`：实现`ExitPlanModeTool` 工具的核心工具逻辑。
+      - `prompt.ts`：定义`ExitPlanModeTool` 工具的提示词、模板或引导文案。
+      - `UI.tsx`：渲染`ExitPlanModeTool` 工具的终端界面。
+    - `ExitWorktreeTool/`：`ExitWorktreeTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `constants.ts`：集中定义`ExitWorktreeTool` 工具相关常量。
+      - `ExitWorktreeTool.ts`：实现`ExitWorktreeTool` 工具的核心工具逻辑。
+      - `prompt.ts`：定义`ExitWorktreeTool` 工具的提示词、模板或引导文案。
+      - `UI.tsx`：渲染`ExitWorktreeTool` 工具的终端界面。
+    - `FileEditTool/`：`FileEditTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `constants.ts`：集中定义`FileEditTool` 工具相关常量。
+      - `FileEditTool.ts`：实现`FileEditTool` 工具的核心工具逻辑。
+      - `prompt.ts`：定义`FileEditTool` 工具的提示词、模板或引导文案。
+      - `types.ts`：定义`FileEditTool` 工具使用的类型、接口或结构。
+      - `UI.tsx`：渲染`FileEditTool` 工具的终端界面。
+      - `utils.ts`：提供`FileEditTool` 工具的辅助函数与通用逻辑。
+    - `FileReadTool/`：`FileReadTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `FileReadTool.ts`：实现`FileReadTool` 工具的核心工具逻辑。
+      - `imageProcessor.ts`：`FileReadTool` 工具中的 `imageProcessor` 模块，负责该主题下的具体实现。
+      - `limits.ts`：`FileReadTool` 工具中的 `limits` 模块，负责该主题下的具体实现。
+      - `prompt.ts`：定义`FileReadTool` 工具的提示词、模板或引导文案。
+      - `UI.tsx`：渲染`FileReadTool` 工具的终端界面。
+    - `FileWriteTool/`：`FileWriteTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `FileWriteTool.ts`：实现`FileWriteTool` 工具的核心工具逻辑。
+      - `prompt.ts`：定义`FileWriteTool` 工具的提示词、模板或引导文案。
+      - `UI.tsx`：渲染`FileWriteTool` 工具的终端界面。
+    - `GlobTool/`：`GlobTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `GlobTool.ts`：实现`GlobTool` 工具的核心工具逻辑。
+      - `prompt.ts`：定义`GlobTool` 工具的提示词、模板或引导文案。
+      - `UI.tsx`：渲染`GlobTool` 工具的终端界面。
+    - `GrepTool/`：`GrepTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `GrepTool.ts`：实现`GrepTool` 工具的核心工具逻辑。
+      - `prompt.ts`：定义`GrepTool` 工具的提示词、模板或引导文案。
+      - `UI.tsx`：渲染`GrepTool` 工具的终端界面。
+    - `ListMcpResourcesTool/`：`ListMcpResourcesTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `ListMcpResourcesTool.ts`：实现`ListMcpResourcesTool` 工具的核心工具逻辑。
+      - `prompt.ts`：定义`ListMcpResourcesTool` 工具的提示词、模板或引导文案。
+      - `UI.tsx`：渲染`ListMcpResourcesTool` 工具的终端界面。
+    - `LSPTool/`：`LSPTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `formatters.ts`：`LSPTool` 工具中的 `formatters` 模块，负责该主题下的具体实现。
+      - `LSPTool.ts`：实现`LSPTool` 工具的核心工具逻辑。
+      - `prompt.ts`：定义`LSPTool` 工具的提示词、模板或引导文案。
+      - `schemas.ts`：定义`LSPTool` 工具的数据 schema 或结构化约束。
+      - `symbolContext.ts`：定义`LSPTool` 工具的上下文对象或上下文组件。
+      - `UI.tsx`：渲染`LSPTool` 工具的终端界面。
+    - `McpAuthTool/`：`McpAuthTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `McpAuthTool.ts`：实现`McpAuthTool` 工具的核心工具逻辑。
+    - `MCPTool/`：`MCPTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `classifyForCollapse.ts`：`MCPTool` 工具中的 `classifyForCollapse` 模块，负责该主题下的具体实现。
+      - `MCPTool.ts`：实现`MCPTool` 工具的核心工具逻辑。
+      - `prompt.ts`：定义`MCPTool` 工具的提示词、模板或引导文案。
+      - `UI.tsx`：渲染`MCPTool` 工具的终端界面。
+    - `NotebookEditTool/`：`NotebookEditTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `constants.ts`：集中定义`NotebookEditTool` 工具相关常量。
+      - `NotebookEditTool.ts`：实现`NotebookEditTool` 工具的核心工具逻辑。
+      - `prompt.ts`：定义`NotebookEditTool` 工具的提示词、模板或引导文案。
+      - `UI.tsx`：渲染`NotebookEditTool` 工具的终端界面。
+    - `PowerShellTool/`：`PowerShellTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `clmTypes.ts`：定义`PowerShellTool` 工具使用的类型、接口或结构。
+      - `commandSemantics.ts`：`PowerShellTool` 工具中的 `commandSemantics` 模块，负责该主题下的具体实现。
+      - `commonParameters.ts`：`PowerShellTool` 工具中的 `commonParameters` 模块，负责该主题下的具体实现。
+      - `destructiveCommandWarning.ts`：给出`PowerShellTool` 工具中的告警或风险提示。
+      - `gitSafety.ts`：处理`PowerShellTool` 工具中的 Git 集成逻辑。
+      - `modeValidation.ts`：负责`PowerShellTool` 工具的校验与约束检查。
+      - `pathValidation.ts`：负责`PowerShellTool` 工具的校验与约束检查。
+      - `powershellPermissions.ts`：处理`PowerShellTool` 工具中的权限决策、说明或桥接逻辑。
+      - `powershellSecurity.ts`：处理`PowerShellTool` 工具中的 shell 执行、解析或安全约束。
+      - `PowerShellTool.tsx`：实现`PowerShellTool` 工具的核心工具逻辑。
+      - `prompt.ts`：定义`PowerShellTool` 工具的提示词、模板或引导文案。
+      - `readOnlyValidation.ts`：负责`PowerShellTool` 工具的校验与约束检查。
+      - `toolName.ts`：`PowerShellTool` 工具中的 `toolName` 模块，负责该主题下的具体实现。
+      - `UI.tsx`：渲染`PowerShellTool` 工具的终端界面。
+    - `ReadMcpResourceTool/`：`ReadMcpResourceTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `prompt.ts`：定义`ReadMcpResourceTool` 工具的提示词、模板或引导文案。
+      - `ReadMcpResourceTool.ts`：实现`ReadMcpResourceTool` 工具的核心工具逻辑。
+      - `UI.tsx`：渲染`ReadMcpResourceTool` 工具的终端界面。
+    - `RemoteTriggerTool/`：`RemoteTriggerTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `prompt.ts`：定义`RemoteTriggerTool` 工具的提示词、模板或引导文案。
+      - `RemoteTriggerTool.ts`：实现`RemoteTriggerTool` 工具的核心工具逻辑。
+      - `UI.tsx`：渲染`RemoteTriggerTool` 工具的终端界面。
+    - `REPLTool/`：`REPLTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `constants.ts`：集中定义`REPLTool` 工具相关常量。
+      - `primitiveTools.ts`：`REPLTool` 工具中的 `primitiveTools` 模块，负责该主题下的具体实现。
+    - `ScheduleCronTool/`：`ScheduleCronTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `CronCreateTool.ts`：实现`ScheduleCronTool` 工具的核心工具逻辑。
+      - `CronDeleteTool.ts`：实现`ScheduleCronTool` 工具的核心工具逻辑。
+      - `CronListTool.ts`：实现`ScheduleCronTool` 工具的核心工具逻辑。
+      - `prompt.ts`：定义`ScheduleCronTool` 工具的提示词、模板或引导文案。
+      - `UI.tsx`：渲染`ScheduleCronTool` 工具的终端界面。
+    - `SendMessageTool/`：`SendMessageTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `constants.ts`：集中定义`SendMessageTool` 工具相关常量。
+      - `prompt.ts`：定义`SendMessageTool` 工具的提示词、模板或引导文案。
+      - `SendMessageTool.ts`：实现`SendMessageTool` 工具的核心工具逻辑。
+      - `UI.tsx`：渲染`SendMessageTool` 工具的终端界面。
+    - `shared/`：`shared` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `gitOperationTracking.ts`：处理`shared` 工具中的 Git 集成逻辑。
+      - `spawnMultiAgent.ts`：`shared` 工具中的 `spawnMultiAgent` 模块，负责该主题下的具体实现。
+    - `SkillTool/`：`SkillTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `constants.ts`：集中定义`SkillTool` 工具相关常量。
+      - `prompt.ts`：定义`SkillTool` 工具的提示词、模板或引导文案。
+      - `SkillTool.ts`：实现`SkillTool` 工具的核心工具逻辑。
+      - `UI.tsx`：渲染`SkillTool` 工具的终端界面。
+    - `SleepTool/`：`SleepTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `prompt.ts`：定义`SleepTool` 工具的提示词、模板或引导文案。
+    - `SyntheticOutputTool/`：`SyntheticOutputTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `SyntheticOutputTool.ts`：实现`SyntheticOutputTool` 工具的核心工具逻辑。
+    - `TaskCreateTool/`：`TaskCreateTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `constants.ts`：集中定义`TaskCreateTool` 工具相关常量。
+      - `prompt.ts`：定义`TaskCreateTool` 工具的提示词、模板或引导文案。
+      - `TaskCreateTool.ts`：实现`TaskCreateTool` 工具的核心工具逻辑。
+    - `TaskGetTool/`：`TaskGetTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `constants.ts`：集中定义`TaskGetTool` 工具相关常量。
+      - `prompt.ts`：定义`TaskGetTool` 工具的提示词、模板或引导文案。
+      - `TaskGetTool.ts`：实现`TaskGetTool` 工具的核心工具逻辑。
+    - `TaskListTool/`：`TaskListTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `constants.ts`：集中定义`TaskListTool` 工具相关常量。
+      - `prompt.ts`：定义`TaskListTool` 工具的提示词、模板或引导文案。
+      - `TaskListTool.ts`：实现`TaskListTool` 工具的核心工具逻辑。
+    - `TaskOutputTool/`：`TaskOutputTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `constants.ts`：集中定义`TaskOutputTool` 工具相关常量。
+      - `TaskOutputTool.tsx`：实现`TaskOutputTool` 工具的核心工具逻辑。
+    - `TaskStopTool/`：`TaskStopTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `prompt.ts`：定义`TaskStopTool` 工具的提示词、模板或引导文案。
+      - `TaskStopTool.ts`：实现`TaskStopTool` 工具的核心工具逻辑。
+      - `UI.tsx`：渲染`TaskStopTool` 工具的终端界面。
+    - `TaskUpdateTool/`：`TaskUpdateTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `constants.ts`：集中定义`TaskUpdateTool` 工具相关常量。
+      - `prompt.ts`：定义`TaskUpdateTool` 工具的提示词、模板或引导文案。
+      - `TaskUpdateTool.ts`：实现`TaskUpdateTool` 工具的核心工具逻辑。
+    - `TeamCreateTool/`：`TeamCreateTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `constants.ts`：集中定义`TeamCreateTool` 工具相关常量。
+      - `prompt.ts`：定义`TeamCreateTool` 工具的提示词、模板或引导文案。
+      - `TeamCreateTool.ts`：实现`TeamCreateTool` 工具的核心工具逻辑。
+      - `UI.tsx`：渲染`TeamCreateTool` 工具的终端界面。
+    - `TeamDeleteTool/`：`TeamDeleteTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `constants.ts`：集中定义`TeamDeleteTool` 工具相关常量。
+      - `prompt.ts`：定义`TeamDeleteTool` 工具的提示词、模板或引导文案。
+      - `TeamDeleteTool.ts`：实现`TeamDeleteTool` 工具的核心工具逻辑。
+      - `UI.tsx`：渲染`TeamDeleteTool` 工具的终端界面。
+    - `testing/`：`testing` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `TestingPermissionTool.tsx`：实现`testing` 工具的核心工具逻辑。
+    - `TodoWriteTool/`：`TodoWriteTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `constants.ts`：集中定义`TodoWriteTool` 工具相关常量。
+      - `prompt.ts`：定义`TodoWriteTool` 工具的提示词、模板或引导文案。
+      - `TodoWriteTool.ts`：实现`TodoWriteTool` 工具的核心工具逻辑。
+    - `ToolSearchTool/`：`ToolSearchTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `constants.ts`：集中定义`ToolSearchTool` 工具相关常量。
+      - `prompt.ts`：定义`ToolSearchTool` 工具的提示词、模板或引导文案。
+      - `ToolSearchTool.ts`：实现`ToolSearchTool` 工具的核心工具逻辑。
+    - `utils.ts`：提供工具系统的辅助函数与通用逻辑。
+    - `WebFetchTool/`：`WebFetchTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `preapproved.ts`：`WebFetchTool` 工具中的 `preapproved` 模块，负责该主题下的具体实现。
+      - `prompt.ts`：定义`WebFetchTool` 工具的提示词、模板或引导文案。
+      - `UI.tsx`：渲染`WebFetchTool` 工具的终端界面。
+      - `utils.ts`：提供`WebFetchTool` 工具的辅助函数与通用逻辑。
+      - `WebFetchTool.ts`：实现`WebFetchTool` 工具的核心工具逻辑。
+    - `WebSearchTool/`：`WebSearchTool` 工具目录，包含核心逻辑、提示词、UI 和辅助常量。
+      - `prompt.ts`：定义`WebSearchTool` 工具的提示词、模板或引导文案。
+      - `UI.tsx`：渲染`WebSearchTool` 工具的终端界面。
+      - `WebSearchTool.ts`：实现`WebSearchTool` 工具的核心工具逻辑。
+  - `tools.ts`：工具系统公共入口，汇总内置工具及其装配逻辑。
+  - `types/`：跨模块复用的数据类型。
+    - `command.ts`：类型定义模块中的 `command` 模块，负责该主题下的具体实现。
+    - `generated/`：生成代码与生成的协议类型。
+      - `events_mono/`：生成代码与生成的协议类型。
+        - `claude_code/`：生成代码与生成的协议类型。
+          - `v1/`：生成代码与生成的协议类型。
+            - `claude_code_internal_event.ts`：类型定义模块中的 `claude_code_internal_event` 模块，负责该主题下的具体实现。
+        - `common/`：生成代码与生成的协议类型。
+          - `v1/`：生成代码与生成的协议类型。
+            - `auth.ts`：处理类型定义模块中的认证、授权或凭证逻辑。
+        - `growthbook/`：生成代码与生成的协议类型。
+          - `v1/`：生成代码与生成的协议类型。
+            - `growthbook_experiment_event.ts`：类型定义模块中的 `growthbook_experiment_event` 模块，负责该主题下的具体实现。
+      - `google/`：生成代码与生成的协议类型。
+        - `protobuf/`：生成代码与生成的协议类型。
+          - `timestamp.ts`：类型定义模块中的 `timestamp` 模块，负责该主题下的具体实现。
+    - `hooks.ts`：实现类型定义模块相关的 hook 或 hook 辅助。
+    - `ids.ts`：类型定义模块中的 `ids` 模块，负责该主题下的具体实现。
+    - `logs.ts`：类型定义模块中的 `logs` 模块，负责该主题下的具体实现。
+    - `permissions.ts`：处理类型定义模块中的权限决策、说明或桥接逻辑。
+    - `plugin.ts`：处理类型定义模块中的插件加载、管理或校验逻辑。
+    - `textInputTypes.ts`：定义类型定义模块使用的类型、接口或结构。
+  - `upstreamproxy/`：上游代理与 relay 逻辑。
+    - `relay.ts`：`upstreamproxy` 模块中的 `relay` 模块，负责该主题下的具体实现。
+    - `upstreamproxy.ts`：`upstreamproxy` 模块中的 `upstreamproxy` 模块，负责该主题下的具体实现。
+  - `utils/`：通用基础设施、平台适配与辅助函数。
+    - `abortController.ts`：通用辅助模块中的 `abortController` 模块，负责该主题下的具体实现。
+    - `activityManager.ts`：管理通用辅助模块的生命周期、状态或协调流程。
+    - `advisor.ts`：通用辅助模块中的 `advisor` 模块，负责该主题下的具体实现。
+    - `agentContext.ts`：定义通用辅助模块的上下文对象或上下文组件。
+    - `agenticSessionSearch.ts`：处理通用辅助模块中的会话状态、会话数据或会话同步。
+    - `agentId.ts`：通用辅助模块中的 `agentId` 模块，负责该主题下的具体实现。
+    - `agentSwarmsEnabled.ts`：处理通用辅助模块中的团队协作或多 agent 协作逻辑。
+    - `analyzeContext.ts`：定义通用辅助模块的上下文对象或上下文组件。
+    - `ansiToPng.ts`：通用辅助模块中的 `ansiToPng` 模块，负责该主题下的具体实现。
+    - `ansiToSvg.ts`：通用辅助模块中的 `ansiToSvg` 模块，负责该主题下的具体实现。
+    - `api.ts`：通用辅助模块中的 `api` 模块，负责该主题下的具体实现。
+    - `apiPreconnect.ts`：通用辅助模块中的 `apiPreconnect` 模块，负责该主题下的具体实现。
+    - `appleTerminalBackup.ts`：通用辅助模块中的 `appleTerminalBackup` 模块，负责该主题下的具体实现。
+    - `argumentSubstitution.ts`：通用辅助模块中的 `argumentSubstitution` 模块，负责该主题下的具体实现。
+    - `array.ts`：通用辅助模块中的 `array` 模块，负责该主题下的具体实现。
+    - `asciicast.ts`：通用辅助模块中的 `asciicast` 模块，负责该主题下的具体实现。
+    - `attachments.ts`：通用辅助模块中的 `attachments` 模块，负责该主题下的具体实现。
+    - `attribution.ts`：通用辅助模块中的 `attribution` 模块，负责该主题下的具体实现。
+    - `auth.ts`：处理通用辅助模块中的认证、授权或凭证逻辑。
+    - `authFileDescriptor.ts`：处理通用辅助模块中的认证、授权或凭证逻辑。
+    - `authPortable.ts`：处理通用辅助模块中的认证、授权或凭证逻辑。
+    - `autoModeDenials.ts`：通用辅助模块中的 `autoModeDenials` 模块，负责该主题下的具体实现。
+    - `autoRunIssue.tsx`：渲染通用辅助模块中的 `autoRunIssue` 组件。
+    - `autoUpdater.ts`：负责通用辅助模块的更新流程。
+    - `aws.ts`：通用辅助模块中的 `aws` 模块，负责该主题下的具体实现。
+    - `awsAuthStatusManager.ts`：管理通用辅助模块的生命周期、状态或协调流程。
+    - `background/`：后台流程与远程后台辅助。
+      - `remote/`：`remote` 子目录。
+        - `preconditions.ts`：`background` 辅助模块中的 `preconditions` 模块，负责该主题下的具体实现。
+        - `remoteSession.ts`：处理`background` 辅助模块中的会话状态、会话数据或会话同步。
+    - `backgroundHousekeeping.ts`：通用辅助模块中的 `backgroundHousekeeping` 模块，负责该主题下的具体实现。
+    - `bash/`：Bash 解析、命令规格与补全逻辑。
+      - `ast.ts`：`bash` 辅助模块中的 `ast` 模块，负责该主题下的具体实现。
+      - `bashParser.ts`：负责`bash` 辅助模块的解析逻辑。
+      - `bashPipeCommand.ts`：处理`bash` 辅助模块中的 shell 执行、解析或安全约束。
+      - `commands.ts`：`bash` 辅助模块中的 `commands` 模块，负责该主题下的具体实现。
+      - `heredoc.ts`：`bash` 辅助模块中的 `heredoc` 模块，负责该主题下的具体实现。
+      - `ParsedCommand.ts`：负责`bash` 辅助模块的解析逻辑。
+      - `parser.ts`：负责`bash` 辅助模块的解析逻辑。
+      - `prefix.ts`：`bash` 辅助模块中的 `prefix` 模块，负责该主题下的具体实现。
+      - `registry.ts`：负责`bash` 辅助模块的注册表或注册流程。
+      - `shellCompletion.ts`：处理`bash` 辅助模块中的 shell 执行、解析或安全约束。
+      - `shellPrefix.ts`：处理`bash` 辅助模块中的 shell 执行、解析或安全约束。
+      - `shellQuote.ts`：处理`bash` 辅助模块中的 shell 执行、解析或安全约束。
+      - `shellQuoting.ts`：处理`bash` 辅助模块中的 shell 执行、解析或安全约束。
+      - `ShellSnapshot.ts`：处理`bash` 辅助模块中的 shell 执行、解析或安全约束。
+      - `specs/`：`specs` 子目录。
+        - `alias.ts`：`bash` 辅助模块中的 `alias` 模块，负责该主题下的具体实现。
+        - `index.ts`：导出`bash` 辅助模块的公共入口。
+        - `nohup.ts`：`bash` 辅助模块中的 `nohup` 模块，负责该主题下的具体实现。
+        - `pyright.ts`：`bash` 辅助模块中的 `pyright` 模块，负责该主题下的具体实现。
+        - `sleep.ts`：`bash` 辅助模块中的 `sleep` 模块，负责该主题下的具体实现。
+        - `srun.ts`：`bash` 辅助模块中的 `srun` 模块，负责该主题下的具体实现。
+        - `time.ts`：`bash` 辅助模块中的 `time` 模块，负责该主题下的具体实现。
+        - `timeout.ts`：`bash` 辅助模块中的 `timeout` 模块，负责该主题下的具体实现。
+      - `treeSitterAnalysis.ts`：`bash` 辅助模块中的 `treeSitterAnalysis` 模块，负责该主题下的具体实现。
+    - `betas.ts`：通用辅助模块中的 `betas` 模块，负责该主题下的具体实现。
+    - `billing.ts`：通用辅助模块中的 `billing` 模块，负责该主题下的具体实现。
+    - `binaryCheck.ts`：通用辅助模块中的 `binaryCheck` 模块，负责该主题下的具体实现。
+    - `browser.ts`：通用辅助模块中的 `browser` 模块，负责该主题下的具体实现。
+    - `bufferedWriter.ts`：通用辅助模块中的 `bufferedWriter` 模块，负责该主题下的具体实现。
+    - `bundledMode.ts`：定义通用辅助模块中的模式枚举或模式切换逻辑。
+    - `caCerts.ts`：通用辅助模块中的 `caCerts` 模块，负责该主题下的具体实现。
+    - `caCertsConfig.ts`：定义通用辅助模块的配置项与默认值。
+    - `cachePaths.ts`：通用辅助模块中的 `cachePaths` 模块，负责该主题下的具体实现。
+    - `CircularBuffer.ts`：通用辅助模块中的 `CircularBuffer` 模块，负责该主题下的具体实现。
+    - `classifierApprovals.ts`：通用辅助模块中的 `classifierApprovals` 模块，负责该主题下的具体实现。
+    - `classifierApprovalsHook.ts`：实现通用辅助模块相关的 hook 或 hook 辅助。
+    - `claudeCodeHints.ts`：通用辅助模块中的 `claudeCodeHints` 模块，负责该主题下的具体实现。
+    - `claudeDesktop.ts`：通用辅助模块中的 `claudeDesktop` 模块，负责该主题下的具体实现。
+    - `claudeInChrome/`：Claude in Chrome 集成逻辑。
+      - `chromeNativeHost.ts`：`claudeInChrome` 辅助模块中的 `chromeNativeHost` 模块，负责该主题下的具体实现。
+      - `common.ts`：`claudeInChrome` 辅助模块中的 `common` 模块，负责该主题下的具体实现。
+      - `mcpServer.ts`：实现`claudeInChrome` 辅助模块的服务端或本地服务封装。
+      - `prompt.ts`：定义`claudeInChrome` 辅助模块的提示词、模板或引导文案。
+      - `setup.ts`：`claudeInChrome` 辅助模块中的 `setup` 模块，负责该主题下的具体实现。
+      - `setupPortable.ts`：`claudeInChrome` 辅助模块中的 `setupPortable` 模块，负责该主题下的具体实现。
+      - `toolRendering.tsx`：渲染`claudeInChrome` 辅助模块中的 `toolRendering` 组件。
+    - `claudemd.ts`：通用辅助模块中的 `claudemd` 模块，负责该主题下的具体实现。
+    - `cleanup.ts`：通用辅助模块中的 `cleanup` 模块，负责该主题下的具体实现。
+    - `cleanupRegistry.ts`：负责通用辅助模块的注册表或注册流程。
+    - `cliArgs.ts`：通用辅助模块中的 `cliArgs` 模块，负责该主题下的具体实现。
+    - `cliHighlight.ts`：通用辅助模块中的 `cliHighlight` 模块，负责该主题下的具体实现。
+    - `codeIndexing.ts`：通用辅助模块中的 `codeIndexing` 模块，负责该主题下的具体实现。
+    - `collapseBackgroundBashNotifications.ts`：处理通用辅助模块中的 shell 执行、解析或安全约束。
+    - `collapseHookSummaries.ts`：实现通用辅助模块相关的 hook 或 hook 辅助。
+    - `collapseReadSearch.ts`：处理通用辅助模块中的搜索、过滤或召回逻辑。
+    - `collapseTeammateShutdowns.ts`：处理通用辅助模块中的团队协作或多 agent 协作逻辑。
+    - `combinedAbortSignal.ts`：通用辅助模块中的 `combinedAbortSignal` 模块，负责该主题下的具体实现。
+    - `commandLifecycle.ts`：通用辅助模块中的 `commandLifecycle` 模块，负责该主题下的具体实现。
+    - `commitAttribution.ts`：通用辅助模块中的 `commitAttribution` 模块，负责该主题下的具体实现。
+    - `completionCache.ts`：通用辅助模块中的 `completionCache` 模块，负责该主题下的具体实现。
+    - `computerUse/`：computer use 原生桥接与运行控制。
+      - `appNames.ts`：`computerUse` 辅助模块中的 `appNames` 模块，负责该主题下的具体实现。
+      - `cleanup.ts`：`computerUse` 辅助模块中的 `cleanup` 模块，负责该主题下的具体实现。
+      - `common.ts`：`computerUse` 辅助模块中的 `common` 模块，负责该主题下的具体实现。
+      - `computerUseLock.ts`：`computerUse` 辅助模块中的 `computerUseLock` 模块，负责该主题下的具体实现。
+      - `drainRunLoop.ts`：`computerUse` 辅助模块中的 `drainRunLoop` 模块，负责该主题下的具体实现。
+      - `escHotkey.ts`：`computerUse` 辅助模块中的 `escHotkey` 模块，负责该主题下的具体实现。
+      - `executor.ts`：`computerUse` 辅助模块中的 `executor` 模块，负责该主题下的具体实现。
+      - `gates.ts`：`computerUse` 辅助模块中的 `gates` 模块，负责该主题下的具体实现。
+      - `hostAdapter.ts`：作为`computerUse` 辅助模块与外部能力之间的适配层。
+      - `inputLoader.ts`：负责`computerUse` 辅助模块的加载、发现或延迟初始化。
+      - `mcpServer.ts`：实现`computerUse` 辅助模块的服务端或本地服务封装。
+      - `setup.ts`：`computerUse` 辅助模块中的 `setup` 模块，负责该主题下的具体实现。
+      - `swiftLoader.ts`：负责`computerUse` 辅助模块的加载、发现或延迟初始化。
+      - `toolRendering.tsx`：渲染`computerUse` 辅助模块中的 `toolRendering` 组件。
+      - `wrapper.tsx`：渲染`computerUse` 辅助模块中的 `wrapper` 组件。
+    - `concurrentSessions.ts`：处理通用辅助模块中的会话状态、会话数据或会话同步。
+    - `config.ts`：定义通用辅助模块的配置项与默认值。
+    - `configConstants.ts`：集中定义通用辅助模块相关常量。
+    - `contentArray.ts`：通用辅助模块中的 `contentArray` 模块，负责该主题下的具体实现。
+    - `context.ts`：通用辅助模块中的 `context` 模块，负责该主题下的具体实现。
+    - `contextAnalysis.ts`：通用辅助模块中的 `contextAnalysis` 模块，负责该主题下的具体实现。
+    - `contextSuggestions.ts`：通用辅助模块中的 `contextSuggestions` 模块，负责该主题下的具体实现。
+    - `controlMessageCompat.ts`：处理通用辅助模块中的消息构造、映射或渲染。
+    - `conversationRecovery.ts`：通用辅助模块中的 `conversationRecovery` 模块，负责该主题下的具体实现。
+    - `cron.ts`：处理通用辅助模块中的 cron 调度或计划任务逻辑。
+    - `cronJitterConfig.ts`：定义通用辅助模块的配置项与默认值。
+    - `cronScheduler.ts`：处理通用辅助模块中的 cron 调度或计划任务逻辑。
+    - `cronTasks.ts`：处理通用辅助模块中的 cron 调度或计划任务逻辑。
+    - `cronTasksLock.ts`：处理通用辅助模块中的 cron 调度或计划任务逻辑。
+    - `crossProjectResume.ts`：通用辅助模块中的 `crossProjectResume` 模块，负责该主题下的具体实现。
+    - `crypto.ts`：通用辅助模块中的 `crypto` 模块，负责该主题下的具体实现。
+    - `Cursor.ts`：通用辅助模块中的 `Cursor` 模块，负责该主题下的具体实现。
+    - `cwd.ts`：通用辅助模块中的 `cwd` 模块，负责该主题下的具体实现。
+    - `debug.ts`：通用辅助模块中的 `debug` 模块，负责该主题下的具体实现。
+    - `debugFilter.ts`：通用辅助模块中的 `debugFilter` 模块，负责该主题下的具体实现。
+    - `deepLink/`：深链解析、注册与终端拉起。
+      - `banner.ts`：`deepLink` 辅助模块中的 `banner` 模块，负责该主题下的具体实现。
+      - `parseDeepLink.ts`：负责`deepLink` 辅助模块的解析逻辑。
+      - `protocolHandler.ts`：`deepLink` 辅助模块中的 `protocolHandler` 模块，负责该主题下的具体实现。
+      - `registerProtocol.ts`：负责`deepLink` 辅助模块的注册表或注册流程。
+      - `terminalLauncher.ts`：`deepLink` 辅助模块中的 `terminalLauncher` 模块，负责该主题下的具体实现。
+      - `terminalPreference.ts`：`deepLink` 辅助模块中的 `terminalPreference` 模块，负责该主题下的具体实现。
+    - `desktopDeepLink.ts`：通用辅助模块中的 `desktopDeepLink` 模块，负责该主题下的具体实现。
+    - `detectRepository.ts`：通用辅助模块中的 `detectRepository` 模块，负责该主题下的具体实现。
+    - `diagLogs.ts`：通用辅助模块中的 `diagLogs` 模块，负责该主题下的具体实现。
+    - `diff.ts`：处理通用辅助模块中的 diff 计算、展示或格式化。
+    - `directMemberMessage.ts`：渲染通用辅助模块中的消息节点。
+    - `displayTags.ts`：通用辅助模块中的 `displayTags` 模块，负责该主题下的具体实现。
+    - `doctorContextWarnings.ts`：通用辅助模块中的 `doctorContextWarnings` 模块，负责该主题下的具体实现。
+    - `doctorDiagnostic.ts`：通用辅助模块中的 `doctorDiagnostic` 模块，负责该主题下的具体实现。
+    - `dxt/`：dxt 打包/压缩辅助。
+      - `helpers.ts`：提供`dxt` 辅助模块的辅助函数与通用逻辑。
+      - `zip.ts`：`dxt` 辅助模块中的 `zip` 模块，负责该主题下的具体实现。
+    - `earlyInput.ts`：通用辅助模块中的 `earlyInput` 模块，负责该主题下的具体实现。
+    - `editor.ts`：通用辅助模块中的 `editor` 模块，负责该主题下的具体实现。
+    - `effort.ts`：通用辅助模块中的 `effort` 模块，负责该主题下的具体实现。
+    - `embeddedTools.ts`：通用辅助模块中的 `embeddedTools` 模块，负责该主题下的具体实现。
+    - `env.ts`：通用辅助模块中的 `env` 模块，负责该主题下的具体实现。
+    - `envDynamic.ts`：通用辅助模块中的 `envDynamic` 模块，负责该主题下的具体实现。
+    - `envUtils.ts`：提供通用辅助模块的辅助函数与通用逻辑。
+    - `envValidation.ts`：负责通用辅助模块的校验与约束检查。
+    - `errorLogSink.ts`：通用辅助模块中的 `errorLogSink` 模块，负责该主题下的具体实现。
+    - `errors.ts`：通用辅助模块中的 `errors` 模块，负责该主题下的具体实现。
+    - `exampleCommands.ts`：通用辅助模块中的 `exampleCommands` 模块，负责该主题下的具体实现。
+    - `execFileNoThrow.ts`：通用辅助模块中的 `execFileNoThrow` 模块，负责该主题下的具体实现。
+    - `execFileNoThrowPortable.ts`：通用辅助模块中的 `execFileNoThrowPortable` 模块，负责该主题下的具体实现。
+    - `execSyncWrapper.ts`：封装通用辅助模块的外层边界或包装逻辑。
+    - `exportRenderer.tsx`：渲染通用辅助模块中的 `exportRenderer` 组件。
+    - `extraUsage.ts`：通用辅助模块中的 `extraUsage` 模块，负责该主题下的具体实现。
+    - `fastMode.ts`：定义通用辅助模块中的模式枚举或模式切换逻辑。
+    - `file.ts`：通用辅助模块中的 `file` 模块，负责该主题下的具体实现。
+    - `fileHistory.ts`：处理通用辅助模块中的历史记录与回放。
+    - `fileOperationAnalytics.ts`：通用辅助模块中的 `fileOperationAnalytics` 模块，负责该主题下的具体实现。
+    - `filePersistence/`：文件级持久化与输出扫描。
+      - `filePersistence.ts`：`filePersistence` 辅助模块中的 `filePersistence` 模块，负责该主题下的具体实现。
+      - `outputsScanner.ts`：处理`filePersistence` 辅助模块中的输出格式化或输出落盘逻辑。
+    - `fileRead.ts`：通用辅助模块中的 `fileRead` 模块，负责该主题下的具体实现。
+    - `fileReadCache.ts`：通用辅助模块中的 `fileReadCache` 模块，负责该主题下的具体实现。
+    - `fileStateCache.ts`：通用辅助模块中的 `fileStateCache` 模块，负责该主题下的具体实现。
+    - `findExecutable.ts`：通用辅助模块中的 `findExecutable` 模块，负责该主题下的具体实现。
+    - `fingerprint.ts`：通用辅助模块中的 `fingerprint` 模块，负责该主题下的具体实现。
+    - `forkedAgent.ts`：通用辅助模块中的 `forkedAgent` 模块，负责该主题下的具体实现。
+    - `format.ts`：通用辅助模块中的 `format` 模块，负责该主题下的具体实现。
+    - `formatBriefTimestamp.ts`：通用辅助模块中的 `formatBriefTimestamp` 模块，负责该主题下的具体实现。
+    - `fpsTracker.ts`：通用辅助模块中的 `fpsTracker` 模块，负责该主题下的具体实现。
+    - `frontmatterParser.ts`：负责通用辅助模块的解析逻辑。
+    - `fsOperations.ts`：通用辅助模块中的 `fsOperations` 模块，负责该主题下的具体实现。
+    - `fullscreen.ts`：通用辅助模块中的 `fullscreen` 模块，负责该主题下的具体实现。
+    - `generatedFiles.ts`：通用辅助模块中的 `generatedFiles` 模块，负责该主题下的具体实现。
+    - `generators.ts`：通用辅助模块中的 `generators` 模块，负责该主题下的具体实现。
+    - `genericProcessUtils.ts`：提供通用辅助模块的辅助函数与通用逻辑。
+    - `getWorktreePaths.ts`：通用辅助模块中的 `getWorktreePaths` 模块，负责该主题下的具体实现。
+    - `getWorktreePathsPortable.ts`：通用辅助模块中的 `getWorktreePathsPortable` 模块，负责该主题下的具体实现。
+    - `ghPrStatus.ts`：计算、展示或同步通用辅助模块状态。
+    - `git/`：Git 读写、解析与文件系统适配。
+      - `gitConfigParser.ts`：负责`git` 辅助模块的解析逻辑。
+      - `gitFilesystem.ts`：处理`git` 辅助模块中的 Git 集成逻辑。
+      - `gitignore.ts`：处理`git` 辅助模块中的 Git 集成逻辑。
+    - `git.ts`：处理通用辅助模块中的 Git 集成逻辑。
+    - `gitDiff.ts`：处理通用辅助模块中的 diff 计算、展示或格式化。
+    - `github/`：GitHub 集成辅助。
+      - `ghAuthStatus.ts`：计算、展示或同步`github` 辅助模块状态。
+    - `githubRepoPathMapping.ts`：处理通用辅助模块中的 Git 集成逻辑。
+    - `gitSettings.ts`：处理通用辅助模块中的 Git 集成逻辑。
+    - `glob.ts`：通用辅助模块中的 `glob` 模块，负责该主题下的具体实现。
+    - `gracefulShutdown.ts`：通用辅助模块中的 `gracefulShutdown` 模块，负责该主题下的具体实现。
+    - `groupToolUses.ts`：通用辅助模块中的 `groupToolUses` 模块，负责该主题下的具体实现。
+    - `handlePromptSubmit.ts`：定义通用辅助模块的提示词、模板或引导文案。
+    - `hash.ts`：通用辅助模块中的 `hash` 模块，负责该主题下的具体实现。
+    - `headlessProfiler.ts`：通用辅助模块中的 `headlessProfiler` 模块，负责该主题下的具体实现。
+    - `heapDumpService.ts`：通用辅助模块中的 `heapDumpService` 模块，负责该主题下的具体实现。
+    - `heatmap.ts`：通用辅助模块中的 `heatmap` 模块，负责该主题下的具体实现。
+    - `highlightMatch.tsx`：渲染通用辅助模块中的 `highlightMatch` 组件。
+    - `hooks/`：hook 执行、注册与 hook 配置管理。
+      - `apiQueryHookHelper.ts`：提供`hooks` 辅助模块的辅助函数与通用逻辑。
+      - `AsyncHookRegistry.ts`：负责`hooks` 辅助模块的注册表或注册流程。
+      - `execAgentHook.ts`：实现`hooks` 辅助模块相关的 hook 或 hook 辅助。
+      - `execHttpHook.ts`：实现`hooks` 辅助模块相关的 hook 或 hook 辅助。
+      - `execPromptHook.ts`：实现`hooks` 辅助模块相关的 hook 或 hook 辅助。
+      - `fileChangedWatcher.ts`：`hooks` 辅助模块中的 `fileChangedWatcher` 模块，负责该主题下的具体实现。
+      - `hookEvents.ts`：实现`hooks` 辅助模块相关的 hook 或 hook 辅助。
+      - `hookHelpers.ts`：提供`hooks` 辅助模块的辅助函数与通用逻辑。
+      - `hooksConfigManager.ts`：管理`hooks` 辅助模块的生命周期、状态或协调流程。
+      - `hooksConfigSnapshot.ts`：实现`hooks` 辅助模块相关的 hook 或 hook 辅助。
+      - `hooksSettings.ts`：实现`hooks` 辅助模块相关的 hook 或 hook 辅助。
+      - `postSamplingHooks.ts`：实现`hooks` 辅助模块相关的 hook 或 hook 辅助。
+      - `registerFrontmatterHooks.ts`：负责`hooks` 辅助模块的注册表或注册流程。
+      - `registerSkillHooks.ts`：负责`hooks` 辅助模块的注册表或注册流程。
+      - `sessionHooks.ts`：实现`hooks` 辅助模块相关的 hook 或 hook 辅助。
+      - `skillImprovement.ts`：`hooks` 辅助模块中的 `skillImprovement` 模块，负责该主题下的具体实现。
+      - `ssrfGuard.ts`：`hooks` 辅助模块中的 `ssrfGuard` 模块，负责该主题下的具体实现。
+    - `hooks.ts`：实现通用辅助模块相关的 hook 或 hook 辅助。
+    - `horizontalScroll.ts`：通用辅助模块中的 `horizontalScroll` 模块，负责该主题下的具体实现。
+    - `http.ts`：通用辅助模块中的 `http` 模块，负责该主题下的具体实现。
+    - `hyperlink.ts`：通用辅助模块中的 `hyperlink` 模块，负责该主题下的具体实现。
+    - `ide.ts`：通用辅助模块中的 `ide` 模块，负责该主题下的具体实现。
+    - `idePathConversion.ts`：通用辅助模块中的 `idePathConversion` 模块，负责该主题下的具体实现。
+    - `idleTimeout.ts`：通用辅助模块中的 `idleTimeout` 模块，负责该主题下的具体实现。
+    - `imagePaste.ts`：通用辅助模块中的 `imagePaste` 模块，负责该主题下的具体实现。
+    - `imageResizer.ts`：通用辅助模块中的 `imageResizer` 模块，负责该主题下的具体实现。
+    - `imageStore.ts`：维护通用辅助模块的数据存储或状态仓库。
+    - `imageValidation.ts`：负责通用辅助模块的校验与约束检查。
+    - `immediateCommand.ts`：通用辅助模块中的 `immediateCommand` 模块，负责该主题下的具体实现。
+    - `ink.ts`：通用辅助模块中的 `ink` 模块，负责该主题下的具体实现。
+    - `inProcessTeammateHelpers.ts`：提供通用辅助模块的辅助函数与通用逻辑。
+    - `intl.ts`：通用辅助模块中的 `intl` 模块，负责该主题下的具体实现。
+    - `iTermBackup.ts`：通用辅助模块中的 `iTermBackup` 模块，负责该主题下的具体实现。
+    - `jetbrains.ts`：通用辅助模块中的 `jetbrains` 模块，负责该主题下的具体实现。
+    - `json.ts`：通用辅助模块中的 `json` 模块，负责该主题下的具体实现。
+    - `jsonRead.ts`：通用辅助模块中的 `jsonRead` 模块，负责该主题下的具体实现。
+    - `keyboardShortcuts.ts`：通用辅助模块中的 `keyboardShortcuts` 模块，负责该主题下的具体实现。
+    - `lazySchema.ts`：定义通用辅助模块的数据 schema 或结构化约束。
+    - `listSessionsImpl.ts`：处理通用辅助模块中的会话状态、会话数据或会话同步。
+    - `localInstaller.ts`：通用辅助模块中的 `localInstaller` 模块，负责该主题下的具体实现。
+    - `lockfile.ts`：通用辅助模块中的 `lockfile` 模块，负责该主题下的具体实现。
+    - `log.ts`：通用辅助模块中的 `log` 模块，负责该主题下的具体实现。
+    - `logoV2Utils.ts`：提供通用辅助模块的辅助函数与通用逻辑。
+    - `mailbox.ts`：通用辅助模块中的 `mailbox` 模块，负责该主题下的具体实现。
+    - `managedEnv.ts`：通用辅助模块中的 `managedEnv` 模块，负责该主题下的具体实现。
+    - `managedEnvConstants.ts`：集中定义通用辅助模块相关常量。
+    - `markdown.ts`：通用辅助模块中的 `markdown` 模块，负责该主题下的具体实现。
+    - `markdownConfigLoader.ts`：负责通用辅助模块的加载、发现或延迟初始化。
+    - `mcp/`：MCP 辅助解析、验证和输出持久化。
+      - `dateTimeParser.ts`：负责`mcp` 辅助模块的解析逻辑。
+      - `elicitationValidation.ts`：负责`mcp` 辅助模块的校验与约束检查。
+    - `mcpInstructionsDelta.ts`：处理通用辅助模块中的 MCP 集成逻辑。
+    - `mcpOutputStorage.ts`：处理通用辅助模块中的 MCP 集成逻辑。
+    - `mcpValidation.ts`：负责通用辅助模块的校验与约束检查。
+    - `mcpWebSocketTransport.ts`：实现通用辅助模块的传输层。
+    - `memoize.ts`：通用辅助模块中的 `memoize` 模块，负责该主题下的具体实现。
+    - `memory/`：memory 版本与类型辅助。
+      - `types.ts`：定义`memory` 辅助模块使用的类型、接口或结构。
+      - `versions.ts`：`memory` 辅助模块中的 `versions` 模块，负责该主题下的具体实现。
+    - `memoryFileDetection.ts`：处理通用辅助模块中的 memory 读取、写入或同步逻辑。
+    - `messagePredicates.ts`：处理通用辅助模块中的消息构造、映射或渲染。
+    - `messageQueueManager.ts`：管理通用辅助模块的生命周期、状态或协调流程。
+    - `messages/`：消息映射与系统初始化消息。
+      - `mappers.ts`：`messages` 辅助模块中的 `mappers` 模块，负责该主题下的具体实现。
+      - `systemInit.ts`：`messages` 辅助模块中的 `systemInit` 模块，负责该主题下的具体实现。
+    - `messages.ts`：处理通用辅助模块中的消息构造、映射或渲染。
+    - `model/`：模型配置、能力、别名和校验。
+      - `agent.ts`：`model` 辅助模块中的 `agent` 模块，负责该主题下的具体实现。
+      - `aliases.ts`：`model` 辅助模块中的 `aliases` 模块，负责该主题下的具体实现。
+      - `antModels.ts`：处理`model` 辅助模块中的模型选择、模型能力或模型映射。
+      - `bedrock.ts`：`model` 辅助模块中的 `bedrock` 模块，负责该主题下的具体实现。
+      - `check1mAccess.ts`：`model` 辅助模块中的 `check1mAccess` 模块，负责该主题下的具体实现。
+      - `configs.ts`：`model` 辅助模块中的 `configs` 模块，负责该主题下的具体实现。
+      - `contextWindowUpgradeCheck.ts`：`model` 辅助模块中的 `contextWindowUpgradeCheck` 模块，负责该主题下的具体实现。
+      - `deprecation.ts`：`model` 辅助模块中的 `deprecation` 模块，负责该主题下的具体实现。
+      - `model.ts`：处理`model` 辅助模块中的模型选择、模型能力或模型映射。
+      - `modelAllowlist.ts`：处理`model` 辅助模块中的模型选择、模型能力或模型映射。
+      - `modelCapabilities.ts`：处理`model` 辅助模块中的模型选择、模型能力或模型映射。
+      - `modelOptions.ts`：处理`model` 辅助模块中的模型选择、模型能力或模型映射。
+      - `modelStrings.ts`：处理`model` 辅助模块中的模型选择、模型能力或模型映射。
+      - `modelSupportOverrides.ts`：处理`model` 辅助模块中的模型选择、模型能力或模型映射。
+      - `providers.ts`：`model` 辅助模块中的 `providers` 模块，负责该主题下的具体实现。
+      - `validateModel.ts`：负责`model` 辅助模块的校验与约束检查。
+    - `modelCost.ts`：处理通用辅助模块中的模型选择、模型能力或模型映射。
+    - `modifiers.ts`：通用辅助模块中的 `modifiers` 模块，负责该主题下的具体实现。
+    - `mtls.ts`：通用辅助模块中的 `mtls` 模块，负责该主题下的具体实现。
+    - `nativeInstaller/`：原生依赖下载安装与锁管理。
+      - `download.ts`：`nativeInstaller` 辅助模块中的 `download` 模块，负责该主题下的具体实现。
+      - `index.ts`：导出`nativeInstaller` 辅助模块的公共入口。
+      - `installer.ts`：`nativeInstaller` 辅助模块中的 `installer` 模块，负责该主题下的具体实现。
+      - `packageManagers.ts`：`nativeInstaller` 辅助模块中的 `packageManagers` 模块，负责该主题下的具体实现。
+      - `pidLock.ts`：`nativeInstaller` 辅助模块中的 `pidLock` 模块，负责该主题下的具体实现。
+    - `notebook.ts`：通用辅助模块中的 `notebook` 模块，负责该主题下的具体实现。
+    - `objectGroupBy.ts`：通用辅助模块中的 `objectGroupBy` 模块，负责该主题下的具体实现。
+    - `pasteStore.ts`：维护通用辅助模块的数据存储或状态仓库。
+    - `path.ts`：通用辅助模块中的 `path` 模块，负责该主题下的具体实现。
+    - `pdf.ts`：通用辅助模块中的 `pdf` 模块，负责该主题下的具体实现。
+    - `pdfUtils.ts`：提供通用辅助模块的辅助函数与通用逻辑。
+    - `peerAddress.ts`：通用辅助模块中的 `peerAddress` 模块，负责该主题下的具体实现。
+    - `permissions/`：权限规则、分类器和权限流转。
+      - `autoModeState.ts`：维护`permissions` 辅助模块相关状态。
+      - `bashClassifier.ts`：处理`permissions` 辅助模块中的 shell 执行、解析或安全约束。
+      - `bypassPermissionsKillswitch.ts`：处理`permissions` 辅助模块中的权限决策、说明或桥接逻辑。
+      - `classifierDecision.ts`：`permissions` 辅助模块中的 `classifierDecision` 模块，负责该主题下的具体实现。
+      - `classifierShared.ts`：`permissions` 辅助模块中的 `classifierShared` 模块，负责该主题下的具体实现。
+      - `dangerousPatterns.ts`：`permissions` 辅助模块中的 `dangerousPatterns` 模块，负责该主题下的具体实现。
+      - `denialTracking.ts`：`permissions` 辅助模块中的 `denialTracking` 模块，负责该主题下的具体实现。
+      - `filesystem.ts`：`permissions` 辅助模块中的 `filesystem` 模块，负责该主题下的具体实现。
+      - `getNextPermissionMode.ts`：定义`permissions` 辅助模块中的模式枚举或模式切换逻辑。
+      - `pathValidation.ts`：负责`permissions` 辅助模块的校验与约束检查。
+      - `permissionExplainer.ts`：处理`permissions` 辅助模块中的权限决策、说明或桥接逻辑。
+      - `PermissionMode.ts`：定义`permissions` 辅助模块中的模式枚举或模式切换逻辑。
+      - `PermissionPromptToolResultSchema.ts`：定义`permissions` 辅助模块的数据 schema 或结构化约束。
+      - `PermissionResult.ts`：处理`permissions` 辅助模块中的权限决策、说明或桥接逻辑。
+      - `PermissionRule.ts`：处理`permissions` 辅助模块中的权限决策、说明或桥接逻辑。
+      - `permissionRuleParser.ts`：负责`permissions` 辅助模块的解析逻辑。
+      - `permissions.ts`：处理`permissions` 辅助模块中的权限决策、说明或桥接逻辑。
+      - `permissionSetup.ts`：处理`permissions` 辅助模块中的权限决策、说明或桥接逻辑。
+      - `permissionsLoader.ts`：负责`permissions` 辅助模块的加载、发现或延迟初始化。
+      - `PermissionUpdate.ts`：处理`permissions` 辅助模块中的权限决策、说明或桥接逻辑。
+      - `PermissionUpdateSchema.ts`：定义`permissions` 辅助模块的数据 schema 或结构化约束。
+      - `shadowedRuleDetection.ts`：`permissions` 辅助模块中的 `shadowedRuleDetection` 模块，负责该主题下的具体实现。
+      - `shellRuleMatching.ts`：处理`permissions` 辅助模块中的 shell 执行、解析或安全约束。
+      - `yoloClassifier.ts`：`permissions` 辅助模块中的 `yoloClassifier` 模块，负责该主题下的具体实现。
+    - `planModeV2.ts`：通用辅助模块中的 `planModeV2` 模块，负责该主题下的具体实现。
+    - `plans.ts`：通用辅助模块中的 `plans` 模块，负责该主题下的具体实现。
+    - `platform.ts`：通用辅助模块中的 `platform` 模块，负责该主题下的具体实现。
+    - `plugins/`：插件加载、校验、市场、安装与更新。
+      - `addDirPluginSettings.ts`：处理`plugins` 辅助模块中的插件加载、管理或校验逻辑。
+      - `cacheUtils.ts`：提供`plugins` 辅助模块的辅助函数与通用逻辑。
+      - `dependencyResolver.ts`：`plugins` 辅助模块中的 `dependencyResolver` 模块，负责该主题下的具体实现。
+      - `fetchTelemetry.ts`：处理`plugins` 辅助模块中的遥测、Tracing 或埋点逻辑。
+      - `gitAvailability.ts`：处理`plugins` 辅助模块中的 Git 集成逻辑。
+      - `headlessPluginInstall.ts`：处理`plugins` 辅助模块中的插件加载、管理或校验逻辑。
+      - `hintRecommendation.ts`：`plugins` 辅助模块中的 `hintRecommendation` 模块，负责该主题下的具体实现。
+      - `installCounts.ts`：`plugins` 辅助模块中的 `installCounts` 模块，负责该主题下的具体实现。
+      - `installedPluginsManager.ts`：管理`plugins` 辅助模块的生命周期、状态或协调流程。
+      - `loadPluginAgents.ts`：负责`plugins` 辅助模块的加载、发现或延迟初始化。
+      - `loadPluginCommands.ts`：负责`plugins` 辅助模块的加载、发现或延迟初始化。
+      - `loadPluginHooks.ts`：负责`plugins` 辅助模块的加载、发现或延迟初始化。
+      - `loadPluginOutputStyles.ts`：负责`plugins` 辅助模块的加载、发现或延迟初始化。
+      - `lspPluginIntegration.ts`：处理`plugins` 辅助模块中的插件加载、管理或校验逻辑。
+      - `lspRecommendation.ts`：`plugins` 辅助模块中的 `lspRecommendation` 模块，负责该主题下的具体实现。
+      - `managedPlugins.ts`：处理`plugins` 辅助模块中的插件加载、管理或校验逻辑。
+      - `marketplaceHelpers.ts`：提供`plugins` 辅助模块的辅助函数与通用逻辑。
+      - `marketplaceManager.ts`：管理`plugins` 辅助模块的生命周期、状态或协调流程。
+      - `mcpbHandler.ts`：处理`plugins` 辅助模块中的 MCP 集成逻辑。
+      - `mcpPluginIntegration.ts`：处理`plugins` 辅助模块中的插件加载、管理或校验逻辑。
+      - `officialMarketplace.ts`：`plugins` 辅助模块中的 `officialMarketplace` 模块，负责该主题下的具体实现。
+      - `officialMarketplaceGcs.ts`：`plugins` 辅助模块中的 `officialMarketplaceGcs` 模块，负责该主题下的具体实现。
+      - `officialMarketplaceStartupCheck.ts`：`plugins` 辅助模块中的 `officialMarketplaceStartupCheck` 模块，负责该主题下的具体实现。
+      - `orphanedPluginFilter.ts`：处理`plugins` 辅助模块中的插件加载、管理或校验逻辑。
+      - `parseMarketplaceInput.ts`：负责`plugins` 辅助模块的解析逻辑。
+      - `performStartupChecks.tsx`：渲染`plugins` 辅助模块中的 `performStartupChecks` 组件。
+      - `pluginAutoupdate.ts`：处理`plugins` 辅助模块中的插件加载、管理或校验逻辑。
+      - `pluginBlocklist.ts`：处理`plugins` 辅助模块中的插件加载、管理或校验逻辑。
+      - `pluginDirectories.ts`：处理`plugins` 辅助模块中的插件加载、管理或校验逻辑。
+      - `pluginFlagging.ts`：处理`plugins` 辅助模块中的插件加载、管理或校验逻辑。
+      - `pluginIdentifier.ts`：处理`plugins` 辅助模块中的插件加载、管理或校验逻辑。
+      - `pluginInstallationHelpers.ts`：提供`plugins` 辅助模块的辅助函数与通用逻辑。
+      - `pluginLoader.ts`：负责`plugins` 辅助模块的加载、发现或延迟初始化。
+      - `pluginOptionsStorage.ts`：处理`plugins` 辅助模块中的插件加载、管理或校验逻辑。
+      - `pluginPolicy.ts`：处理`plugins` 辅助模块中的插件加载、管理或校验逻辑。
+      - `pluginStartupCheck.ts`：处理`plugins` 辅助模块中的插件加载、管理或校验逻辑。
+      - `pluginVersioning.ts`：处理`plugins` 辅助模块中的插件加载、管理或校验逻辑。
+      - `reconciler.ts`：`plugins` 辅助模块中的 `reconciler` 模块，负责该主题下的具体实现。
+      - `refresh.ts`：`plugins` 辅助模块中的 `refresh` 模块，负责该主题下的具体实现。
+      - `schemas.ts`：定义`plugins` 辅助模块的数据 schema 或结构化约束。
+      - `validatePlugin.ts`：负责`plugins` 辅助模块的校验与约束检查。
+      - `walkPluginMarkdown.ts`：处理`plugins` 辅助模块中的插件加载、管理或校验逻辑。
+      - `zipCache.ts`：`plugins` 辅助模块中的 `zipCache` 模块，负责该主题下的具体实现。
+      - `zipCacheAdapters.ts`：`plugins` 辅助模块中的 `zipCacheAdapters` 模块，负责该主题下的具体实现。
+    - `powershell/`：PowerShell 解析与静态前缀规则。
+      - `dangerousCmdlets.ts`：`powershell` 辅助模块中的 `dangerousCmdlets` 模块，负责该主题下的具体实现。
+      - `parser.ts`：负责`powershell` 辅助模块的解析逻辑。
+      - `staticPrefix.ts`：`powershell` 辅助模块中的 `staticPrefix` 模块，负责该主题下的具体实现。
+    - `preflightChecks.tsx`：渲染通用辅助模块中的 `preflightChecks` 组件。
+    - `privacyLevel.ts`：通用辅助模块中的 `privacyLevel` 模块，负责该主题下的具体实现。
+    - `process.ts`：通用辅助模块中的 `process` 模块，负责该主题下的具体实现。
+    - `processUserInput/`：用户输入分流与命令/文本处理。
+      - `processBashCommand.tsx`：处理`processUserInput` 辅助模块中的 shell 执行、解析或安全约束。
+      - `processSlashCommand.tsx`：渲染`processUserInput` 辅助模块中的 `processSlashCommand` 组件。
+      - `processTextPrompt.ts`：定义`processUserInput` 辅助模块的提示词、模板或引导文案。
+      - `processUserInput.ts`：`processUserInput` 辅助模块中的 `processUserInput` 模块，负责该主题下的具体实现。
+    - `profilerBase.ts`：通用辅助模块中的 `profilerBase` 模块，负责该主题下的具体实现。
+    - `promptCategory.ts`：通用辅助模块中的 `promptCategory` 模块，负责该主题下的具体实现。
+    - `promptEditor.ts`：通用辅助模块中的 `promptEditor` 模块，负责该主题下的具体实现。
+    - `promptShellExecution.ts`：定义通用辅助模块的提示词、模板或引导文案。
+    - `proxy.ts`：通用辅助模块中的 `proxy` 模块，负责该主题下的具体实现。
+    - `queryContext.ts`：定义通用辅助模块的上下文对象或上下文组件。
+    - `QueryGuard.ts`：通用辅助模块中的 `QueryGuard` 模块，负责该主题下的具体实现。
+    - `queryHelpers.ts`：提供通用辅助模块的辅助函数与通用逻辑。
+    - `queryProfiler.ts`：通用辅助模块中的 `queryProfiler` 模块，负责该主题下的具体实现。
+    - `queueProcessor.ts`：通用辅助模块中的 `queueProcessor` 模块，负责该主题下的具体实现。
+    - `readEditContext.ts`：定义通用辅助模块的上下文对象或上下文组件。
+    - `readFileInRange.ts`：通用辅助模块中的 `readFileInRange` 模块，负责该主题下的具体实现。
+    - `releaseNotes.ts`：通用辅助模块中的 `releaseNotes` 模块，负责该主题下的具体实现。
+    - `renderOptions.ts`：通用辅助模块中的 `renderOptions` 模块，负责该主题下的具体实现。
+    - `ripgrep.ts`：通用辅助模块中的 `ripgrep` 模块，负责该主题下的具体实现。
+    - `sandbox/`：sandbox 适配与 sandbox UI 辅助。
+      - `sandbox-adapter.ts`：作为`sandbox` 辅助模块与外部能力之间的适配层。
+      - `sandbox-ui-utils.ts`：提供`sandbox` 辅助模块的辅助函数与通用逻辑。
+    - `sanitization.ts`：通用辅助模块中的 `sanitization` 模块，负责该主题下的具体实现。
+    - `screenshotClipboard.ts`：通用辅助模块中的 `screenshotClipboard` 模块，负责该主题下的具体实现。
+    - `sdkEventQueue.ts`：通用辅助模块中的 `sdkEventQueue` 模块，负责该主题下的具体实现。
+    - `secureStorage/`：安全存储和 macOS Keychain 适配。
+      - `fallbackStorage.ts`：`secureStorage` 辅助模块中的 `fallbackStorage` 模块，负责该主题下的具体实现。
+      - `index.ts`：导出`secureStorage` 辅助模块的公共入口。
+      - `keychainPrefetch.ts`：`secureStorage` 辅助模块中的 `keychainPrefetch` 模块，负责该主题下的具体实现。
+      - `macOsKeychainHelpers.ts`：提供`secureStorage` 辅助模块的辅助函数与通用逻辑。
+      - `macOsKeychainStorage.ts`：`secureStorage` 辅助模块中的 `macOsKeychainStorage` 模块，负责该主题下的具体实现。
+      - `plainTextStorage.ts`：`secureStorage` 辅助模块中的 `plainTextStorage` 模块，负责该主题下的具体实现。
+    - `semanticBoolean.ts`：通用辅助模块中的 `semanticBoolean` 模块，负责该主题下的具体实现。
+    - `semanticNumber.ts`：通用辅助模块中的 `semanticNumber` 模块，负责该主题下的具体实现。
+    - `semver.ts`：通用辅助模块中的 `semver` 模块，负责该主题下的具体实现。
+    - `sequential.ts`：通用辅助模块中的 `sequential` 模块，负责该主题下的具体实现。
+    - `sessionActivity.ts`：处理通用辅助模块中的会话状态、会话数据或会话同步。
+    - `sessionEnvironment.ts`：处理通用辅助模块中的会话状态、会话数据或会话同步。
+    - `sessionEnvVars.ts`：处理通用辅助模块中的会话状态、会话数据或会话同步。
+    - `sessionFileAccessHooks.ts`：实现通用辅助模块相关的 hook 或 hook 辅助。
+    - `sessionIngressAuth.ts`：处理通用辅助模块中的会话状态、会话数据或会话同步。
+    - `sessionRestore.ts`：维护通用辅助模块的数据存储或状态仓库。
+    - `sessionStart.ts`：处理通用辅助模块中的会话状态、会话数据或会话同步。
+    - `sessionState.ts`：维护通用辅助模块相关状态。
+    - `sessionStorage.ts`：处理通用辅助模块中的会话状态、会话数据或会话同步。
+    - `sessionStoragePortable.ts`：处理通用辅助模块中的会话状态、会话数据或会话同步。
+    - `sessionTitle.ts`：处理通用辅助模块中的会话状态、会话数据或会话同步。
+    - `sessionUrl.ts`：处理通用辅助模块中的会话状态、会话数据或会话同步。
+    - `set.ts`：通用辅助模块中的 `set` 模块，负责该主题下的具体实现。
+    - `settings/`：设置加载、校验、缓存与托管策略。
+      - `allErrors.ts`：`settings` 辅助模块中的 `allErrors` 模块，负责该主题下的具体实现。
+      - `applySettingsChange.ts`：`settings` 辅助模块中的 `applySettingsChange` 模块，负责该主题下的具体实现。
+      - `changeDetector.ts`：`settings` 辅助模块中的 `changeDetector` 模块，负责该主题下的具体实现。
+      - `constants.ts`：集中定义`settings` 辅助模块相关常量。
+      - `internalWrites.ts`：`settings` 辅助模块中的 `internalWrites` 模块，负责该主题下的具体实现。
+      - `managedPath.ts`：`settings` 辅助模块中的 `managedPath` 模块，负责该主题下的具体实现。
+      - `mdm/`：`mdm` 子目录。
+        - `constants.ts`：集中定义`settings` 辅助模块相关常量。
+        - `rawRead.ts`：`settings` 辅助模块中的 `rawRead` 模块，负责该主题下的具体实现。
+        - `settings.ts`：`settings` 辅助模块中的 `settings` 模块，负责该主题下的具体实现。
+      - `permissionValidation.ts`：负责`settings` 辅助模块的校验与约束检查。
+      - `pluginOnlyPolicy.ts`：处理`settings` 辅助模块中的插件加载、管理或校验逻辑。
+      - `schemaOutput.ts`：处理`settings` 辅助模块中的输出格式化或输出落盘逻辑。
+      - `settings.ts`：`settings` 辅助模块中的 `settings` 模块，负责该主题下的具体实现。
+      - `settingsCache.ts`：`settings` 辅助模块中的 `settingsCache` 模块，负责该主题下的具体实现。
+      - `toolValidationConfig.ts`：定义`settings` 辅助模块的配置项与默认值。
+      - `types.ts`：定义`settings` 辅助模块使用的类型、接口或结构。
+      - `validateEditTool.ts`：负责`settings` 辅助模块的校验与约束检查。
+      - `validation.ts`：负责`settings` 辅助模块的校验与约束检查。
+      - `validationTips.ts`：`settings` 辅助模块中的 `validationTips` 模块，负责该主题下的具体实现。
+    - `shell/`：shell provider、检测和只读验证。
+      - `bashProvider.ts`：提供`shell` 辅助模块的 provider 实现。
+      - `outputLimits.ts`：处理`shell` 辅助模块中的输出格式化或输出落盘逻辑。
+      - `powershellDetection.ts`：处理`shell` 辅助模块中的 shell 执行、解析或安全约束。
+      - `powershellProvider.ts`：提供`shell` 辅助模块的 provider 实现。
+      - `prefix.ts`：`shell` 辅助模块中的 `prefix` 模块，负责该主题下的具体实现。
+      - `readOnlyCommandValidation.ts`：负责`shell` 辅助模块的校验与约束检查。
+      - `resolveDefaultShell.ts`：处理`shell` 辅助模块中的 shell 执行、解析或安全约束。
+      - `shellProvider.ts`：提供`shell` 辅助模块的 provider 实现。
+      - `shellToolUtils.ts`：提供`shell` 辅助模块的辅助函数与通用逻辑。
+      - `specPrefix.ts`：`shell` 辅助模块中的 `specPrefix` 模块，负责该主题下的具体实现。
+    - `Shell.ts`：处理通用辅助模块中的 shell 执行、解析或安全约束。
+    - `ShellCommand.ts`：处理通用辅助模块中的 shell 执行、解析或安全约束。
+    - `shellConfig.ts`：定义通用辅助模块的配置项与默认值。
+    - `sideQuery.ts`：通用辅助模块中的 `sideQuery` 模块，负责该主题下的具体实现。
+    - `sideQuestion.ts`：通用辅助模块中的 `sideQuestion` 模块，负责该主题下的具体实现。
+    - `signal.ts`：通用辅助模块中的 `signal` 模块，负责该主题下的具体实现。
+    - `sinks.ts`：通用辅助模块中的 `sinks` 模块，负责该主题下的具体实现。
+    - `skills/`：skills 检测与技能变更辅助。
+      - `skillChangeDetector.ts`：`skills` 辅助模块中的 `skillChangeDetector` 模块，负责该主题下的具体实现。
+    - `slashCommandParsing.ts`：通用辅助模块中的 `slashCommandParsing` 模块，负责该主题下的具体实现。
+    - `sleep.ts`：通用辅助模块中的 `sleep` 模块，负责该主题下的具体实现。
+    - `sliceAnsi.ts`：通用辅助模块中的 `sliceAnsi` 模块，负责该主题下的具体实现。
+    - `slowOperations.ts`：通用辅助模块中的 `slowOperations` 模块，负责该主题下的具体实现。
+    - `standaloneAgent.ts`：通用辅助模块中的 `standaloneAgent` 模块，负责该主题下的具体实现。
+    - `startupProfiler.ts`：通用辅助模块中的 `startupProfiler` 模块，负责该主题下的具体实现。
+    - `staticRender.tsx`：渲染通用辅助模块中的 `staticRender` 组件。
+    - `stats.ts`：通用辅助模块中的 `stats` 模块，负责该主题下的具体实现。
+    - `statsCache.ts`：通用辅助模块中的 `statsCache` 模块，负责该主题下的具体实现。
+    - `status.tsx`：计算、展示或同步通用辅助模块状态。
+    - `statusNoticeDefinitions.tsx`：计算、展示或同步通用辅助模块状态。
+    - `statusNoticeHelpers.ts`：提供通用辅助模块的辅助函数与通用逻辑。
+    - `stream.ts`：通用辅助模块中的 `stream` 模块，负责该主题下的具体实现。
+    - `streamJsonStdoutGuard.ts`：通用辅助模块中的 `streamJsonStdoutGuard` 模块，负责该主题下的具体实现。
+    - `streamlinedTransform.ts`：通用辅助模块中的 `streamlinedTransform` 模块，负责该主题下的具体实现。
+    - `stringUtils.ts`：提供通用辅助模块的辅助函数与通用逻辑。
+    - `subprocessEnv.ts`：通用辅助模块中的 `subprocessEnv` 模块，负责该主题下的具体实现。
+    - `suggestions/`：命令、目录、历史等建议补全。
+      - `commandSuggestions.ts`：`suggestions` 辅助模块中的 `commandSuggestions` 模块，负责该主题下的具体实现。
+      - `directoryCompletion.ts`：`suggestions` 辅助模块中的 `directoryCompletion` 模块，负责该主题下的具体实现。
+      - `shellHistoryCompletion.ts`：处理`suggestions` 辅助模块中的历史记录与回放。
+      - `skillUsageTracking.ts`：`suggestions` 辅助模块中的 `skillUsageTracking` 模块，负责该主题下的具体实现。
+      - `slackChannelSuggestions.ts`：`suggestions` 辅助模块中的 `slackChannelSuggestions` 模块，负责该主题下的具体实现。
+    - `swarm/`：多 agent/swarm 后端与权限同步。
+      - `backends/`：`backends` 子目录。
+        - `detection.ts`：`swarm` 辅助模块中的 `detection` 模块，负责该主题下的具体实现。
+        - `InProcessBackend.ts`：`swarm` 辅助模块中的 `InProcessBackend` 模块，负责该主题下的具体实现。
+        - `it2Setup.ts`：`swarm` 辅助模块中的 `it2Setup` 模块，负责该主题下的具体实现。
+        - `ITermBackend.ts`：`swarm` 辅助模块中的 `ITermBackend` 模块，负责该主题下的具体实现。
+        - `PaneBackendExecutor.ts`：`swarm` 辅助模块中的 `PaneBackendExecutor` 模块，负责该主题下的具体实现。
+        - `registry.ts`：负责`swarm` 辅助模块的注册表或注册流程。
+        - `teammateModeSnapshot.ts`：处理`swarm` 辅助模块中的团队协作或多 agent 协作逻辑。
+        - `TmuxBackend.ts`：`swarm` 辅助模块中的 `TmuxBackend` 模块，负责该主题下的具体实现。
+        - `types.ts`：定义`swarm` 辅助模块使用的类型、接口或结构。
+      - `constants.ts`：集中定义`swarm` 辅助模块相关常量。
+      - `inProcessRunner.ts`：`swarm` 辅助模块中的 `inProcessRunner` 模块，负责该主题下的具体实现。
+      - `It2SetupPrompt.tsx`：定义`swarm` 辅助模块的提示词、模板或引导文案。
+      - `leaderPermissionBridge.ts`：处理`swarm` 辅助模块中的权限决策、说明或桥接逻辑。
+      - `permissionSync.ts`：处理`swarm` 辅助模块中的权限决策、说明或桥接逻辑。
+      - `reconnection.ts`：`swarm` 辅助模块中的 `reconnection` 模块，负责该主题下的具体实现。
+      - `spawnInProcess.ts`：`swarm` 辅助模块中的 `spawnInProcess` 模块，负责该主题下的具体实现。
+      - `spawnUtils.ts`：提供`swarm` 辅助模块的辅助函数与通用逻辑。
+      - `teamHelpers.ts`：提供`swarm` 辅助模块的辅助函数与通用逻辑。
+      - `teammateInit.ts`：处理`swarm` 辅助模块中的团队协作或多 agent 协作逻辑。
+      - `teammateLayoutManager.ts`：管理`swarm` 辅助模块的生命周期、状态或协调流程。
+      - `teammateModel.ts`：处理`swarm` 辅助模块中的模型选择、模型能力或模型映射。
+      - `teammatePromptAddendum.ts`：处理`swarm` 辅助模块中的团队协作或多 agent 协作逻辑。
+    - `systemDirectories.ts`：通用辅助模块中的 `systemDirectories` 模块，负责该主题下的具体实现。
+    - `systemPrompt.ts`：定义通用辅助模块的提示词、模板或引导文案。
+    - `systemPromptType.ts`：通用辅助模块中的 `systemPromptType` 模块，负责该主题下的具体实现。
+    - `systemTheme.ts`：处理通用辅助模块中的主题、配色或外观设置。
+    - `taggedId.ts`：通用辅助模块中的 `taggedId` 模块，负责该主题下的具体实现。
+    - `task/`：任务输出、格式化与 SDK 进度辅助。
+      - `diskOutput.ts`：处理`task` 辅助模块中的输出格式化或输出落盘逻辑。
+      - `framework.ts`：`task` 辅助模块中的 `framework` 模块，负责该主题下的具体实现。
+      - `outputFormatting.ts`：处理`task` 辅助模块中的输出格式化或输出落盘逻辑。
+      - `sdkProgress.ts`：`task` 辅助模块中的 `sdkProgress` 模块，负责该主题下的具体实现。
+      - `TaskOutput.ts`：处理`task` 辅助模块中的任务装配、状态或输出逻辑。
+    - `tasks.ts`：处理通用辅助模块中的任务装配、状态或输出逻辑。
+    - `teamDiscovery.ts`：处理通用辅助模块中的团队协作或多 agent 协作逻辑。
+    - `teammate.ts`：处理通用辅助模块中的团队协作或多 agent 协作逻辑。
+    - `teammateContext.ts`：定义通用辅助模块的上下文对象或上下文组件。
+    - `teammateMailbox.ts`：处理通用辅助模块中的团队协作或多 agent 协作逻辑。
+    - `teamMemoryOps.ts`：处理通用辅助模块中的 memory 读取、写入或同步逻辑。
+    - `telemetry/`：遥测、Tracing 与导出链路。
+      - `betaSessionTracing.ts`：处理`telemetry` 辅助模块中的会话状态、会话数据或会话同步。
+      - `bigqueryExporter.ts`：`telemetry` 辅助模块中的 `bigqueryExporter` 模块，负责该主题下的具体实现。
+      - `events.ts`：`telemetry` 辅助模块中的 `events` 模块，负责该主题下的具体实现。
+      - `instrumentation.ts`：`telemetry` 辅助模块中的 `instrumentation` 模块，负责该主题下的具体实现。
+      - `logger.ts`：`telemetry` 辅助模块中的 `logger` 模块，负责该主题下的具体实现。
+      - `perfettoTracing.ts`：`telemetry` 辅助模块中的 `perfettoTracing` 模块，负责该主题下的具体实现。
+      - `pluginTelemetry.ts`：处理`telemetry` 辅助模块中的插件加载、管理或校验逻辑。
+      - `sessionTracing.ts`：处理`telemetry` 辅助模块中的会话状态、会话数据或会话同步。
+      - `skillLoadedEvent.ts`：`telemetry` 辅助模块中的 `skillLoadedEvent` 模块，负责该主题下的具体实现。
+    - `telemetryAttributes.ts`：处理通用辅助模块中的遥测、Tracing 或埋点逻辑。
+    - `teleport/`：teleport 环境选择与打包传输。
+      - `api.ts`：`teleport` 辅助模块中的 `api` 模块，负责该主题下的具体实现。
+      - `environments.ts`：`teleport` 辅助模块中的 `environments` 模块，负责该主题下的具体实现。
+      - `environmentSelection.ts`：`teleport` 辅助模块中的 `environmentSelection` 模块，负责该主题下的具体实现。
+      - `gitBundle.ts`：处理`teleport` 辅助模块中的 Git 集成逻辑。
+    - `teleport.tsx`：渲染通用辅助模块中的 `teleport` 组件。
+    - `tempfile.ts`：通用辅助模块中的 `tempfile` 模块，负责该主题下的具体实现。
+    - `terminal.ts`：通用辅助模块中的 `terminal` 模块，负责该主题下的具体实现。
+    - `terminalPanel.ts`：通用辅助模块中的 `terminalPanel` 模块，负责该主题下的具体实现。
+    - `textHighlighting.ts`：通用辅助模块中的 `textHighlighting` 模块，负责该主题下的具体实现。
+    - `theme.ts`：处理通用辅助模块中的主题、配色或外观设置。
+    - `thinking.ts`：通用辅助模块中的 `thinking` 模块，负责该主题下的具体实现。
+    - `timeouts.ts`：通用辅助模块中的 `timeouts` 模块，负责该主题下的具体实现。
+    - `tmuxSocket.ts`：通用辅助模块中的 `tmuxSocket` 模块，负责该主题下的具体实现。
+    - `todo/`：todo 结构定义。
+      - `types.ts`：定义`todo` 辅助模块使用的类型、接口或结构。
+    - `tokenBudget.ts`：通用辅助模块中的 `tokenBudget` 模块，负责该主题下的具体实现。
+    - `tokens.ts`：通用辅助模块中的 `tokens` 模块，负责该主题下的具体实现。
+    - `toolErrors.ts`：通用辅助模块中的 `toolErrors` 模块，负责该主题下的具体实现。
+    - `toolPool.ts`：通用辅助模块中的 `toolPool` 模块，负责该主题下的具体实现。
+    - `toolResultStorage.ts`：通用辅助模块中的 `toolResultStorage` 模块，负责该主题下的具体实现。
+    - `toolSchemaCache.ts`：通用辅助模块中的 `toolSchemaCache` 模块，负责该主题下的具体实现。
+    - `toolSearch.ts`：处理通用辅助模块中的搜索、过滤或召回逻辑。
+    - `transcriptSearch.ts`：处理通用辅助模块中的搜索、过滤或召回逻辑。
+    - `treeify.ts`：通用辅助模块中的 `treeify` 模块，负责该主题下的具体实现。
+    - `truncate.ts`：通用辅助模块中的 `truncate` 模块，负责该主题下的具体实现。
+    - `ultraplan/`：ultraplan / CCR 辅助逻辑。
+      - `ccrSession.ts`：处理`ultraplan` 辅助模块中的会话状态、会话数据或会话同步。
+      - `keyword.ts`：`ultraplan` 辅助模块中的 `keyword` 模块，负责该主题下的具体实现。
+    - `unaryLogging.ts`：通用辅助模块中的 `unaryLogging` 模块，负责该主题下的具体实现。
+    - `undercover.ts`：通用辅助模块中的 `undercover` 模块，负责该主题下的具体实现。
+    - `user.ts`：通用辅助模块中的 `user` 模块，负责该主题下的具体实现。
+    - `userAgent.ts`：通用辅助模块中的 `userAgent` 模块，负责该主题下的具体实现。
+    - `userPromptKeywords.ts`：通用辅助模块中的 `userPromptKeywords` 模块，负责该主题下的具体实现。
+    - `uuid.ts`：通用辅助模块中的 `uuid` 模块，负责该主题下的具体实现。
+    - `warningHandler.ts`：通用辅助模块中的 `warningHandler` 模块，负责该主题下的具体实现。
+    - `which.ts`：通用辅助模块中的 `which` 模块，负责该主题下的具体实现。
+    - `windowsPaths.ts`：通用辅助模块中的 `windowsPaths` 模块，负责该主题下的具体实现。
+    - `withResolvers.ts`：通用辅助模块中的 `withResolvers` 模块，负责该主题下的具体实现。
+    - `words.ts`：通用辅助模块中的 `words` 模块，负责该主题下的具体实现。
+    - `workloadContext.ts`：定义通用辅助模块的上下文对象或上下文组件。
+    - `worktree.ts`：通用辅助模块中的 `worktree` 模块，负责该主题下的具体实现。
+    - `worktreeModeEnabled.ts`：通用辅助模块中的 `worktreeModeEnabled` 模块，负责该主题下的具体实现。
+    - `xdg.ts`：通用辅助模块中的 `xdg` 模块，负责该主题下的具体实现。
+    - `xml.ts`：通用辅助模块中的 `xml` 模块，负责该主题下的具体实现。
+    - `yaml.ts`：通用辅助模块中的 `yaml` 模块，负责该主题下的具体实现。
+    - `zodToJsonSchema.ts`：定义通用辅助模块的数据 schema 或结构化约束。
+  - `vim/`：Vim 模式编辑行为。
+    - `motions.ts`：Vim 模块中的 `motions` 模块，负责该主题下的具体实现。
+    - `operators.ts`：Vim 模块中的 `operators` 模块，负责该主题下的具体实现。
+    - `textObjects.ts`：Vim 模块中的 `textObjects` 模块，负责该主题下的具体实现。
+    - `transitions.ts`：Vim 模块中的 `transitions` 模块，负责该主题下的具体实现。
+    - `types.ts`：定义Vim 模块使用的类型、接口或结构。
+  - `voice/`：语音模式开关与语音能力边界。
+    - `voiceModeEnabled.ts`：语音模块中的 `voiceModeEnabled` 模块，负责该主题下的具体实现。
+
+## 3. 使用建议
+
+- 若你要先抓主干，优先看 `main.tsx`、`query.ts`、`commands.ts`、`tools.ts`、`components/App.tsx`、`components/PromptInput/PromptInput.tsx`。
+- 若你要排查平台能力，重点看 `commands/`、`tools/`、`services/`、`utils/plugins/`、`utils/permissions/`、`utils/swarm/`。
+- 若你要补齐组件理解，可把本文与 `analysis/components/` 下几章对照着读。
