@@ -2,7 +2,6 @@
 
 > 基于对 Claude Code 源码的系统性分析，从 11 个维度拆解其架构设计，涵盖 Agent Loop、Context 管理、Tool 调用、Memory、权限安全、多智能体协作、可观测性等核心模块。
 
----
 
 ## 项目简介
 
