@@ -1,4 +1,4 @@
-"""会话保存 / 恢复 —— 对标 CoreCoder 的 session.py。
+"""会话保存 / 恢复。
 
 存到 ~/.minicoder/sessions/<name>.json。文件名做 sanitize,防止路径穿越
 (例如 name = "../../etc/passwd" 会被拒绝)。

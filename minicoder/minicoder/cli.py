@@ -1,6 +1,6 @@
 """CLI / REPL —— 交互入口与斜杠命令。
 
-对标 CoreCoder 的 cli.py:REPL + 斜杠命令 + 一次性无头模式(-p/--print)。
+REPL + 斜杠命令 + 一次性无头模式(-p/--print)。
 斜杠命令:/model /compact /tokens /diff /save /sessions /help,以及 quit/exit。
 Ctrl+C 取消当前一轮,回到提示符。
 """

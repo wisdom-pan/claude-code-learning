@@ -1,7 +1,7 @@
 """Provider 抽象层 —— 统一 chat 接口,支持 OpenAI 兼容与 Anthropic。
 
-这是相对 CoreCoder 的主要增量:CoreCoder 只对接 OpenAI 兼容 API,这里抽象一层,
-让 Agent Loop 与具体后端解耦。
+这是本项目的一个增量:抽象一层 provider,让 Agent Loop 与具体后端解耦,
+同时支持 OpenAI 兼容 API 与 Anthropic。
 
 ## 归一化的内部消息格式(Agent 层使用)
 - {"role": "user", "content": str}
@@ -10,7 +10,7 @@
 
 各 Provider 负责把这套格式翻译成自己的 wire 格式,并把响应翻译回统一的 Reply。
 
-## 为什么 llm 层最复杂(见 docs/02 与 CoreCoder README)
+## 为什么 llm 层最复杂(见 docs/02)
 流式响应会把每个 tool_call 的 arguments 切成碎片,必须按 index 重新拼接;provider 偶尔
 返回半个 JSON 或空 usage;429/超时/5xx 都要退避重试。这些都在本文件里处理。
 """

@@ -1,6 +1,6 @@
 """配置加载 —— 环境变量 + 项目根 .env 文件。
 
-对标 CoreCoder 的 config.py:两个 provider 各自的 key/base_url,加上模型与轮数覆盖。
+配置两个 provider 各自的 key/base_url,加上模型与轮数覆盖。
 没有引入 python-dotenv,自己解析 .env,保持零额外依赖、可读。
 """
 

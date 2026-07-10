@@ -2,7 +2,7 @@
 
 > 一个极简、可读、可 fork 的终端 AI coding agent —— 把 [Claude Code](../README.md) 的核心思想用 ~1300 行纯 Python 写出来。
 
-灵感来自 [CoreCoder](https://github.com/he-yufeng/CoreCoder)("the nanoGPT of coding agents"),并结合本仓库对 Claude Code 源码的架构分析([docs/](../docs/))。目标是**教学与可 hack**,而非生产级。
+灵感来自极简教学型 coding agent("the nanoGPT of coding agents")的思路,并结合本仓库对 Claude Code 源码的架构分析([docs/](../docs/))。目标是**教学与可 hack**,而非生产级。
 
 ## 它做什么
 
@@ -26,7 +26,7 @@
 | `context.py` | [docs/03 上下文系统](../docs/03-context-system.md) | **三层压缩**:50% 裁剪 / 70% 摘要旧轮 / 90% 紧急压缩 |
 | `tools/base.py` | [docs/04 工具系统](../docs/04-tool-system.md) | **fail-closed** 默认:工具默认不并发、不只读,要放宽须显式声明 |
 | `tools/bash.py` | [docs/05 权限系统](../docs/05-permission-system.md) | 危险命令正则门控(`rm -rf /`、fork bomb、`dd` 覆盖磁盘…) |
-| `providers.py` | — | Provider 抽象:**同时支持 Anthropic 与 OpenAI 兼容**(相对 CoreCoder 的主要增量) |
+| `providers.py` | — | Provider 抽象:**同时支持 Anthropic 与 OpenAI 兼容**后端 |
 | `session.py` | — | 会话保存/恢复 + 路径穿越防护 |
 
 ## 安装

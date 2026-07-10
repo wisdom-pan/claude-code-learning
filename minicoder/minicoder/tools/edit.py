@@ -1,6 +1,6 @@
 """edit_file —— 基于唯一文本匹配的替换(写操作,串行)。
 
-对标 CoreCoder / Claude Code 的 Edit:不用脆弱的行号,而是要求 old_string 在文件中
+对标 Claude Code 的 Edit:不用脆弱的行号,而是要求 old_string 在文件中
 唯一出现,再替换成 new_string。唯一性保证了替换位置无歧义。
 """
 

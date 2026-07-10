@@ -1,4 +1,4 @@
-"""三层上下文压缩 —— 对标 CoreCoder 与本仓库 docs/03-context-system.md。
+"""三层上下文压缩 —— 对标本仓库 docs/03-context-system.md。
 
 窗口快满时,先用最便宜的手段:
 | 层 | 阈值 | 动作                                  | 调 LLM |
