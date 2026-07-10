@@ -1,4 +1,8 @@
-"""会话保存 / 恢复。
+"""会话保存 / 恢复 —— 对标 Claude Code 的 Transcript 持久化。
+
+对应 QueryEngine 的 `recordTranscript()`(docs/02-core-engine.md):在关键节点把对话
+落盘,确保崩溃安全、可恢复;服务层 `sessionIngress.ts` 也做类似的 transcript 归档。
+极简版:本地 JSON 存到 ~/.minicoder/sessions/,同步写、可 /save /load。
 
 存到 ~/.minicoder/sessions/<name>.json。文件名做 sanitize,防止路径穿越
 (例如 name = "../../etc/passwd" 会被拒绝)。

@@ -1,7 +1,9 @@
 """Provider 抽象层 —— 统一 chat 接口,支持 OpenAI 兼容与 Anthropic。
 
-这是本项目的一个增量:抽象一层 provider,让 Agent Loop 与具体后端解耦,
-同时支持 OpenAI 兼容 API 与 Anthropic。
+对标 Claude Code 的服务层 API 客户端(docs/13-services.md):
+- `client.ts` 多 Provider 支持(Direct API / Bedrock / Vertex / Foundry)——这里抽象一层
+  Provider,让 Agent Loop 与具体后端解耦,同时支持 OpenAI 兼容 API 与 Anthropic。
+- `withRetry.ts` 指数退避重试 —— 见下方 `_with_retry`。
 
 ## 归一化的内部消息格式(Agent 层使用)
 - {"role": "user", "content": str}
